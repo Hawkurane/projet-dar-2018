@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class EchoServlet
  */
-@WebServlet("/EchoServlet")
+@WebServlet(
+		name = "EchoServlet",
+		urlPatterns = {"/echo"})
 public class EchoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -31,7 +33,7 @@ public class EchoServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html");
 		
-		String DATA = request.getParameter("DATA");
+		String DATA = request.getParameter("data");
 		
 		
 		PrintWriter out = response.getWriter();
