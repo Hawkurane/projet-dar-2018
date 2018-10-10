@@ -41,7 +41,6 @@ public class EchoServlet extends HttpServlet {
 		out.println("<h3>");
 		if(DATA != null) out.println(DATA); else out.println("No text entered.");
 		out.println("</h3>");
-		out.println("<p>Return to <a href='index.html'>home</a>");
 		out.println("</body></html>");
 	}
 
