@@ -27,7 +27,8 @@ public class IndexServlet extends HttpServlet {
 		ServletOutputStream out = resp.getOutputStream();
 		
 		
-		
+		out.write("Hello Pronostiqueur...".getBytes());
+		out.flush();
 		out.close();
 	}
 
