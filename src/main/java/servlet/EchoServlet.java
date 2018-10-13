@@ -1,8 +1,13 @@
 package servlet;
 
-
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,6 +31,12 @@ public class EchoServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+    private static Connection getConnection() throws URISyntaxException, SQLException {
+        String dbUrl = System.getenv("JDBC_DATABASE_URL");
+        return DriverManager.getConnection(dbUrl);
+    }
+
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -39,6 +50,16 @@ public class EchoServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("<html><body>");
 		out.println("<h3>");
+		try {
+			String basiqueRequest = "SELECT * FROM users";
+			Connection connexionDataBase = getConnection();
+			Statement stmt = connexionDataBase.createStatement();
+			ResultSet res = stmt.executeQuery(basiqueRequest);
+			out.println(res.getString("name"));
+		} catch (Exception e){
+			out.println(e.getMessage());
+		}
+		
 		if(DATA != null) out.println(DATA); else out.println("No text entered.");
 		out.println("</h3>");
 		out.println("</body></html>");
