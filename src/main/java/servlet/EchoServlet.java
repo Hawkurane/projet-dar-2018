@@ -56,7 +56,9 @@ public class EchoServlet extends HttpServlet {
 			Connection connexionDataBase = getConnection();
 			Statement stmt = connexionDataBase.createStatement();
 			ResultSet res = stmt.executeQuery(basiqueRequest);
-			out.println(res.getString("name"));
+			while(res.next()){
+				out.println(res.getString("name"));
+			}
 		} catch (Exception e){
 			out.println(e.getMessage());
 		}
