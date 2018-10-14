@@ -1,5 +1,12 @@
 $(function() {
-    
+	
+	if(sessionStorage.getItem('sessionIsUp')){
+		$('#loginButton').hide();
+	} else {
+		$('#logoutButton').hide();
+	}
+	
+	
     var $formLogin = $('#login-form');
     var $formLost = $('#lost-form');
     var $formRegister = $('#register-form');
@@ -7,17 +14,40 @@ $(function() {
     var $modalAnimateTime = 300;
     var $msgAnimateTime = 150;
     var $msgShowTime = 2000;
-
+    
     $("form").submit(function () {
         switch(this.id) {
             case "login-form":
                 var $lg_username=$('#login_username').val();
                 var $lg_password=$('#login_password').val();
-                if ($lg_username == "ERROR") {
-                    msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error");
-                } else {
-                    msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK");
-                }
+                
+             
+                var params = {
+                	userlogin: $lg_username,
+                	pwdlogin: $lg_password
+                };
+                
+                $.post("login", $.param(params), function(response){
+                	console.log(JSON.stringify(response));
+                	var obj = jQuery.parseJSON(JSON.stringify(response));
+                	
+                	
+                	
+                	if(obj.success === "true") {
+                        msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK");
+                        sessionStorage.setItem('sessionIsUp', true);
+                        sessionStorage.setItem('user', obj.user);
+                        setTimeout(function(){
+                        	location.reload();
+                        }, 2000);
+                        
+                        
+                	} else {
+                    	msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error");
+                	}
+                		
+                	
+                });
                 return false;
                 break;
             case "lost-form":

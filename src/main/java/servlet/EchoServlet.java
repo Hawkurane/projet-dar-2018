@@ -63,7 +63,7 @@ public class EchoServlet extends HttpServlet {
 			out.println(e.getMessage());
 		}
 		
-		if(DATA != null) out.println(DATA); else out.println("No text entered.");
+		//if(DATA != null) out.println(DATA); else out.println("No text entered.");
 		out.println("</h3>");
 		out.println("</body></html>");
 	}
