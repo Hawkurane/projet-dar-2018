@@ -35,7 +35,7 @@ public class IndexServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		ServletOutputStream out = response.getOutputStream();
-		request.getRequestDispatcher("IndexServlet.java").include(request, response);
+		request.getRequestDispatcher("/").include(request, response);
 		
 		HttpSession session = request.getSession(false);
 		if(session!=null) {

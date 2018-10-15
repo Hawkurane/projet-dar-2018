@@ -24,5 +24,6 @@ public class HTMLBuilder {
 	
 	public static void append(String s) throws IOException {
 		out.write(s.getBytes());
+		out.flush();
 	}
 }
