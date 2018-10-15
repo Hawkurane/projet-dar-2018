@@ -28,6 +28,7 @@ $(function() {
             var obj = jQuery.parseJSON(JSON.stringify(response));
             if(obj.code=="200"){
                 sessionStorage.clear();
+                localStorage.clear();
                 location.reload();
             } else {
                 alert(obj.message);
@@ -53,12 +54,24 @@ $(function() {
                 	var obj = jQuery.parseJSON(JSON.stringify(response));
                 	
                 	if(obj.success === "true") {
-                        msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK");
-                        sessionStorage.setItem('sessionIsUp', true);
-                        sessionStorage.setItem('user', obj.user);
-                        setTimeout(function(){
-                        	location.reload();
-                        }, 1500);
+                        if($('input[name=rememberme]').is(':checked')){
+
+                            msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK");
+                            localStorage.setItem('sessionIsUp', true);
+                            localStorage.setItem('user', obj.user);
+                            setTimeout(function(){
+                                location.reload();
+                            }, 1500);
+
+                        } else {
+                                
+                            msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK");
+                            sessionStorage.setItem('sessionIsUp', true);
+                            sessionStorage.setItem('user', obj.user);
+                            setTimeout(function(){
+                                location.reload();
+                            }, 1500);
+                        }
                         
                         
                 	} else {
