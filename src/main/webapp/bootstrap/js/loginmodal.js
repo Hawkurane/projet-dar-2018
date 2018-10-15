@@ -1,10 +1,13 @@
 $(function() {
-	
-	if(sessionStorage.getItem('sessionIsUp')){
-		$('#loginButton').hide();
-	} else {
-		$('#logoutButton').hide();
-	}
+	if(localStorage.getItem('sessionIsUp')){
+        $('#loginButton').hide();
+    } else {
+        if(sessionStorage.getItem('sessionIsUp')){
+            $('#loginButton').hide();
+        } else {
+            $('#logoutButton').hide();
+        }
+    }
 	
 	
     var $formLogin = $('#login-form');
@@ -14,6 +17,24 @@ $(function() {
     var $modalAnimateTime = 300;
     var $msgAnimateTime = 150;
     var $msgShowTime = 2000;
+
+    $("#logoutButton").click(function(){
+        var params = {
+            user: sessionStorage.getItem('user')
+        };
+
+        $.post("logout", $.param(params), function(response){
+            console.log(JSON.stringify(response));
+            var obj = jQuery.parseJSON(JSON.stringify(response));
+            if(obj.code=="200"){
+                sessionStorage.clear();
+                location.reload();
+            } else {
+                alert(obj.message);
+            }
+        });
+    });
+
 
     $("form").submit(function () {
         switch(this.id) {
@@ -31,15 +52,13 @@ $(function() {
                 	console.log(JSON.stringify(response));
                 	var obj = jQuery.parseJSON(JSON.stringify(response));
                 	
-                	
-                	
                 	if(obj.success === "true") {
                         msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK");
                         sessionStorage.setItem('sessionIsUp', true);
                         sessionStorage.setItem('user', obj.user);
                         setTimeout(function(){
                         	location.reload();
-                        }, 2000);
+                        }, 1500);
                         
                         
                 	} else {

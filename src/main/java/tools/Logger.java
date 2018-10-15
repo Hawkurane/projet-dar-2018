@@ -8,6 +8,10 @@ public class Logger {
 		
 	}
 	
+	public static boolean logOut(String username) {
+		return true;
+	}
+	
 	
 
 }
