@@ -1,5 +1,6 @@
 package tools;
 
+import java.sql.SQLException;
 import java.util.Random;
 
 public class Logger {
@@ -9,12 +10,19 @@ public class Logger {
 	final static int KEY_LENGTH = 64;
 
 	public static boolean logIn(String username, String password) {
-		//TODO
-		return username.equals(password);
-		
+		boolean b = false;
+		try{
+			b = ServerRequest.login(username, password);
+		}catch(SQLException e){	}
+		return b;
 	}
 	
 	public static boolean logOut(String username) {
+		return true;
+	}
+	
+	public static boolean verifySession(String username,String sessionKey){
+		//TODO
 		return true;
 	}
 	

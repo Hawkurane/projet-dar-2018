@@ -1,21 +1,15 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
-import tools.HTMLBuilder;
 import tools.Logger;
 
 
@@ -44,21 +38,22 @@ public class LoginServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String username = request.getParameter("userlogin");
 		String password = request.getParameter("pwdlogin");
-		
-		Map<String, String> options = new LinkedHashMap<String, String>();
-		
-		
+				
+		JsonObject json = new JsonObject();
 		if(Logger.logIn(username, password)) {
-			options.put("success", "true");
-			options.put("user", username);
-		} else 
-			options.put("success", "false");
-			
-		String json = new Gson().toJson(options);
-		
+			response.setStatus(200);
+			json.addProperty("success", true);
+			json.addProperty("user", username);
+			//json.addProperty("sessionKey",Logger.generateSessionKey());
+			HttpSession session = request.getSession();
+			session.setAttribute("name",username);
+		} else{
+			response.setStatus(400);
+			json.addProperty("success", false);
+		}
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write(json);
+		response.getWriter().write(json.toString());
 		
 	}
 	
