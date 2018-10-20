@@ -21,21 +21,22 @@ public class ProfilServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 
-	
+
 	//return json with basic user info
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = (String) request.getSession(false).getAttribute("name");
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 
 		JsonObject json = new JsonObject();
-		if(username!=null){
-			try{
-				json = ServerRequest.profil(username);
-				response.setStatus(HttpServletResponse.SC_OK);
-			}catch(SQLException e){
-				response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
-			}
+		if(request.getSession(false)!=null){
+			String username = (String) request.getSession(false).getAttribute("name");
+			if(username!=null)
+				try{
+					json = ServerRequest.profil(username);
+					response.setStatus(HttpServletResponse.SC_OK);
+				}catch(SQLException e){
+					response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
+				}
 		} else {
 			response.setStatus(HttpServletResponse.SC_PROXY_AUTHENTICATION_REQUIRED);
 			json.addProperty("message", "NOT AUTHORIZED");

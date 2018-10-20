@@ -36,6 +36,24 @@ public class ServerRequest {
 		Statement stmt = connexionDataBase.createStatement();
 		return stmt.executeUpdate(request);
 	}
+	
+	public static boolean insertMatch(int matchId, int matchDay,String time,String status,
+						int homeTeamId, int awayTeamId,String winner,int homeTeamg,int awayTeamg)throws SQLException{
+		time = time.substring(0, 10)+" "+time.substring(11,19);
+		String request = "INSERT INTO matches values ("+matchId+","+homeTeamg+","+
+						awayTeamg+","+"timesamp'"+time+"',"+winner+","+matchDay+","+
+						homeTeamId+","+awayTeamId+","+status+");";
+		int res = makeUpdate(request);
+		return (res==1);
+	}
+	
+	public static boolean createAccount(String newusername,String password,Date date,int region) throws SQLException{
+		String request = "INSERT INTO users ('"+newusername+
+						","+password+","+date.toString()+region+";";
+		int res = makeUpdate(request);
+		return (res==1);
+		
+	}
 
 
 	public static boolean login(String username,String password) throws SQLException{
@@ -80,13 +98,7 @@ public class ServerRequest {
 		
 	}
 	
-	public static boolean createAccount(String newusername,String password,Date date,int region) throws SQLException{
-		String request = "INSERT INTO users ('"+newusername+
-						","+password+","+date.toString()+region+";";
-		int res = makeUpdate(request);
-		return (res==1);
-		
-	}
+
 	
 
 }
