@@ -41,8 +41,8 @@ public class ServerRequest {
 						int homeTeamId, int awayTeamId,String winner,int homeTeamg,int awayTeamg)throws SQLException{
 		time = time.substring(0, 10)+" "+time.substring(11,19);
 		String request = "INSERT INTO matches values ("+matchId+","+homeTeamg+","+
-						awayTeamg+","+"timestamp'"+time+"','"+winner+"',"+matchDay+","+
-						homeTeamId+","+awayTeamId+",'"+status+"');";
+						awayTeamg+","+"timestamp'"+time+"',"+matchDay+","+
+						homeTeamId+","+awayTeamId+",'"+status+"','"+winner+"');";
 		int res = makeUpdate(request);
 		return (res==1);
 	}
