@@ -53,12 +53,7 @@
 		    <version>8.5.23</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jsp-api -->
-		<dependency>
-		    <groupId>org.apache.tomcat</groupId>
-		    <artifactId>tomcat-jsp-api</artifactId>
-		    <version>8.5.23</version>
-		</dependency>
+		
 		<dependency>
 	        <groupId>javax.servlet</groupId>
 	        <artifactId>jstl</artifactId>
