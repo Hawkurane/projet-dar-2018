@@ -24,15 +24,7 @@ $(function() {
         };
 
         $.post("logout", $.param(params), function(response){
-            console.log(JSON.stringify(response));
-            var obj = jQuery.parseJSON(JSON.stringify(response));
-            if(obj.code=="200"){
-                sessionStorage.clear();
-                localStorage.clear();
-                location.reload();
-            } else {
-                alert(obj.message);
-            }
+            
         });
     });
 
