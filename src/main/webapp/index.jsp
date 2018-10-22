@@ -25,14 +25,17 @@
                 </div>
 
                 <!-- Insert loging or log out -->
-                <c:if test="${!empty sessionScope.name}">
-                    <li><a href="#" id="logoutButton" class="glyphicon glyphicon-log-out" role="button"> Logout</a></li>
-                </c:if>
                 <c:choose>
                     <c:when test="${!empty sessionScope.namme}">
-                        <li><a href="#" id="logoutButton" class="glyphicon glyphicon-log-out" role="button"> Logout</a></li>
+                        <div class="nav navbar-nav navbar-right"> 
+                            <li><a href="#" id="logoutButton" class="glyphicon glyphicon-log-out" role="button"> Logout</a></li>
+                        </div>
                     </c:when>
                     <c:otherwise>
+                        <div class="nav navbar-nav navbar-right"> 
+                            <li><a href="#" id="loginButton" class="glyphicon glyphicon-log-in" role="button" data-toggle="modal" data-target="#login-modal"> Login </a></li>
+                        </div>
+                        
                         <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                             <div class="modal-dialog">
                                     <div class="modal-content">
