@@ -20,11 +20,12 @@ import tools.Logger;
 		)
 public class LoginServlet extends HttpServlet {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
-	
+	public static final String VUE              = "src/main/webapp/bootstrap/js/";
+	public static final String ATT_USERNAME     = "name";
+	public static final String CHAMP_NAME       = "userlogin";
+	public static final String CHAMP_PWD        = "pwdlogin";
 	/*public static final String ATT_USER 			= "user";
 	public static final String ATT_FORM 			= "form";
 	public static final String ATT_SESSION_USER 	= "sessionUser";
@@ -35,26 +36,18 @@ public class LoginServlet extends HttpServlet {
 		response.sendRedirect("/");
 	}
 	
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String username = request.getParameter("userlogin");
-		String password = request.getParameter("pwdlogin");
-				
-		JsonObject json = new JsonObject();
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
+		String username = request.getParameter(CHAMP_NAME);
+		String password = request.getParameter(CHAMP_PWD);
+
 		if(Logger.logIn(username, password)) {
-			response.setStatus(200);
-			json.addProperty("success", true);
-			json.addProperty("user", username);
+			//response.setStatus(200);
 			//json.addProperty("sessionKey",Logger.generateSessionKey());
 			HttpSession session = request.getSession();
-			session.setAttribute("name",username);
-		} else{
-			response.setStatus(400);
-			json.addProperty("success", false);
+			session.setAttribute(ATT_USERNAME,username);
 		}
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write(json.toString());
-		
+
+		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 	}
 	
 

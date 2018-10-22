@@ -1,8 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,7 +32,7 @@ public class RegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String newusername = request.getParameter("newlogin");
 		String password = request.getParameter("pwdnewlogin");
-		Date date = new Date(request.getParameter("birthdayYear"));
+		Date date = Date.valueOf(request.getParameter("birthdayYear"));
 		int region = Integer.parseInt(request.getParameter("region"));
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");

@@ -10,9 +10,11 @@ import java.util.Date;
 import com.google.gson.JsonObject;
 
 public class ServerRequest {
-
+	public static final String USERS_BASE = "users";
+	public static final String MATCHS_BASE = "matches";
+	public static final String BETS_BASE = "bets";
 	Connection connection = getConnection();
-
+	
 	private static Connection getConnection(){
 		try{
 			String dbUrl = System.getenv("JDBC_DATABASE_URL");
@@ -40,7 +42,7 @@ public class ServerRequest {
 	public static boolean insertMatch(int matchId, int matchDay,String time,String status,
 						int homeTeamId, int awayTeamId,String winner,int homeTeamg,int awayTeamg,String league)throws SQLException{
 		time = time.substring(0, 10)+" "+time.substring(11,19);
-		String request = "INSERT INTO matches values ("+matchId+","+homeTeamg+","+
+		String request = "INSERT INTO "+MATCHS_BASE +" values ("+matchId+","+homeTeamg+","+
 						awayTeamg+","+"timestamp'"+time+"',"+matchDay+","+
 						homeTeamId+","+awayTeamId+",'"+status+"','"+winner+"','"+league+"');";
 		int res = makeUpdate(request);
@@ -48,7 +50,7 @@ public class ServerRequest {
 	}
 	
 	public static boolean createAccount(String newusername,String password,Date date,int region) throws SQLException{
-		String request = "INSERT INTO users ('"+newusername+
+		String request = "INSERT INTO "+USERS_BASE+" ('"+newusername+
 						","+password+","+date.toString()+region+";";
 		int res = makeUpdate(request);
 		return (res==1);
@@ -57,7 +59,7 @@ public class ServerRequest {
 
 
 	public static boolean login(String username,String password) throws SQLException{
-		String loginRequest = "SELECT password FROM users WHERE name='"+username+"';";
+		String loginRequest = "SELECT password FROM "+USERS_BASE+" WHERE name='"+username+"';";
 		ResultSet res = makeRequest(loginRequest);
 		res.next();
 		if(res.getString("password").equals(password))
@@ -70,10 +72,10 @@ public class ServerRequest {
 	public static JsonObject profil(String username)throws SQLException{
 		JsonObject json= new JsonObject();
 		String profilRequest = "SELECT name, age, region"+
-								"FROM users"+
+								"FROM "+USERS_BASE +
 								"WHERE name = '"+username+"';";
 		String pointRequest = "SELECT sum(odd) AS(score)"+
-								"FROM bets b,matchs m"+
+								"FROM "+BETS_BASE+" b, "+MATCHS_BASE+" m"+
 								"WHERE b.id = m.id AND"+
 								"b.name ='"+username+"' AND"+
 								"m.result !=NULL AND"+
@@ -92,10 +94,15 @@ public class ServerRequest {
 	}
 	
 	public static boolean existName(String newName) throws SQLException{
-		String request = "SELECT name FROM users WHERE name = '"+newName+"';";
+		String request = "SELECT name FROM "+USERS_BASE+" WHERE name = '"+newName+"';";
 		ResultSet res = makeRequest(request);
 		return (res.getFetchSize()!=0);
 		
+	}
+	
+	public static boolean search(int matchDay,String league,String teamName){
+		String request = "SELECT ";
+		return false;
 	}
 	
 
