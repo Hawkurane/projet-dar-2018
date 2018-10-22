@@ -19,13 +19,19 @@ $(function() {
     var $msgShowTime = 2000;
 
     $("#logoutButton").click(function(){
+
+        $.ajax({
+            url: "logout"
+        });
+        
+        /*
         var params = {
             user: sessionStorage.getItem('user')
         };
 
         $.post("logout", $.param(params), function(response){
             
-        });
+        });*/
     });
 
 
