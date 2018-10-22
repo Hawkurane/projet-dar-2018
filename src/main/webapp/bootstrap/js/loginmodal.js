@@ -50,7 +50,8 @@ $(function() {
                 $.post("login", $.param(params), function(response){
                 	console.log(JSON.stringify(response));
                 	var obj = jQuery.parseJSON(JSON.stringify(response));
-                	
+                    
+                    
                 	if(obj.success === true) {
                         if($('input[name=rememberme]').is(':checked')){
 
@@ -64,8 +65,9 @@ $(function() {
                         } else {
                                 
                             msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK");
-                            sessionStorage.setItem('sessionIsUp', true);
+                            /*sessionStorage.setItem('sessionIsUp', true);
                             sessionStorage.setItem('user', obj.user);
+                            */
                             setTimeout(function(){
                                 location.reload();
                             }, 1500);
