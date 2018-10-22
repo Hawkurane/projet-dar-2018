@@ -38,11 +38,11 @@ public class ServerRequest {
 	}
 	
 	public static boolean insertMatch(int matchId, int matchDay,String time,String status,
-						int homeTeamId, int awayTeamId,String winner,int homeTeamg,int awayTeamg)throws SQLException{
+						int homeTeamId, int awayTeamId,String winner,int homeTeamg,int awayTeamg,String league)throws SQLException{
 		time = time.substring(0, 10)+" "+time.substring(11,19);
 		String request = "INSERT INTO matches values ("+matchId+","+homeTeamg+","+
 						awayTeamg+","+"timestamp'"+time+"',"+matchDay+","+
-						homeTeamId+","+awayTeamId+",'"+status+"','"+winner+"');";
+						homeTeamId+","+awayTeamId+",'"+status+"','"+winner+"','"+league+"');";
 		int res = makeUpdate(request);
 		return (res==1);
 	}

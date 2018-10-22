@@ -42,15 +42,24 @@ public class CloneDataApi extends HttpServlet {
 		out.println("<html><body>");
 		out.println("<h3>");
 
-		out.println("request:"+request());
+		out.println("request:"+cloneAllMatchFromApi());
 		out.println("</h3>");
 		out.println("</body></html>");
 	}
 
+	public static boolean cloneAllMatchFromApi(){
+		String[] competitions = {"FL1","PL","PD"};
+		boolean b = true;
+		for(String competitionCode : competitions){
+			if(!cloneMatchFromApi(competitionCode))
+				b = false;
+		}
+		return b;
+	}
 
-	public static String request(){
+	public static boolean cloneMatchFromApi(String competitionCode){
 
-		String sURL = apiUrl+"competitions/FL1/matches?dateFrom=2018-10-01&dateTo=2018-12-31";
+		String sURL = apiUrl+"competitions/"+competitionCode+"/matches?dateFrom=2018-10-01&dateTo=2018-12-31";
 		// Connect to the URL using java's native library
 		try{
 			URL url = new URL(sURL);
@@ -89,19 +98,18 @@ public class CloneDataApi extends HttpServlet {
 				//int awayTeamGoal = match.get("awayTeam").getAsInt();
 				int homeTeamId = match.getAsJsonObject("homeTeam").get("id").getAsInt();
 				int awayTeamId = match.getAsJsonObject("homeTeam").get("id").getAsInt();
-				System.out.println("id: "+id +" status: "+status+" date: "+date+" homegoal: "+homeTeamGoal+" homeid "+homeTeamId+ " mday: "+matchDay);
+				String league = json.getAsJsonObject("competition").get("code").getAsString();
+				//System.out.println("id: "+id +" status: "+status+" date: "+date+" homegoal: "+homeTeamGoal+" homeid "+homeTeamId+ " mday: "+matchDay);
 				ServerRequest.insertMatch(id, matchDay, date, status,
-						homeTeamId, awayTeamId, result, homeTeamGoal, awayTeamGoal);
+						homeTeamId, awayTeamId, result, homeTeamGoal, awayTeamGoal,league);
 			}
+			
 		}catch(Exception e){
-			return e.getMessage();
+			return false;
 			
 		}
-		return "succed";
+		return true;
 	}
 
-	public static void main(String[]args){
-		System.out.println(request());
-	}
 
 }
