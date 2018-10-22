@@ -45,7 +45,7 @@ $(function() {
                 	console.log(JSON.stringify(response));
                 	var obj = jQuery.parseJSON(JSON.stringify(response));
                 	
-                	if(obj.success === "true") {
+                	if(obj.success === true) {
                         if($('input[name=rememberme]').is(':checked')){
 
                             msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK");
