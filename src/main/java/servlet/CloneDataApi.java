@@ -91,6 +91,8 @@ public class CloneDataApi extends HttpServlet {
 				if(!match.getAsJsonObject("score").get("winner").isJsonNull()){
 					result = match.getAsJsonObject("score").get("winner").getAsString();
 				}
+				if(result.equals("HOME_TEAM")) result = "WIN";
+				if(result.equals("AWAY_TEAM")) result = "LOSE";
 				int homeTeamGoal = 0;
 				if(!match.getAsJsonObject("score").getAsJsonObject("fullTime").get("homeTeam").isJsonNull()){
 					homeTeamGoal = match.getAsJsonObject("score").getAsJsonObject("fullTime").get("homeTeam").getAsInt();
@@ -106,6 +108,44 @@ public class CloneDataApi extends HttpServlet {
 				//System.out.println("id: "+id +" status: "+status+" date: "+date+" homegoal: "+homeTeamGoal+" homeid "+homeTeamId+ " mday: "+matchDay);
 				ServerRequest.insertMatch(id, matchDay, date, status,
 						homeTeamId, awayTeamId, result, homeTeamGoal, awayTeamGoal,league);
+			}
+
+		}catch(Exception e){
+			return false;
+
+		}
+		return true;
+	}
+	
+	public static boolean updateMatchFromApi(String competitionCode,String dateFrom){
+		String dateTo = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		String sURL = apiUrl+"competitions/"+competitionCode+"/matches?status=FINISHED?dateFrom="+dateFrom+"&dateTo="+dateTo;
+		try{
+			URL url = new URL(sURL);
+			HttpURLConnection con = (HttpURLConnection)url.openConnection();
+			con.setRequestMethod("GET");
+			con.setRequestProperty("X-Auth-Token", apiKey);
+			con.connect();
+			BufferedReader br = new BufferedReader(new InputStreamReader((con.getInputStream())));
+			StringBuilder sb = new StringBuilder();
+			String output;
+			while ((output = br.readLine()) != null) {
+				sb.append(output);
+			}
+			JsonParser jsonParser = new JsonParser();
+			JsonObject json = jsonParser.parse(sb.toString()).getAsJsonObject(); //sb.toString();
+			JsonArray jsonA =json.getAsJsonArray("matches");
+			for(int i=0;i<jsonA.size();i++){
+				JsonObject match = (JsonObject) jsonA.get(i);
+				int id = match.get("id").getAsInt();
+				String status = match.get("status").getAsString();
+				String result = match.getAsJsonObject("score").get("winner").getAsString();
+				if(result.equals("HOME_TEAM")) result = "WIN";
+				if(result.equals("AWAY_TEAM")) result = "LOSE";
+				int homeTeamGoal = match.getAsJsonObject("score").getAsJsonObject("fullTime").get("homeTeam").getAsInt();
+				int awayTeamGoal = match.getAsJsonObject("score").getAsJsonObject("fullTime").get("awayTeam").getAsInt();
+
+				ServerRequest.updateMatch(id, status, result, homeTeamGoal, awayTeamGoal);
 			}
 
 		}catch(Exception e){
@@ -156,78 +196,7 @@ public class CloneDataApi extends HttpServlet {
 		}
 		return true;
 	}
-
-	public static boolean cloneTeamsFromApi(String competitionCode){
-		String sURL = apiUrl+"competitions/"+competitionCode+"/standings";
-		// Connect to the URL using java's native library
-		try{
-			URL url = new URL(sURL);
-			HttpURLConnection con = (HttpURLConnection)url.openConnection();
-			con.setRequestMethod("GET");
-			con.setRequestProperty("X-Auth-Token", apiKey);
-			con.connect();
-			BufferedReader br = new BufferedReader(new InputStreamReader((con.getInputStream())));
-			StringBuilder sb = new StringBuilder();
-			String output;
-			while ((output = br.readLine()) != null) {
-				sb.append(output);
-			}
-			JsonParser jsonParser = new JsonParser();
-			JsonObject json = jsonParser.parse(sb.toString()).getAsJsonObject(); //sb.toString();
-			JsonArray table =json.getAsJsonArray("standings").get(0).getAsJsonObject().get("table").getAsJsonArray();
-			for(int i=0;i<table.size();i++){
-				JsonObject standing = (JsonObject) table.get(i);
-				int id = standing.get("team").getAsJsonObject().get("id").getAsInt();
-				String name = standing.get("team").getAsJsonObject().get("name").getAsString();
-
-				String imgUrl = standing.get("team").getAsJsonObject().get("crestUrl").getAsString();
-				ServerRequest.insertTeam(id,name,imgUrl);
-
-			}
-
-		}catch(Exception e){
-			return false;
-
-		}
-		return true;
-	}
-
-	public static boolean updateMatchFromApi(String competitionCode,String dateFrom){
-		String dateTo = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-		String sURL = apiUrl+"competitions/"+competitionCode+"/matches?status=FINISHED?dateFrom="+dateFrom+"&dateTo="+dateTo;
-		try{
-			URL url = new URL(sURL);
-			HttpURLConnection con = (HttpURLConnection)url.openConnection();
-			con.setRequestMethod("GET");
-			con.setRequestProperty("X-Auth-Token", apiKey);
-			con.connect();
-			BufferedReader br = new BufferedReader(new InputStreamReader((con.getInputStream())));
-			StringBuilder sb = new StringBuilder();
-			String output;
-			while ((output = br.readLine()) != null) {
-				sb.append(output);
-			}
-			JsonParser jsonParser = new JsonParser();
-			JsonObject json = jsonParser.parse(sb.toString()).getAsJsonObject(); //sb.toString();
-			JsonArray jsonA =json.getAsJsonArray("matches");
-			for(int i=0;i<jsonA.size();i++){
-				JsonObject match = (JsonObject) jsonA.get(i);
-				int id = match.get("id").getAsInt();
-				String status = match.get("status").getAsString();
-				String result = match.getAsJsonObject("score").get("winner").getAsString();
-				int homeTeamGoal = match.getAsJsonObject("score").getAsJsonObject("fullTime").get("homeTeam").getAsInt();
-				int awayTeamGoal = match.getAsJsonObject("score").getAsJsonObject("fullTime").get("awayTeam").getAsInt();
-
-				ServerRequest.updateMatch(id, status, result, homeTeamGoal, awayTeamGoal);
-			}
-
-		}catch(Exception e){
-			return false;
-
-		}
-		return true;
-	}
-
+	
 	public static boolean updateStandingsFromApi(String competitionCode){
 		String sURL = apiUrl+"competitions/"+competitionCode+"/standings";
 		// Connect to the URL using java's native library
@@ -269,5 +238,44 @@ public class CloneDataApi extends HttpServlet {
 		}
 		return true;
 	}
+
+	public static boolean cloneTeamsFromApi(String competitionCode){
+		String sURL = apiUrl+"competitions/"+competitionCode+"/standings";
+		// Connect to the URL using java's native library
+		try{
+			URL url = new URL(sURL);
+			HttpURLConnection con = (HttpURLConnection)url.openConnection();
+			con.setRequestMethod("GET");
+			con.setRequestProperty("X-Auth-Token", apiKey);
+			con.connect();
+			BufferedReader br = new BufferedReader(new InputStreamReader((con.getInputStream())));
+			StringBuilder sb = new StringBuilder();
+			String output;
+			while ((output = br.readLine()) != null) {
+				sb.append(output);
+			}
+			JsonParser jsonParser = new JsonParser();
+			JsonObject json = jsonParser.parse(sb.toString()).getAsJsonObject(); //sb.toString();
+			JsonArray table =json.getAsJsonArray("standings").get(0).getAsJsonObject().get("table").getAsJsonArray();
+			for(int i=0;i<table.size();i++){
+				JsonObject standing = (JsonObject) table.get(i);
+				int id = standing.get("team").getAsJsonObject().get("id").getAsInt();
+				String name = standing.get("team").getAsJsonObject().get("name").getAsString();
+
+				String imgUrl = standing.get("team").getAsJsonObject().get("crestUrl").getAsString();
+				ServerRequest.insertTeam(id,name,imgUrl);
+
+			}
+
+		}catch(Exception e){
+			return false;
+
+		}
+		return true;
+	}
+
+
+
+	
 
 }
