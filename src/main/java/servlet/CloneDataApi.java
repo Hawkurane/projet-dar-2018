@@ -48,21 +48,22 @@ public class CloneDataApi extends HttpServlet {
 		out.println("</body></html>");
 	}
 
-	public static boolean cloneAllFromApi(){
+	public static String cloneAllFromApi(){
 		String[] competitions = {"FL1","PL","PD"};
-		boolean b = true;
+		String response = "";
 		for(String competitionCode : competitions){
-			if(!cloneMatchFromApi(competitionCode,dateFrom,dateTo))
-				b = false;
+			response=cloneMatchFromApi(competitionCode,dateFrom,dateTo);
+			if(response!="")
+				return response;
 			/*if(!cloneStandingsFromApi(competitionCode))
 				b = false;
 			if(!cloneTeamsFromApi(competitionCode))
 				b = false;*/
 		}
-		return b;
+		return response;
 	}
 
-	public static boolean cloneMatchFromApi(String competitionCode,String dateFrom, String dateTo){
+	public static String cloneMatchFromApi(String competitionCode,String dateFrom, String dateTo){
 
 		String sURL = apiUrl+"competitions/"+competitionCode+"/matches?dateFrom="+dateFrom+"&dateTo="+dateTo;
 		try{
@@ -111,10 +112,10 @@ public class CloneDataApi extends HttpServlet {
 			}
 
 		}catch(Exception e){
-			return false;
+			return e.getMessage();
 
 		}
-		return true;
+		return "";
 	}
 	
 	public static boolean updateMatchFromApi(String competitionCode,String dateFrom){
