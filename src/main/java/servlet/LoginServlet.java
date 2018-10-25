@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
 
 
 	private static final long serialVersionUID = 1L;
-	public static final String VUE              = "src/main/webapp/bootstrap/js/";
+	public static final String VUE              = "src/main/webapp/bootstrap/js/loginmodal.js";
 	public static final String ATT_USERNAME     = "name";
 	public static final String CHAMP_NAME       = "userlogin";
 	public static final String CHAMP_PWD        = "pwdlogin";
@@ -45,6 +45,7 @@ public class LoginServlet extends HttpServlet {
 			//json.addProperty("sessionKey",Logger.generateSessionKey());
 			HttpSession session = request.getSession();
 			session.setAttribute(ATT_USERNAME,username);
+			//response.setattribute(...) needed for the client have a response
 		}
 
 		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
