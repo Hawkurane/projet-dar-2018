@@ -58,10 +58,10 @@ public class CloneDataApi extends HttpServlet {
 				return response;*/
 			response = cloneStandingsFromApi(competitionCode);
 			if(response!="")
-				return "standing not worked";
+				return response;
 			response = cloneTeamsFromApi(competitionCode);
 			if(response!="")
-				return "teams not worked";
+				return response;
 		}
 		return "success!!";
 	}
