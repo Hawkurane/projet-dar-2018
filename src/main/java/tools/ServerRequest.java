@@ -94,6 +94,8 @@ public class ServerRequest {
 	//parameters == null if no condition, matchday==0 if no condition
 	public static ResultSet getMatches(int matchDay,String league,String teamName,String status)
 			throws SQLException{
+		if(status==null)status="SCHEDULED";
+		
 		String request =  "SELECT m.*,t1."+TeamsBase.TEAM_NAME+" AS "+"home"+TeamsBase.TEAM_NAME
 				+",t1."+TeamsBase.TEAM_LOGO+" AS "+"home"+TeamsBase.TEAM_LOGO
 				+",t2."+TeamsBase.TEAM_NAME+" AS "+"away"+TeamsBase.TEAM_NAME
@@ -106,9 +108,7 @@ public class ServerRequest {
 			request+= " AND m."+MatchesBase.DAY+" = "+matchDay;
 		if(league!=null)
 			request += " AND m."+MatchesBase.LEAGUE+" = "+league;
-		if(status!=null)
-			request += " AND m."+MatchesBase.STATUS+" = "+status;
-		
+
 		if(teamName!=null)
 			request += "AND (t1."+TeamsBase.TEAM_NAME+" = "+teamName
 			+ " OR t2."+TeamsBase.TEAM_NAME+" = "+teamName+" )";
