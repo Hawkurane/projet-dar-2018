@@ -53,9 +53,9 @@ public class CloneDataApi extends HttpServlet {
 		String[] competitions = {"FL1","PL","PD"};
 		String response = "";
 		for(String competitionCode : competitions){
-			response=cloneMatchFromApi(competitionCode,dateFrom,dateTo);
+			/*response=cloneMatchFromApi(competitionCode,dateFrom,dateTo);
 			if(response!="")
-				return response;
+				return response;*/
 			if(!cloneStandingsFromApi(competitionCode))
 				return "standing not worked";
 			if(!cloneTeamsFromApi(competitionCode))
