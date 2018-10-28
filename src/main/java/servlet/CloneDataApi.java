@@ -88,6 +88,7 @@ public class CloneDataApi extends HttpServlet {
 				JsonObject match = (JsonObject) jsonA.get(i);
 				int id = match.get("id").getAsInt();
 				String status = match.get("status").getAsString();
+				if(status.equals("IN_PLAY") || status.equals("PAUSED"))status = "LIVE";
 				String date = match.get("utcDate").getAsString();
 				date = date.substring(0, 10)+" "+date.substring(11,19);
 				int matchDay = match.get("matchday").getAsInt();
@@ -147,6 +148,7 @@ public class CloneDataApi extends HttpServlet {
 				JsonObject match = (JsonObject) jsonA.get(i);
 				int id = match.get("id").getAsInt();
 				String status = match.get("status").getAsString();
+				if(status.equals("IN_PLAY") || status.equals("PAUSED"))status = "LIVE";
 				String result = match.getAsJsonObject("score").get("winner").getAsString();
 				if(result.equals("HOME_TEAM")) result = "WIN";
 				if(result.equals("AWAY_TEAM")) result = "LOSE";

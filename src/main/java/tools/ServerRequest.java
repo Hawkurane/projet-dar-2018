@@ -22,7 +22,7 @@ public class ServerRequest {
 
 	}
 
-	private static ResultSet makeRequest(String request) throws SQLException {
+	private synchronized static ResultSet makeRequest(String request) throws SQLException {
 		Connection connexionDataBase = getConnection();
 		Statement stmt = connexionDataBase.createStatement();
 		ResultSet res = stmt.executeQuery(request);
@@ -31,7 +31,7 @@ public class ServerRequest {
 
 	}
 
-	private static int makeUpdate(String request) throws SQLException {
+	private synchronized static int makeUpdate(String request) throws SQLException {
 		Connection connexionDataBase = getConnection();
 		Statement stmt = connexionDataBase.createStatement();
 		int i = stmt.executeUpdate(request);
