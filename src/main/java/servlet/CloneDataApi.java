@@ -112,7 +112,6 @@ public class CloneDataApi extends HttpServlet {
 				//System.out.println("id: "+id +" status: "+status+" date: "+date+" homegoal: "+homeTeamGoal+" homeid "+homeTeamId+ " mday: "+matchDay);
 				ServerRequest.insertMatch(id, matchDay, date, status,
 						homeTeamId, awayTeamId, result, homeTeamGoal, awayTeamGoal,league);
-				TimeUnit.MILLISECONDS.sleep(sleepTime);
 			}
 
 		}catch(Exception e){	
