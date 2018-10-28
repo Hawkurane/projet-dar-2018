@@ -65,7 +65,7 @@ public class CloneDataApi extends HttpServlet {
 	public static String cloneMatchFromApi(String competitionCode,String dateFrom, String dateTo){
 
 		String sURL = apiUrl+"competitions/"+competitionCode+"/matches?dateFrom="+dateFrom+"&dateTo="+dateTo;
-		String res = "";
+		String res = "result ";
 		try{
 			URL url = new URL(sURL);
 			HttpURLConnection con = (HttpURLConnection)url.openConnection();
@@ -80,7 +80,7 @@ public class CloneDataApi extends HttpServlet {
 			}
 			JsonParser jsonParser = new JsonParser();
 			JsonObject json = jsonParser.parse(sb.toString()).getAsJsonObject(); //sb.toString();
-			res+=sb.toString();
+			res+=sb.toString()+"\n";
 			JsonArray jsonA =json.getAsJsonArray("matches");
 			for(int i=0;i<jsonA.size();i++){
 				JsonObject match = (JsonObject) jsonA.get(i);
