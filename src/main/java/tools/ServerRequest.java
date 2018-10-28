@@ -14,16 +14,12 @@ public class ServerRequest {
 	public static final String BETS_BASE = "bets";
 	public static final String STANDINGS_BASE = "standings";
 	public static final String TEAMS_BASE = "teams";*/
-	Connection connection = getConnection();
 
-	private static Connection getConnection(){
-		try{
-			String dbUrl = System.getenv("JDBC_DATABASE_URL");
-			return DriverManager.getConnection(dbUrl);
-		}catch(Exception e){
-			e.printStackTrace();
-			return null;
-		}
+
+	private static Connection getConnection()throws SQLException{
+		String dbUrl = System.getenv("JDBC_DATABASE_URL");
+		return DriverManager.getConnection(dbUrl);
+
 	}
 
 	private static ResultSet makeRequest(String request) throws SQLException {
@@ -127,7 +123,7 @@ public class ServerRequest {
 		ResultSet res = makeRequest(request);
 		return res;
 	}
-	
+
 	public static ResultSet getAllTeamsName()throws SQLException{
 		String request = "SELECT "+TeamsBase.TEAM_NAME+" FROM "+TeamsBase.BASENAME;
 		ResultSet res = makeRequest(request);
@@ -196,7 +192,7 @@ public class ServerRequest {
 		String loginRequest = "SELECT "+UsersBase.PASSWORD+" FROM "+UsersBase.BASENAME
 				+" WHERE "+UsersBase.NAME+"='"+username+"';";
 		return makeRequest(loginRequest);
-		
+
 
 	}
 
