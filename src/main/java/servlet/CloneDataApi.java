@@ -125,7 +125,7 @@ public class CloneDataApi extends HttpServlet {
 		}
 		return "query all "+competitionCode+" succes";
 	}
-	
+
 	public static boolean updateMatchFromApi(String competitionCode,String dateFrom){
 		String dateTo = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 		String sURL = apiUrl+"competitions/"+competitionCode+"/matches?status=FINISHED?dateFrom="+dateFrom+"&dateTo="+dateTo;
@@ -165,9 +165,10 @@ public class CloneDataApi extends HttpServlet {
 		return true;
 	}
 
-	public static boolean cloneStandingsFromApi(String competitionCode){
+	public static String cloneStandingsFromApi(String competitionCode){
 		String sURL = apiUrl+"competitions/"+competitionCode+"/standings";
 		// Connect to the URL using java's native library
+		String res="";
 		try{
 			URL url = new URL(sURL);
 			HttpURLConnection con = (HttpURLConnection)url.openConnection();
@@ -182,6 +183,7 @@ public class CloneDataApi extends HttpServlet {
 			}
 			JsonParser jsonParser = new JsonParser();
 			JsonObject json = jsonParser.parse(sb.toString()).getAsJsonObject(); //sb.toString();
+			res+=sb.toString()+"\n";
 			JsonArray table =json.getAsJsonArray("standings").get(0).getAsJsonObject().get("table").getAsJsonArray();
 			for(int i=0;i<table.size();i++){
 				JsonObject standing = (JsonObject) table.get(i);
@@ -201,12 +203,15 @@ public class CloneDataApi extends HttpServlet {
 			}
 
 		}catch(Exception e){
-			return false;
-
+			StringWriter sw = new StringWriter();
+			PrintWriter pw = new PrintWriter(sw);
+			e.printStackTrace(pw);
+			res+=sw.toString();
+			return res;
 		}
-		return true;
+		return "query all "+competitionCode+" standing succes";
 	}
-	
+
 	public static boolean updateStandingsFromApi(String competitionCode){
 		String sURL = apiUrl+"competitions/"+competitionCode+"/standings";
 		// Connect to the URL using java's native library
@@ -249,9 +254,9 @@ public class CloneDataApi extends HttpServlet {
 		return true;
 	}
 
-	public static boolean cloneTeamsFromApi(String competitionCode){
+	public static String cloneTeamsFromApi(String competitionCode){
 		String sURL = apiUrl+"competitions/"+competitionCode+"/standings";
-		// Connect to the URL using java's native library
+		String res = "";
 		try{
 			URL url = new URL(sURL);
 			HttpURLConnection con = (HttpURLConnection)url.openConnection();
@@ -266,6 +271,7 @@ public class CloneDataApi extends HttpServlet {
 			}
 			JsonParser jsonParser = new JsonParser();
 			JsonObject json = jsonParser.parse(sb.toString()).getAsJsonObject(); //sb.toString();
+			res+=sb.toString()+"\n";
 			JsonArray table =json.getAsJsonArray("standings").get(0).getAsJsonObject().get("table").getAsJsonArray();
 			for(int i=0;i<table.size();i++){
 				JsonObject standing = (JsonObject) table.get(i);
@@ -278,14 +284,17 @@ public class CloneDataApi extends HttpServlet {
 			}
 
 		}catch(Exception e){
-			return false;
-
+			StringWriter sw = new StringWriter();
+			PrintWriter pw = new PrintWriter(sw);
+			e.printStackTrace(pw);
+			res+=sw.toString();
+			return res;
 		}
-		return true;
+		return "query all "+competitionCode+" teams succes";
 	}
 
 
 
-	
+
 
 }
