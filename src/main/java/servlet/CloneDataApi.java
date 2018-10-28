@@ -9,6 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,11 +31,11 @@ import tools.ServerRequest;
 		urlPatterns = {"/cloneData"})
 public class CloneDataApi extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	private static String apiUrl = "http://api.football-data.org/v2/";
-	private static String apiKey = "d4ea1cbe81c243299546f1cfbfa9b211";
-	private static String dateFrom = "2018-10-01";
-	private static String dateTo = "2018-12-31";
+	private static final int sleepTime = 500;
+	private static final String apiUrl = "http://api.football-data.org/v2/";
+	private static final String apiKey = "d4ea1cbe81c243299546f1cfbfa9b211";
+	private static final String dateFrom = "2018-10-01";
+	private static final String dateTo = "2018-12-31";
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html");		
@@ -111,6 +112,7 @@ public class CloneDataApi extends HttpServlet {
 				//System.out.println("id: "+id +" status: "+status+" date: "+date+" homegoal: "+homeTeamGoal+" homeid "+homeTeamId+ " mday: "+matchDay);
 				ServerRequest.insertMatch(id, matchDay, date, status,
 						homeTeamId, awayTeamId, result, homeTeamGoal, awayTeamGoal,league);
+				TimeUnit.MILLISECONDS.sleep(sleepTime);
 			}
 
 		}catch(Exception e){	
