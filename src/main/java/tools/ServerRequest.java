@@ -34,8 +34,9 @@ public class ServerRequest {
 	private static int makeUpdate(String request) throws SQLException {
 		Connection connexionDataBase = getConnection();
 		Statement stmt = connexionDataBase.createStatement();
+		int i = stmt.executeUpdate(request);
 		connexionDataBase.close();
-		return stmt.executeUpdate(request);
+		return i;
 	}
 
 	public static ResultSet profil(String username)throws SQLException{
