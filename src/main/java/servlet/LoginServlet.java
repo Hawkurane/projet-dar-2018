@@ -44,7 +44,6 @@ public class LoginServlet extends HttpServlet {
 			response.setStatus(200);
 			json.addProperty("success", true);
 			json.addProperty("user", username);
-			//json.addProperty("sessionKey",Logger.generateSessionKey());
 			HttpSession session = request.getSession();
 			session.setAttribute("name",username);
 		} else{
