@@ -65,6 +65,7 @@ public class CloneDataApi extends HttpServlet {
 	public static String cloneMatchFromApi(String competitionCode,String dateFrom, String dateTo){
 
 		String sURL = apiUrl+"competitions/"+competitionCode+"/matches?dateFrom="+dateFrom+"&dateTo="+dateTo;
+		String res = "";
 		try{
 			URL url = new URL(sURL);
 			HttpURLConnection con = (HttpURLConnection)url.openConnection();
@@ -79,6 +80,7 @@ public class CloneDataApi extends HttpServlet {
 			}
 			JsonParser jsonParser = new JsonParser();
 			JsonObject json = jsonParser.parse(sb.toString()).getAsJsonObject(); //sb.toString();
+			res+=sb.toString();
 			JsonArray jsonA =json.getAsJsonArray("matches");
 			for(int i=0;i<jsonA.size();i++){
 				JsonObject match = (JsonObject) jsonA.get(i);
@@ -103,7 +105,7 @@ public class CloneDataApi extends HttpServlet {
 				}
 				//int awayTeamGoal = match.get("awayTeam").getAsInt();
 				int homeTeamId = match.getAsJsonObject("homeTeam").get("id").getAsInt();
-				int awayTeamId = match.getAsJsonObject("homeTeam").get("id").getAsInt();
+				int awayTeamId = match.getAsJsonObject("awayTeam").get("id").getAsInt();
 				String league = json.getAsJsonObject("competition").get("code").getAsString();
 				//System.out.println("id: "+id +" status: "+status+" date: "+date+" homegoal: "+homeTeamGoal+" homeid "+homeTeamId+ " mday: "+matchDay);
 				ServerRequest.insertMatch(id, matchDay, date, status,
@@ -111,7 +113,8 @@ public class CloneDataApi extends HttpServlet {
 			}
 
 		}catch(Exception e){
-			return e.getMessage();
+			res+=e.toString();
+			return res;
 
 		}
 		return "";
