@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -112,8 +113,11 @@ public class CloneDataApi extends HttpServlet {
 						homeTeamId, awayTeamId, result, homeTeamGoal, awayTeamGoal,league);
 			}
 
-		}catch(Exception e){
-			res+=e.toString();
+		}catch(Exception e){	
+			StringWriter sw = new StringWriter();
+			PrintWriter pw = new PrintWriter(sw);
+			e.printStackTrace(pw);
+			res+=sw.toString();
 			return res;
 
 		}
