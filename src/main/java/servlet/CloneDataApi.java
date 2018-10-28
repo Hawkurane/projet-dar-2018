@@ -56,12 +56,14 @@ public class CloneDataApi extends HttpServlet {
 			/*response=cloneMatchFromApi(competitionCode,dateFrom,dateTo);
 			if(response!="")
 				return response;*/
-			if(!cloneStandingsFromApi(competitionCode))
+			response = cloneStandingsFromApi(competitionCode);
+			if(response!="")
 				return "standing not worked";
-			if(!cloneTeamsFromApi(competitionCode))
+			response = cloneTeamsFromApi(competitionCode);
+			if(response!="")
 				return "teams not worked";
 		}
-		return response;
+		return "success!!";
 	}
 
 	public static String cloneMatchFromApi(String competitionCode,String dateFrom, String dateTo){
@@ -123,7 +125,7 @@ public class CloneDataApi extends HttpServlet {
 			return res;
 
 		}
-		return "query all "+competitionCode+" succes";
+		return "";
 	}
 
 	public static boolean updateMatchFromApi(String competitionCode,String dateFrom){
@@ -209,7 +211,7 @@ public class CloneDataApi extends HttpServlet {
 			res+=sw.toString();
 			return res;
 		}
-		return "query all "+competitionCode+" standing succes";
+		return "";
 	}
 
 	public static boolean updateStandingsFromApi(String competitionCode){
@@ -290,7 +292,7 @@ public class CloneDataApi extends HttpServlet {
 			res+=sw.toString();
 			return res;
 		}
-		return "query all "+competitionCode+" teams succes";
+		return "";
 	}
 
 
