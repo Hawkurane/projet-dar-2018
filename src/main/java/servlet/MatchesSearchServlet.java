@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,6 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 
 import tools.Match;
 import tools.ServerRequest;
@@ -28,24 +32,26 @@ public class MatchesSearchServlet extends HttpServlet {
 
 
 	/*
-	 * envoie une hashmap form qui retourne l'id de chaque champ avec la liste
+	 * redirige vers le .jsp avec form =>id de chaque champ avec la liste
 	 * des valeurs possible.
-	 * Si la requete contient des parametres, alors retourne la reponse a celle ci aussi
 	 * 
-	 * (requete pour avoir la liste des matchs pour l'instant)
+	 * si il y a des parametres, retourne un json contenant la liste des reponses
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//init form
-		String[] matchDay = new String[nbrMatchDay];
-		for(int i=0;i<nbrMatchDay;i++)
-			matchDay[i] = ""+i;
-		Map<String,String[]> form = new HashMap<String,String[]>();
-		form.put("matchday", matchDay);
-		form.put("status", status);
-		form.put("teamName", teamsName);
-		form.put("league", Utils.getLeaguesNames());
-
-		if(!request.getParameterMap().isEmpty()){
+		if(request.getParameterMap().isEmpty()){
+			//init form
+			String[] matchDay = new String[nbrMatchDay];
+			for(int i=0;i<nbrMatchDay;i++)
+				matchDay[i] = ""+i;
+			Map<String,String[]> form = new HashMap<String,String[]>();
+			form.put("matchday", matchDay);
+			form.put("status", status);
+			form.put("teamName", teamsName);
+			form.put("league", Utils.getLeaguesNames());
+			request.setAttribute("form", form );
+			this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+		}
+		else{
 			String day = request.getParameter("matchday");
 			if(day.isEmpty())day="0";
 			String league = request.getParameter("league");
@@ -59,11 +65,21 @@ public class MatchesSearchServlet extends HttpServlet {
 				listMatches = Utils.getMatches(
 						ServerRequest.getMatches(Integer.parseInt(day), league, teamName, status));
 			}catch(Exception e){listMatches=null;}
-			request.setAttribute("listMatches", listMatches);
+			
+			response.setContentType("application/html");
+			response.setCharacterEncoding("UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<html><body>");
+			out.println("<h3>");
+			Gson gson = new Gson();
+			out.println("request:"+gson.toJson(listMatches));
+			out.println("</h3>");
+			out.println("</body></html>");
+			
+			//out.write(gson.toJson(listMatches));
 		}
 
-		request.setAttribute("form", form );
-		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+
 	}
 
 }
