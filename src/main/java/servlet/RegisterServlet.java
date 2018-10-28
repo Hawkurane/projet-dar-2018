@@ -1,8 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +17,7 @@ import tools.ServerRequest;
 		urlPatterns = {"/register"})
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	public static final String VUE              = "src/main/webapp/bootstrap/js/loginmodal.js";
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,24 +32,19 @@ public class RegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String newusername = request.getParameter("newlogin");
 		String password = request.getParameter("pwdnewlogin");
-		Date date = new Date(request.getParameter("birthdayYear"));
+		Date date = Date.valueOf(request.getParameter("birthdayYear"));
 		int region = Integer.parseInt(request.getParameter("region"));
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("application/json");
 		try{
 			if(!ServerRequest.existName(newusername)){
 				if(ServerRequest.createAccount(newusername,password,date,region))
-					response.setStatus(HttpServletResponse.SC_CREATED);
+					request.setAttribute("form", true);
 				else
-					response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
+					request.setAttribute("form", false);
 			}
 		}catch(SQLException e){
-			response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
+			request.setAttribute("form", false);
 		}
-
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
-		response.sendRedirect("/");
+		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 	}
 
 }
