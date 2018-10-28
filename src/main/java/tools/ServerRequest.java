@@ -106,6 +106,9 @@ public class ServerRequest {
 			request+= " AND m."+MatchesBase.DAY+" = "+matchDay;
 		if(league!=null)
 			request += " AND m."+MatchesBase.LEAGUE+" = "+league;
+		if(status!=null)
+			request += " AND m."+MatchesBase.STATUS+" = "+status;
+		
 		if(teamName!=null)
 			request += "AND (t1."+TeamsBase.TEAM_NAME+" = "+teamName
 			+ " OR t2."+TeamsBase.TEAM_NAME+" = "+teamName+" )";
