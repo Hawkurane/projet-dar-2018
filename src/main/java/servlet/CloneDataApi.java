@@ -56,10 +56,10 @@ public class CloneDataApi extends HttpServlet {
 			response=cloneMatchFromApi(competitionCode,dateFrom,dateTo);
 			if(response!="")
 				return response;
-			/*if(!cloneStandingsFromApi(competitionCode))
-				b = false;
+			if(!cloneStandingsFromApi(competitionCode))
+				return "standing not worked";
 			if(!cloneTeamsFromApi(competitionCode))
-				b = false;*/
+				return "teams not worked";
 		}
 		return response;
 	}
@@ -123,7 +123,7 @@ public class CloneDataApi extends HttpServlet {
 			return res;
 
 		}
-		return "";
+		return "query all "+competitionCode+" succes";
 	}
 	
 	public static boolean updateMatchFromApi(String competitionCode,String dateFrom){
