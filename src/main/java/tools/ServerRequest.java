@@ -14,7 +14,7 @@ public class ServerRequest {
 	public static final String BETS_BASE = "bets";
 	public static final String STANDINGS_BASE = "standings";
 	public static final String TEAMS_BASE = "teams";*/
-
+	
 
 	private static Connection getConnection()throws SQLException{
 		String dbUrl = System.getenv("JDBC_DATABASE_URL");
@@ -26,6 +26,7 @@ public class ServerRequest {
 		Connection connexionDataBase = getConnection();
 		Statement stmt = connexionDataBase.createStatement();
 		ResultSet res = stmt.executeQuery(request);
+		connexionDataBase.close();
 		return res;
 
 	}
@@ -33,6 +34,7 @@ public class ServerRequest {
 	private static int makeUpdate(String request) throws SQLException {
 		Connection connexionDataBase = getConnection();
 		Statement stmt = connexionDataBase.createStatement();
+		connexionDataBase.close();
 		return stmt.executeUpdate(request);
 	}
 
