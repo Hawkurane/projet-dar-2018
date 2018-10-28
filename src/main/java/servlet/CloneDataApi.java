@@ -280,7 +280,7 @@ public class CloneDataApi extends HttpServlet {
 				JsonObject standing = (JsonObject) table.get(i);
 				int id = standing.get("team").getAsJsonObject().get("id").getAsInt();
 				String name = standing.get("team").getAsJsonObject().get("name").getAsString();
-				name.replaceAll("'", "''");
+				name = name.replaceAll("'", "''");
 				String imgUrl = standing.get("team").getAsJsonObject().get("crestUrl").getAsString();
 				ServerRequest.insertTeam(id,name,imgUrl);
 
