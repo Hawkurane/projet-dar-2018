@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -64,17 +65,29 @@ public class MatchesSearchServlet extends HttpServlet {
 			try{
 				listMatches = Utils.getMatches(
 						ServerRequest.getMatches(Integer.parseInt(day), league, teamName, status));
-			}catch(Exception e){listMatches=null;}
+				response.setContentType("text/html");
+				response.setCharacterEncoding("UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<html><body>");
+				out.println("<h3>");
+				Gson gson = new Gson();
+				out.println("request:"+gson.toJson(listMatches));
+				out.println("</h3>");
+				out.println("</body></html>");
+			}catch(Exception e){
+				response.setContentType("text/html");
+				response.setCharacterEncoding("UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<html><body>");
+				out.println("<h3>");
+				StringWriter sw = new StringWriter();
+				PrintWriter pw = new PrintWriter(sw);
+				e.printStackTrace(pw);
+				out.println(sw.toString());
+				out.println("</h3>");
+				out.println("</body></html>");}
 			
-			response.setContentType("application/html");
-			response.setCharacterEncoding("UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<html><body>");
-			out.println("<h3>");
-			Gson gson = new Gson();
-			out.println("request:"+gson.toJson(listMatches));
-			out.println("</h3>");
-			out.println("</body></html>");
+			
 			
 			//out.write(gson.toJson(listMatches));
 		}
