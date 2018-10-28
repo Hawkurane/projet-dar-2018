@@ -24,7 +24,8 @@ public class ServerRequest {
 
 	private synchronized static ResultSet makeRequest(String request) throws SQLException {
 		Connection connexionDataBase = getConnection();
-		Statement stmt = connexionDataBase.createStatement();
+		Statement stmt = connexionDataBase.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+			    ResultSet.CONCUR_READ_ONLY);
 		ResultSet res = stmt.executeQuery(request);
 		connexionDataBase.close();
 		return res;
