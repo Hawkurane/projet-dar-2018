@@ -9,7 +9,9 @@ import java.util.Map;
 public class Utils {
 
 	private static final Map<String,String> leagueNames = createMapLeagues();
-
+	
+	//current league available
+	public static final String[] leaguesAvailable = {"FL1","PL","PD"};
 	private static Map<String,String> createMapLeagues(){
 		Map<String,String> m = new HashMap<String,String>();
 		m.put("FL1", "Ligue 1");

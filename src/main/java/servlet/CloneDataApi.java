@@ -9,8 +9,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,6 +20,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import tools.ServerRequest;
+import tools.Utils;
 
 /**
  * Servlet implementation class EchoServlet
@@ -37,6 +36,7 @@ public class CloneDataApi extends HttpServlet {
 	private static final String dateFrom = "2018-10-01";
 	private static final String dateTo = "2018-12-31";
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html");		
 
@@ -50,9 +50,8 @@ public class CloneDataApi extends HttpServlet {
 	}
 
 	public static String cloneAllFromApi(){
-		String[] competitions = {"FL1","PL","PD"};
 		String response = "";
-		for(String competitionCode : competitions){
+		for(String competitionCode : Utils.leaguesAvailable){
 			/*response=cloneMatchFromApi(competitionCode,dateFrom,dateTo);
 			if(response!="")
 				return response;*/
@@ -65,6 +64,8 @@ public class CloneDataApi extends HttpServlet {
 		}
 		return "success!!";
 	}
+	
+
 
 	public static String cloneMatchFromApi(String competitionCode,String dateFrom, String dateTo){
 
@@ -279,7 +280,7 @@ public class CloneDataApi extends HttpServlet {
 				JsonObject standing = (JsonObject) table.get(i);
 				int id = standing.get("team").getAsJsonObject().get("id").getAsInt();
 				String name = standing.get("team").getAsJsonObject().get("name").getAsString();
-
+				name.replaceAll("'", "''");
 				String imgUrl = standing.get("team").getAsJsonObject().get("crestUrl").getAsString();
 				ServerRequest.insertTeam(id,name,imgUrl);
 
