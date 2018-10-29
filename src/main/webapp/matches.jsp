@@ -62,7 +62,7 @@ $('send').click(function(e){ //suggestion de stations
                 matchday: document.getElementById("league").value,
             }
             ,function( data ) {
-            	  $( "body" ).append( data ) // John
+            	  $( "body" ).append("data receive" ) // John
             	}, "json" );
         this.focus();
 });

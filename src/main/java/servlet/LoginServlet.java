@@ -55,7 +55,8 @@ public class LoginServlet extends HttpServlet {
 		else
 			session.setAttribute(ATT_USER,null);
 
-		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+		//this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+		response.sendRedirect("/");
 	}
 
 
