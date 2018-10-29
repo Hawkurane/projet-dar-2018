@@ -9,7 +9,8 @@ import java.util.Map;
 public class Utils {
 
 	private static final Map<String,String> leagueNames = createMapLeagues();
-	
+	public static final int nbrMatchDay = 38;
+	public static final String[] status = {"SCHEDULED","FINISHED","IN_LIVE"};
 	//current league available
 	public static final String[] leaguesAvailable = {"FL1","PL","PD"};
 	private static Map<String,String> createMapLeagues(){
@@ -29,7 +30,7 @@ public class Utils {
 		String[] names = new String[leagueNames.size()];
 		int i=0;
 		for (String key: leagueNames.keySet()) {
-			names[i]=key;i++;
+			names[i]=leagueNames.get(key);i++;
 		}
 		return names;
 	}
@@ -51,6 +52,7 @@ public class Utils {
 			res.beforeFirst();
 
 			while(res.next()){
+				int id = Integer.parseInt(res.getString(MatchesBase.MATCH_ID));
 				int day = Integer.parseInt(res.getString(MatchesBase.DAY));
 				String t = res.getString(MatchesBase.START);
 				String status = res.getString(MatchesBase.STATUS);
@@ -62,7 +64,7 @@ public class Utils {
 				int awayg = Integer.parseInt(res.getString(MatchesBase.AWAYTEAM_GOAL));
 				String awayUrl = res.getString("away"+TeamsBase.TEAM_LOGO);
 				String league = res.getString(MatchesBase.LEAGUE);
-				Match m = new Match(day, t, status, homename, homeUrl, awayname, awayUrl, winner, homeg, awayg, league);
+				Match m = new Match(id,day, t, status, homename, homeUrl, awayname, awayUrl, winner, homeg, awayg, league);
 				matches[res.getRow()-1] = m;
 			}
 			return matches;

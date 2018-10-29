@@ -26,7 +26,7 @@
 
                 <!-- Insert loging or log out -->
                 <c:choose>
-                    <c:when test="${!empty sessionScope.namme}">
+                    <c:when test="${!empty sessionScope.user}">
                         <div class="nav navbar-nav navbar-right"> 
                             <li><a href="#" id="logoutButton" class="glyphicon glyphicon-log-out" role="button"> Logout</a></li>
                         </div>
@@ -50,7 +50,7 @@
                                     <div id="div-forms">
                                     
                                         <!-- Begin # Login Form -->
-                                        <form id="login-form" method="POST">
+                                        <form id="login-form" method="POST" action="/login">
                                             <div class="modal-body">
                                                 <div id="div-login-msg">
                                                     <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>

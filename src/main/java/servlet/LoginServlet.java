@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
 
 
 	private static final long serialVersionUID = 1L;
-	public static final String VUE              = "src/main/webapp/bootstrap/js/loginmodal.js";
+	public static final String VUE              = "/index.jsp";
 	public static final String ATT_USER     = "user";
 	public static final String CHAMP_NAME       = "userlogin";
 	public static final String CHAMP_PWD        = "pwdlogin";

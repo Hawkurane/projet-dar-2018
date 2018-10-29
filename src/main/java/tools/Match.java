@@ -1,7 +1,8 @@
 package tools;
 
 public class Match {
-
+	
+	private int matchId;
 	private int matchDay;
 	private String time;
 	private String status;
@@ -14,8 +15,9 @@ public class Match {
 	private int awayTeamg;
 	private String league;
 	
-	public Match( int mday,String t,String sta,
+	public Match(int id,int mday,String t,String sta,
 			String homeName,String homeUrl, String awayName,String awayUrl,String w,int homeg,int awayg,String l){
+		matchId=id;
 		matchDay=mday;
 		time = t;
 		status = sta;
@@ -25,6 +27,10 @@ public class Match {
 		homeTeamg = homeg;
 		awayTeamg = awayg;
 		league = l;
+	}
+	
+	public int getMatchId(){
+		return matchId;
 	}
 	
 	public int getMatchDay() {
