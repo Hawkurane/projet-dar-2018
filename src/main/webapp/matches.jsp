@@ -44,15 +44,16 @@
 				<option value="${league}">${league}</option>
 			</c:forEach>
 		</select>
-		<button id="send">send</button>
+		
 	</form>
+	<button id="send">rechercher</button>
 </body>
 
 
 </html>
 
 <script>
-$('send').click(function(e){ //suggestion de stations
+$('send').click(function(e){ 
         $.get(
             "/search",
             {
@@ -62,7 +63,7 @@ $('send').click(function(e){ //suggestion de stations
                 matchday: document.getElementById("league").value,
             }
             ,function( data ) {
-            	  $( "body" ).append("data receive" ) // John
+            	  $( "body" ).append("data receive" )
             	}, "json" );
         this.focus();
 });
