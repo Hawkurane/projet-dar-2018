@@ -64,7 +64,9 @@ public class Utils {
 				int awayg = Integer.parseInt(res.getString(MatchesBase.AWAYTEAM_GOAL));
 				String awayUrl = res.getString("away"+TeamsBase.TEAM_LOGO);
 				String league = res.getString(MatchesBase.LEAGUE);
-				Match m = new Match(id,day, t, status, homename, homeUrl, awayname, awayUrl, winner, homeg, awayg, league);
+				String bet = res.getString(BetsBase.BET);
+				Match m = new Match(id,day, t, status, homename, homeUrl, awayname, awayUrl, winner, homeg, awayg, league,bet);
+				
 				matches[res.getRow()-1] = m;
 			}
 			return matches;

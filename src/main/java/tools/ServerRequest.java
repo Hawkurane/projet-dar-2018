@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.Date;
 
 
+
 public class ServerRequest {
 	/*public static final String USERS_BASE = "users";
 	public static final String MATCHS_BASE = "matches";
@@ -93,14 +94,17 @@ public class ServerRequest {
 
 	//pre status!=null
 	//parameters == null if no condition, matchday==0 if no condition
-	public static ResultSet getMatches(int matchDay,String league,String teamName,String status)
+	public static ResultSet getMatches(int matchDay,String league,String teamName,String status,String username)
 			throws SQLException{
 		if(status==null)status="SCHEDULED";
-		
+		String bet = "SELECT b."+BetsBase.BET+" FROM "+BetsBase.BASENAME+" b"
+				+"WHERE "+"b."+BetsBase.MATCH_ID+" = "+" m."+MatchesBase.MATCH_ID
+				+" AND "+"b."+BetsBase.GAMBLER+" = "+username;
 		String request =  "SELECT m.*,t1."+TeamsBase.TEAM_NAME+" AS "+"home"+TeamsBase.TEAM_NAME
 				+",t1."+TeamsBase.TEAM_LOGO+" AS "+"home"+TeamsBase.TEAM_LOGO
 				+",t2."+TeamsBase.TEAM_NAME+" AS "+"away"+TeamsBase.TEAM_NAME
-				+",t2."+TeamsBase.TEAM_LOGO+" AS "+"away"+TeamsBase.TEAM_LOGO+" "+
+				+",t2."+TeamsBase.TEAM_LOGO+" AS "+"away"+TeamsBase.TEAM_LOGO+" "
+				+"( "+bet+" ) as "+BetsBase.BET+
 				"FROM ("+"("+MatchesBase.BASENAME+" m "+" INNER JOIN "+TeamsBase.BASENAME+" t1 "
 				+" ON t1.id = m.hometeamid )"+" INNER JOIN "+TeamsBase.BASENAME+" t2 "
 				+" ON t2.id = m.awayteamid )"
@@ -187,13 +191,21 @@ public class ServerRequest {
 	}
 
 	public static boolean createAccount(String newusername,String password,Date date,int region) throws SQLException{
-		String request = "INSERT INTO "+UsersBase.BASENAME+" ('"+newusername+
+		String request = "INSERT INTO "+UsersBase.BASENAME+" values ('"+newusername+
 				","+password+","+date.toString()+region+";";
 		int res = makeUpdate(request);
 		return (res==1);
 
 	}
+	
+	public static boolean insertBet(String username,int matchId,String bet) throws SQLException{
+		String request = "INSERT INTO "+BetsBase.BASENAME+" ("
+				+BetsBase.GAMBLER+","+BetsBase.MATCH_ID+","+BetsBase.BET
+				+"VALUES ("+username+","+matchId+","+bet+");";
+		int res = makeUpdate(request);
+		return (res==1);
 
+	}
 
 	public static ResultSet login(String username,String password) throws SQLException{
 		String loginRequest = "SELECT "+UsersBase.PASSWORD+" FROM "+UsersBase.BASENAME

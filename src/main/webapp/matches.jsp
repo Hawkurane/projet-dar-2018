@@ -49,22 +49,11 @@
 	<button id="send">rechercher</button>
 </body>
 
+<script type="text/javascript">
+$("send").click(function(e){ 
+        console.log("bjr");
+});
+</script>
 
 </html>
 
-<script>
-$('send').click(function(e){ 
-        $.get(
-            "/search",
-            {
-                matchday: document.getElementById("matchday").value,
-                status: document.getElementById("status").value,
-                teamName: document.getElementById("league").value,
-                matchday: document.getElementById("league").value,
-            }
-            ,function( data ) {
-            	  $( "body" ).append("data receive" )
-            	}, "json" );
-        this.focus();
-});
-</script>

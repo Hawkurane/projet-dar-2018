@@ -1,5 +1,7 @@
 package tools;
 
+
+
 public class Match {
 	
 	private int matchId;
@@ -14,9 +16,13 @@ public class Match {
 	private int homeTeamg;
 	private int awayTeamg;
 	private String league;
+	private String bet;
+	
+
 	
 	public Match(int id,int mday,String t,String sta,
-			String homeName,String homeUrl, String awayName,String awayUrl,String w,int homeg,int awayg,String l){
+			String homeName,String homeUrl, String awayName,String awayUrl,
+			String w,int homeg,int awayg,String l,String bet){
 		matchId=id;
 		matchDay=mday;
 		time = t;
@@ -27,6 +33,7 @@ public class Match {
 		homeTeamg = homeg;
 		awayTeamg = awayg;
 		league = l;
+		bet = null;
 	}
 	
 	public int getMatchId(){
@@ -75,5 +82,9 @@ public class Match {
 
 	public String getLeague() {
 		return league;
+	}
+	
+	public String getBet() {
+		return bet;
 	}
 }

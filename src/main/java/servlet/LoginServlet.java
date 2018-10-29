@@ -1,8 +1,6 @@
 package servlet;
 
-import java.io.Console;
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -12,12 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.google.gson.JsonObject;
-
 import tools.Logger;
 import tools.ServerRequest;
-import tools.User;
-import tools.UsersBase;
 import tools.Utils;
 
 
@@ -48,15 +42,15 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter(CHAMP_NAME);
 		String password = request.getParameter(CHAMP_PWD);
 
-		
+		HttpSession session = request.getSession();
 		if(Logger.logIn(username, password)) 
 			try{
-				HttpSession session = request.getSession();
+				
 				session.setAttribute(ATT_USER,Utils.getProfil(ServerRequest.profil(username)));
 				
-			}catch(SQLException e){/*session.setAttribute(ATT_USER,null);*/}
+			}catch(SQLException e){session.setAttribute(ATT_USER,null);}
 		else
-			/*session.setAttribute(ATT_USER,null)*/;
+			session.setAttribute(ATT_USER,null);
 
 		//this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 		response.sendRedirect("/");
