@@ -40,8 +40,28 @@ public class ServerRequest {
 		connexionDataBase.close();
 		return i;
 	}
+	
+	public static ResultSet getUsers(String username, String research) throws SQLException {
+		String request ="" ;
+		//si username!= null on reserche dans la liste d'ami de username
+		if(username!=null){
+			request+="SELECT u."+UsersBase.NAME+" FROM "
+					+UsersBase.BASENAME+" u, "+FollowsBase.BASENAME+" f"
+					+" WHERE "+" f."+FollowsBase.FOLLOW+" = u."+UsersBase.NAME
+					+"AND f."+FollowsBase.NAME+" = '"+username+"'";
+			if(research!=null)
+				request+=" AND f."+FollowsBase.FOLLOW+" LIKE '"+research+"'";
+			request+=";";
+		//sinon on recher dans toute la liste des users
+		}else{
+			request+="SELECT "+UsersBase.NAME+" FROM "+UsersBase.BASENAME+"WHERE "
+					+UsersBase.NAME+" LIKE '"+research+"';";
+		}
+		ResultSet res = makeRequest(request);
+		return res;
+	}
 
-	public static ResultSet profil(String username)throws SQLException{
+	public static ResultSet getProfil(String username)throws SQLException{
 		String pointRequest = "SELECT sum(odd) AS score"+
 				"FROM "+BetsBase.BASENAME+" b, "+MatchesBase.BASENAME+" m"+
 				"WHERE b."+BetsBase.ID+" = m."+MatchesBase.MATCH_ID+"+ AND"+
@@ -71,13 +91,13 @@ public class ServerRequest {
 				+" m ON b.matchid = m.matchsid )"+" INNER JOIN "+TeamsBase.BASENAME+" t1 "
 				+" ON t1.id = m.hometeamid )"+" INNER JOIN "+TeamsBase.BASENAME+" t2 "
 				+" ON t2.id = m.awayteamid )"
-				+" WHERE b.name = "+username;
+				+" WHERE b.name = '"+username+"'";
 		if(won!=null){
 			boolean b = Boolean.getBoolean(won);
-			request +=" AND b.bet "+(b ? "!" : "")+"= m.result";
+			request +=" AND b."+BetsBase.BET+" "+(b ? "!" : "")+"= m."+MatchesBase.RESULT;
 		}
 		if(status !=null)
-			request +="AND m.status = '"+status+"'";
+			request +="AND m."+MatchesBase.RESULT+" = '"+status+"'";
 		if(matchDay>0)
 			request+= " AND m."+MatchesBase.DAY+" = "+matchDay;
 		if(league!=null)
@@ -99,7 +119,7 @@ public class ServerRequest {
 		if(status==null)status="SCHEDULED";
 		String bet = "SELECT b."+BetsBase.BET+" FROM "+BetsBase.BASENAME+" b"
 				+"WHERE "+"b."+BetsBase.MATCH_ID+" = "+" m."+MatchesBase.MATCH_ID
-				+" AND "+"b."+BetsBase.GAMBLER+" = "+username;
+				+" AND "+"b."+BetsBase.GAMBLER+" = '"+username+"'";
 		String request =  "SELECT m.*,t1."+TeamsBase.TEAM_NAME+" AS "+"home"+TeamsBase.TEAM_NAME
 				+",t1."+TeamsBase.TEAM_LOGO+" AS "+"home"+TeamsBase.TEAM_LOGO
 				+",t2."+TeamsBase.TEAM_NAME+" AS "+"away"+TeamsBase.TEAM_NAME
@@ -112,11 +132,11 @@ public class ServerRequest {
 		if(matchDay>0)
 			request+= " AND m."+MatchesBase.DAY+" = "+matchDay;
 		if(league!=null)
-			request += " AND m."+MatchesBase.LEAGUE+" = "+league;
+			request += " AND m."+MatchesBase.LEAGUE+" = '"+league+"'";
 
 		if(teamName!=null)
-			request += "AND (t1."+TeamsBase.TEAM_NAME+" = "+teamName
-			+ " OR t2."+TeamsBase.TEAM_NAME+" = "+teamName+" )";
+			request += "AND (t1."+TeamsBase.TEAM_NAME+" = '"+teamName+"'"
+			+ " OR t2."+TeamsBase.TEAM_NAME+" = '"+teamName+"' )";
 
 		request+=" ;";
 		ResultSet res = makeRequest(request);
@@ -158,7 +178,7 @@ public class ServerRequest {
 				"status = '"+status+"'"+
 				",hometeamgoal = "+homeTeamg+
 				",awayteamgoal = "+awayTeamg+
-				",result = "+winner+"';";
+				",result = '"+winner+"';";
 		int res = makeUpdate(request);
 		return (res==1);
 	}

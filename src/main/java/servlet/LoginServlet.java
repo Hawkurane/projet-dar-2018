@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 		if(Logger.logIn(username, password)) 
 			try{
 				
-				session.setAttribute(ATT_USER,Utils.getProfil(ServerRequest.profil(username)));
+				session.setAttribute(ATT_USER,Utils.getProfil(ServerRequest.getProfil(username)));
 				
 			}catch(SQLException e){session.setAttribute(ATT_USER,null);}
 		else
