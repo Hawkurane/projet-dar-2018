@@ -27,10 +27,10 @@
                     <h1>Bookmakers</h1>
                     <hr>
                     <form method="post" action="login">
-                        <label id="icon" for="login_username"><i class="fa fa-user"></i></label>
-                        <input type="text" placeholder="Username" id="login_username" name="userlogin">
-                        <label id="icon" for="login_password"><i class="fa fa-key"></i></label>
-                        <input type="password" placeholder="Password" id="login_password" name="pwdlogin">
+                        <label id="icon" for="username"><i class="fa fa-user"></i></label>
+                        <input type="text" placeholder="Username" id="username" name="userlogin">
+                        <label id="icon" for="password"><i class="fa fa-key"></i></label>
+                        <input type="password" placeholder="Password" id="password" name="pwdlogin">
                         <input type="submit" value="Sign In">
                         <hr>
                         <div class="crtacc"><a href="#">Create Account</a></div>

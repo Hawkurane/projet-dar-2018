@@ -12,9 +12,12 @@ public class Logger {
 
 	public static boolean logIn(String username, String password) {
 		try{
+			
 			ResultSet res = ServerRequest.login(username, password);
 			res.next();
-			return (res.getString("password").equals(password));
+			boolean test = res.getString("password").equals(password);
+			System.out.println(res.getString("password"));
+			return (test);
 
 		}catch(SQLException e){	}
 		return false;

@@ -35,19 +35,21 @@ public class LoginServlet extends HttpServlet {
 	 */
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("/");
+		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
 		String username = request.getParameter(CHAMP_NAME);
 		String password = request.getParameter(CHAMP_PWD);
-
+		System.out.println("Login Servlet Called with parameters {"+username+", "+password+"}");
 		HttpSession session = request.getSession();
-		if(Logger.logIn(username, password)) 
+		boolean test = Logger.logIn(username, password);
+		System.out.println(test);
+		if(test) 
 			try{
 				
 				session.setAttribute(ATT_USER,Utils.getProfil(ServerRequest.getProfil(username)));
-				
+				System.out.println("Login succeeded");
 			}catch(SQLException e){session.setAttribute(ATT_USER,null);}
 		else
 			session.setAttribute(ATT_USER,null);
