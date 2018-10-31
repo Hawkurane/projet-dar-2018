@@ -24,22 +24,22 @@
             <c:otherwise>
                 
                 <div class="wrapper animated bounce">
-                <h1>Bookmakers</h1>
-                <hr>
-                <form method="post" action="login">
-                    <label id="icon" for="username"><i class="fa fa-user"></i></label>
-                    <input type="text" placeholder="Username" id="login_username" name="userlogin">
-                    <label id="icon" for="password"><i class="fa fa-key"></i></label>
-                    <input type="password" placeholder="Password" id="login_password" name="pwdlogin">
-                    <input type="submit" value="Sign In">
+                    <h1>Bookmakers</h1>
                     <hr>
-                    <div class="crtacc"><a href="#">Create Account</a></div>
-                </form>
+                    <form method="post" action="login">
+                        <label id="icon" for="username"><i class="fa fa-user"></i></label>
+                        <input type="text" placeholder="Username" id="login_username" name="userlogin">
+                        <label id="icon" for="password"><i class="fa fa-key"></i></label>
+                        <input type="password" placeholder="Password" id="login_password" name="pwdlogin">
+                        <input type="submit" value="Sign In">
+                        <hr>
+                        <div class="crtacc"><a href="#">Create Account</a></div>
+                    </form>
                 </div>
 
             </c:otherwise>
         </c:choose>
     </body>
-    <script src="bootstrap/js/jquery-3.3.1.min/js"></script>
+    <script src="bootstrap/js/jquery-3.3.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
 </html>
