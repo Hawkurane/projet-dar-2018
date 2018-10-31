@@ -10,6 +10,7 @@
 
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link href="bootstrap/css/custom.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
         <title>Bookmakers</title>
 
@@ -18,7 +19,7 @@
         <c:choose>
             <c:when test="${!empty sessionScope.user}">
 
-                <p> Hello  </p>
+                <p> Hello </p>
 
             </c:when>
             <c:otherwise>
@@ -27,7 +28,7 @@
                     <h1>Bookmakers</h1>
                     <hr>
                     <form method="post" action="login">
-                        <label id="icon" for="username"><i class="fa fa-user"></i></label>
+                        <label id="icon" for="password"><i class="fa fa-user"></i></label>
                         <input type="text" placeholder="Username" id="username" name="userlogin">
                         <label id="icon" for="password"><i class="fa fa-key"></i></label>
                         <input type="password" placeholder="Password" id="password" name="pwdlogin">
