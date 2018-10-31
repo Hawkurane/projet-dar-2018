@@ -58,7 +58,7 @@ public class EchoServlet extends HttpServlet {
 			ResultSet res = stmt.executeQuery(basiqueRequest);
 			res.toString();
 			while(res.next()){
-				out.println(""+res.getInt("region"));
+				out.println(""+res.toString());
 			}
 		} catch (Exception e){
 			out.println(e.getMessage());

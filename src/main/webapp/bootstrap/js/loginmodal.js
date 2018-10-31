@@ -1,5 +1,4 @@
 $(function() {
-    
 	
 	
     var $formLogin = $('#login-form');
@@ -9,7 +8,8 @@ $(function() {
     var $modalAnimateTime = 300;
     var $msgAnimateTime = 150;
     var $msgShowTime = 2000;
-    
+
+
     $("form").submit(function () {
         switch(this.id) {
             case "login-form":
