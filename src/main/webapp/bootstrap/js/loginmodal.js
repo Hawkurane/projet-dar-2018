@@ -1,4 +1,5 @@
 $(function() {
+    
 	if(localStorage.getItem('sessionIsUp')){
         $('#loginButton').hide();
     } else {
@@ -24,7 +25,7 @@ $(function() {
         };
 
         $.post("logout", $.param(params), function(response){
-            console.log(JSON.stringify(response));
+            /*console.log(JSON.stringify(response));
             var obj = jQuery.parseJSON(JSON.stringify(response));
             if(obj.code=="200"){
                 sessionStorage.clear();
@@ -32,7 +33,7 @@ $(function() {
                 location.reload();
             } else {
                 alert(obj.message);
-            }
+            }*/
         });
     });
 
