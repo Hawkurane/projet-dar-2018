@@ -43,14 +43,12 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter(CHAMP_PWD);
 		System.out.println("Login Servlet Called with parameters {"+username+", "+password+"}");
 		HttpSession session = request.getSession();
-		boolean test = Logger.logIn(username, password);
-		System.out.println(test);
-		if(test) 
+		if(Logger.logIn(username, password)) 
 			try{
 				
 				session.setAttribute(ATT_USER,Utils.getProfil(ServerRequest.getProfil(username)));
 				System.out.println("Login succeeded");
-			}catch(SQLException e){session.setAttribute(ATT_USER,null);}
+			}catch(SQLException e){session.setAttribute(ATT_USER,null); System.out.println("caught exception");}
 		else
 			session.setAttribute(ATT_USER,null);
 

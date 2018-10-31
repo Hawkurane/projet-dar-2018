@@ -15,9 +15,7 @@ public class Logger {
 			
 			ResultSet res = ServerRequest.login(username, password);
 			res.next();
-			boolean test = res.getString("password").equals(password);
-			System.out.println(res.getString("password"));
-			return (test);
+			return (res.getString("password").equals(password));
 
 		}catch(SQLException e){	}
 		return false;
