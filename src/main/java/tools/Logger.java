@@ -12,6 +12,7 @@ public class Logger {
 
 	public static boolean logIn(String username, String password) {
 		try{
+			
 			ResultSet res = ServerRequest.login(username, password);
 			res.next();
 			return (res.getString("password").equals(password));

@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	public static final String VUE              = "/index.jsp";
-	public static final String ATT_USER     = "user";
+	public static final String ATT_USER    		= "user";
 	public static final String CHAMP_NAME       = "userlogin";
 	public static final String CHAMP_PWD        = "pwdlogin";
 	/*public static final String ATT_USER 			= "user";
@@ -35,25 +35,25 @@ public class LoginServlet extends HttpServlet {
 	 */
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("/");
+		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
 		String username = request.getParameter(CHAMP_NAME);
 		String password = request.getParameter(CHAMP_PWD);
-
+		System.out.println("Login Servlet Called with parameters {"+username+", "+password+"}");
 		HttpSession session = request.getSession();
 		if(Logger.logIn(username, password)) 
 			try{
 				
 				session.setAttribute(ATT_USER,Utils.getProfil(ServerRequest.getProfil(username)));
-				
-			}catch(SQLException e){session.setAttribute(ATT_USER,null);}
+				System.out.println("Login succeeded");
+			}catch(SQLException e){session.setAttribute(ATT_USER,null); System.out.println("caught exception");}
 		else
 			session.setAttribute(ATT_USER,null);
 
-		//this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
-		response.sendRedirect("/");
+		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+		//response.sendRedirect("/");
 	}
 
 
