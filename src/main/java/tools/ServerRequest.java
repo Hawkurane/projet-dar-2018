@@ -118,14 +118,14 @@ public class ServerRequest {
 			throws SQLException{
 		if(status==null)status="SCHEDULED";
 		String bet = "SELECT b."+BetsBase.BET+" FROM "+BetsBase.BASENAME+" b"
-				+"WHERE "+"b."+BetsBase.MATCH_ID+" = "+" m."+MatchesBase.MATCH_ID
+				+" WHERE "+"b."+BetsBase.MATCH_ID+" = "+" m."+MatchesBase.MATCH_ID
 				+" AND "+"b."+BetsBase.GAMBLER+" = '"+username+"'";
 		String request =  "SELECT m.*,t1."+TeamsBase.TEAM_NAME+" AS "+"home"+TeamsBase.TEAM_NAME
-				+",t1."+TeamsBase.TEAM_LOGO+" AS "+"home"+TeamsBase.TEAM_LOGO
-				+",t2."+TeamsBase.TEAM_NAME+" AS "+"away"+TeamsBase.TEAM_NAME
-				+",t2."+TeamsBase.TEAM_LOGO+" AS "+"away"+TeamsBase.TEAM_LOGO+" "
+				+" ,t1."+TeamsBase.TEAM_LOGO+" AS "+"home"+TeamsBase.TEAM_LOGO
+				+" ,t2."+TeamsBase.TEAM_NAME+" AS "+"away"+TeamsBase.TEAM_NAME
+				+" ,t2."+TeamsBase.TEAM_LOGO+" AS "+"away"+TeamsBase.TEAM_LOGO+" , "
 				+"( "+bet+" ) as "+BetsBase.BET+
-				"FROM ("+"("+MatchesBase.BASENAME+" m "+" INNER JOIN "+TeamsBase.BASENAME+" t1 "
+				" FROM ("+"("+MatchesBase.BASENAME+" m "+" INNER JOIN "+TeamsBase.BASENAME+" t1 "
 				+" ON t1.id = m.hometeamid )"+" INNER JOIN "+TeamsBase.BASENAME+" t2 "
 				+" ON t2.id = m.awayteamid )"
 				+" WHERE m."+MatchesBase.STATUS+" = '"+status+"'";
