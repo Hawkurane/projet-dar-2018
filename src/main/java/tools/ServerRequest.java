@@ -135,7 +135,7 @@ public class ServerRequest {
 			request += " AND m."+MatchesBase.LEAGUE+" = '"+league+"'";
 
 		if(teamName!=null)
-			request += "AND (t1."+TeamsBase.TEAM_NAME+" = '"+teamName+"'"
+			request += " AND (t1."+TeamsBase.TEAM_NAME+" = '"+teamName+"'"
 			+ " OR t2."+TeamsBase.TEAM_NAME+" = '"+teamName+"' )";
 
 		request+=" ;";
