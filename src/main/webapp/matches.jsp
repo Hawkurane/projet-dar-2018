@@ -50,8 +50,19 @@
 </body>
 
 <script type="text/javascript">
-$("send").click(function(e){ 
-        console.log("bjr");
+$("#send").click(function(e){ //suggestion de stations
+        $.get(
+            "/search",
+            {
+                matchday: document.getElementById("matchday").value,
+                status: document.getElementById("status").value,
+                teamName: document.getElementById("teamname").value,
+                matchday: document.getElementById("league").value,
+            }
+            ,function( data ) {
+                  $( "body" ).append( data )
+                }, "json" );
+        this.focus();
 });
 </script>
 
