@@ -63,7 +63,7 @@ public class ServerRequest {
 
 	public static ResultSet getProfil(String username)throws SQLException{
 		String pointRequest = "SELECT count(*) AS score"+
-				"FROM "+BetsBase.BASENAME+" b, "+MatchesBase.BASENAME+" m"+
+				" FROM "+BetsBase.BASENAME+" b, "+MatchesBase.BASENAME+" m"+
 				"WHERE b."+BetsBase.MATCH_ID+" = m."+MatchesBase.MATCH_ID+"+ AND"+
 				"b."+BetsBase.GAMBLER+" ='"+username+"' AND"+
 				"m."+MatchesBase.STATUS+" ='FINISHED' AND"+
