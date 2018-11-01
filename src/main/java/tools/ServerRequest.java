@@ -66,8 +66,8 @@ public class ServerRequest {
 				"FROM "+BetsBase.BASENAME+" b, "+MatchesBase.BASENAME+" m"+
 				"WHERE b."+BetsBase.MATCH_ID+" = m."+MatchesBase.MATCH_ID+"+ AND"+
 				"b."+BetsBase.GAMBLER+" ='"+username+"' AND"+
-				"m."+MatchesBase.RESULT+" =='FINISHED' AND"+
-				"b."+BetsBase.BET+" = m."+MatchesBase.RESULT+";";
+				"m."+MatchesBase.STATUS+" ='FINISHED' AND"+
+				"b."+BetsBase.BET+" = m."+MatchesBase.RESULT;
 		String profilRequest = "SELECT "+UsersBase.NAME+", "+UsersBase.BIRTHDAY
 				+", "+UsersBase.REGION+",("+pointRequest+") as score"+
 				"FROM "+UsersBase.BASENAME +
