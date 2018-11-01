@@ -19,11 +19,22 @@
         <c:choose>
             <c:when test="${!empty sessionScope.user}">
 
-                <p> Hello </p>
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                    <a class="navbar-brand" href="/"> Bookmakers </a>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <form method="post" action="logout">
+                                <input type="submit" value="Logout">
+                            </form>
+                        </li>
+                    </ul>
+                </nav>
+
+                
 
             </c:when>
             <c:otherwise>
-                
+
                 <div class="wrapper animated bounce">
                     <h1>Bookmakers</h1>
                     <hr>
@@ -37,10 +48,12 @@
                         <div class="crtacc"><a href="register.jsp">Create Account</a></div>
                     </form>
                 </div>
+                
+                
 
             </c:otherwise>
         </c:choose>
     </body>
-    <script src="bootstrap/js/jquery-3.3.1.min.js"></script>
+    <script src="bootstrap/js/jquery-3.3.1.slim.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
 </html>
