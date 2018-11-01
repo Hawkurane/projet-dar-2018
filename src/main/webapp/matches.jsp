@@ -32,7 +32,7 @@
 				<option value="${status}">${status}</option>
 			</c:forEach>
 		</select> <label for="teamName">Nom d'equipe : </label> <select name="teamName"
-			id="teamName">
+			id="teamname">
 			<option value=""></option>
 			<c:forEach items="${ form.teamName }" var="teamName">
 				<option value="${teamName}">${teamName}</option>
