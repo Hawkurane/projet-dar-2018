@@ -51,6 +51,7 @@
 
 <script type="text/javascript">
 $("#send").click(function(e){ 
+	   console.log('sending request to /search');
         $.get(
             "/search",
             {
@@ -61,7 +62,7 @@ $("#send").click(function(e){
             }
             ,function( data ) {
                   $( "body" ).append( data )
-                }, "json" );
+                }, 'json' );
         this.focus();
 });
 </script>
