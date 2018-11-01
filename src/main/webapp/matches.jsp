@@ -51,7 +51,11 @@
 
 <script type="text/javascript">
 $("#send").click(function(e){ 
-	   console.log('sending request to /search');
+	   console.log('sending request to /search\n'
+			   +document.getElementById("matchday").value+"\n"
+			   +document.getElementById("status").value+"\"
+			   +document.getElementById("teamname").value+"\n"
+			   +document.getElementById("league").value);
         $.get(
             "/search",
             {

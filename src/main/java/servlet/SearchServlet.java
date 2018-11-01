@@ -46,8 +46,10 @@ public class SearchServlet extends HttpServlet {
 	}
 
 	public void sendMatches(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("in /search/sendmatches()");
 		User user = (User)(request.getSession(false).getAttribute(LoginServlet.ATT_USER));
 		String day = request.getParameter("matchday");
+		System.out.println("day: -"+day+"-");
 		if(day.isEmpty())day="0";
 		String league = request.getParameter("league");
 		if(league=="")league=null;
