@@ -210,9 +210,9 @@ public class ServerRequest {
 		return (res==1);
 	}
 
-	public static boolean createAccount(String newusername,String password,Date date,int region) throws SQLException{
+	public static boolean createAccount(String newusername,String password,Date date,int region,String mail) throws SQLException{
 		String request = "INSERT INTO "+UsersBase.BASENAME+" values ('"+newusername+
-				","+password+","+date.toString()+region+";";
+				"' , '"+password+"' ,"+date.toString()+region+",'"+mail+"' ;";
 		int res = makeUpdate(request);
 		return (res==1);
 
@@ -221,12 +221,21 @@ public class ServerRequest {
 	public static boolean insertBet(String username,int matchId,String bet) throws SQLException{
 		String request = "INSERT INTO "+BetsBase.BASENAME+" ("
 				+BetsBase.GAMBLER+","+BetsBase.MATCH_ID+","+BetsBase.BET
-				+"VALUES ("+username+","+matchId+","+bet+");";
+				+"VALUES ('"+username+"',"+matchId+","+bet+");";
 		int res = makeUpdate(request);
 		return (res==1);
 
 	}
 
+	public static boolean insertFriend(String username,String friend) throws SQLException{
+		String request = "INSERT INTO "+FollowsBase.BASENAME+" ("
+				+FollowsBase.NAME+","+FollowsBase.FOLLOW
+				+"VALUES ('"+username+"','"+friend+"');";
+		int res = makeUpdate(request);
+		return (res==1);
+
+	}
+	
 	public static ResultSet login(String username,String password) throws SQLException{
 		String loginRequest = "SELECT "+UsersBase.PASSWORD+" FROM "+UsersBase.BASENAME
 				+" WHERE "+UsersBase.NAME+"='"+username+"';";
