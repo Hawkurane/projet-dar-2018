@@ -62,7 +62,7 @@ public class ServerRequest {
 	}
 
 	public static ResultSet getProfil(String username)throws SQLException{
-		String pointRequest = "SELECT sum(odd) AS score"+
+		String pointRequest = "SELECT count() AS score"+
 				"FROM "+BetsBase.BASENAME+" b, "+MatchesBase.BASENAME+" m"+
 				"WHERE b."+BetsBase.ID+" = m."+MatchesBase.MATCH_ID+"+ AND"+
 				"b."+BetsBase.GAMBLER+" ='"+username+"' AND"+

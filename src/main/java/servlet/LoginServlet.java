@@ -49,7 +49,8 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute(ATT_USER,Utils.getProfil(ServerRequest.getProfil(username)));
 				System.out.println("Login succeeded");
 			}catch(SQLException e){
-				System.out.println("error"+e.getMessage());
+				System.out.println("ERROE: ");
+				e.printStackTrace();
 				session.setAttribute(ATT_USER,null); System.out.println("caught exception");}
 		else{
 			System.out.println("wrong password");
