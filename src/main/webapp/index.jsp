@@ -11,6 +11,7 @@
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link href="bootstrap/css/custom.css" rel="stylesheet">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="open-iconic-master/font/css/open-iconic-bootstrap.css" rel="stylesheet">
 
         <title>Bookmakers</title>
 
@@ -21,15 +22,18 @@
 
                 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
                     <a class="navbar-brand" href="/"> Bookmakers </a>
+
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <form method="post" action="logout">
-                                <input type="submit" value="Logout">
+                                <button type="submit" class="btn btn-dark btn-outline-light btn-sm">
+                                <span class="oi oi-account-logout"></span> Logout
+                                </button>
                             </form>
                         </li>
                     </ul>
                 </nav>
-
+            
                 
 
             </c:when>
