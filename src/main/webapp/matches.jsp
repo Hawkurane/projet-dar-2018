@@ -26,12 +26,11 @@
 			</c:forEach>
 		</select> <label for="status">type de match : </label> <select name="status"
 			id="status">
-			<option value=""></option>
 			<c:forEach items="${ form.status }" var="status">
 				<option value="${status}">${status}</option>
 			</c:forEach>
 		</select> <label for="teamName">Nom d'equipe : </label> <select name="teamName"
-			id="teamName">
+			id="teamname">
 			<option value=""></option>
 			<c:forEach items="${ form.teamName }" var="teamName">
 				<option value="${teamName}">${teamName}</option>
@@ -51,7 +50,28 @@
 
 <script type="text/javascript">
 $("#send").click(function(e){ 
+<<<<<<< HEAD
         console.log("bjr");
+=======
+	   console.log('sending request to /search -'
+			   +document.getElementById("matchday").value+'-'
+			   +document.getElementById("status").value+'- '
+			   +document.getElementById("teamname").value+'-'
+			   +document.getElementById("league").value)+'-';
+        $.get(
+            "/search",
+            {
+                matchday: document.getElementById("matchday").value,
+                status: document.getElementById("status").value,
+                teamname: document.getElementById("teamname").value,
+                league: document.getElementById("league").value,
+            }
+            ,function( data ) {
+                  //$( "body" ).append( data )
+                  console.log(data);
+                }, 'json' );
+        this.focus();
+>>>>>>> branch 'master' of https://github.com/Hawkurane/projet-dar-2018
 });
 </script>
 
