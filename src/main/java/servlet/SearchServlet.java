@@ -51,8 +51,14 @@ public class SearchServlet extends HttpServlet {
 		String day = request.getParameter("matchday");
 		System.out.println("day: -"+day+"-"+" teamname -"+request.getParameter("teamname")+"-");
 		if(day.isEmpty())day="0";
+		
 		String league = request.getParameter("league");
-		if(league=="")league=null;
+		if(league!=""){
+			league = Utils.getLeagueIdFromName(league);
+		}
+		else
+			league=null;
+		
 		String teamName = request.getParameter("teamname");
 		if(teamName=="")teamName=null;
 		String status = request.getParameter("status");

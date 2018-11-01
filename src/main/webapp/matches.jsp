@@ -27,7 +27,6 @@
 			</c:forEach>
 		</select> <label for="status">type de match : </label> <select name="status"
 			id="status">
-			<option value=""></option>
 			<c:forEach items="${ form.status }" var="status">
 				<option value="${status}">${status}</option>
 			</c:forEach>
@@ -65,7 +64,8 @@ $("#send").click(function(e){
                 league: document.getElementById("league").value,
             }
             ,function( data ) {
-                  $( "body" ).append( data )
+                  //$( "body" ).append( data )
+                  console.log(data);
                 }, 'json' );
         this.focus();
 });
