@@ -46,13 +46,10 @@
 	</form>
 	<button id="send">rechercher</button>
 </body>
-<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
 <script type="text/javascript">
+
 $("#send").click(function(e){ 
-<<<<<<< HEAD
-        console.log("bjr");
-=======
 	   console.log('sending request to /search -'
 			   +document.getElementById("matchday").value+'-'
 			   +document.getElementById("status").value+'- '
@@ -71,7 +68,6 @@ $("#send").click(function(e){
                   console.log(data);
                 }, 'json' );
         this.focus();
->>>>>>> branch 'master' of https://github.com/Hawkurane/projet-dar-2018
 });
 </script>
 

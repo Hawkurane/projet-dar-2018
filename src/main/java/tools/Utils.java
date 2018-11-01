@@ -34,6 +34,14 @@ public class Utils {
 		}
 		return names;
 	}
+	
+	public static String getLeagueIdFromName(String leagueName){
+		for (String key: leagueNames.keySet()) {
+			if(leagueNames.get(key).equals(leagueName))
+				return key;
+		}
+		return "";
+	}
 
 	public static User getProfil(ResultSet profilRequest) throws SQLException{
 		ResultSet res = profilRequest;

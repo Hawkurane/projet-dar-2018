@@ -37,19 +37,29 @@ public class SearchServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		//la difference entre les deux: searchmatches retourne TOUT les matchs selon les criteres,
 		//								searchbets retourne les PARIS de l'utilisateur selon les criteres
-		if(request.getParameter(searchType).equals(searchMatches))
+		if(request.getParameter(searchType)==null)
 			sendMatches(request,response);
+		else if(request.getParameter(searchType).equals(searchBets))
+			sendBets(request,response);
 		else if(request.getParameter(searchType).equals(searchBets))
 			sendMatches(request,response);
 	}
 
 	public void sendMatches(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("in /search/sendmatches()");
 		User user = (User)(request.getSession(false).getAttribute(LoginServlet.ATT_USER));
 		String day = request.getParameter("matchday");
+		System.out.println("day: -"+day+"-"+" teamname -"+request.getParameter("teamname")+"-");
 		if(day.isEmpty())day="0";
+		
 		String league = request.getParameter("league");
-		if(league=="")league=null;
-		String teamName = request.getParameter("temaname");
+		if(league!=""){
+			league = Utils.getLeagueIdFromName(league);
+		}
+		else
+			league=null;
+		
+		String teamName = request.getParameter("teamname");
 		if(teamName=="")teamName=null;
 		String status = request.getParameter("status");
 		if(status=="")status=null;
@@ -61,11 +71,12 @@ public class SearchServlet extends HttpServlet {
 			listMatches = Utils.getMatches(
 					ServerRequest.getMatches(Integer.parseInt(day), league,
 							teamName, status,user.getName()));
-
+			System.out.println("ok");
 			PrintWriter out = response.getWriter();
 			Gson gson = new Gson();
+			System.out.println("RESULT\n"+gson.toJson(listMatches).toString());
 			out.write(gson.toJson(listMatches));
-		}catch(Exception e){}
+		}catch(Exception e){e.printStackTrace();}
 	}
 
 	public void sendBets(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -107,14 +118,14 @@ public class SearchServlet extends HttpServlet {
 					throw new Exception("la recherche doit contenir au moins un caractere");
 				res = ServerRequest.getUsers(null, name);
 			}
-			
+
 			res.last();
 			User[] users = new User[res.getRow()];
 			res.beforeFirst();
 			while(res.next()){
 				users[res.getRow()-1] = Utils.getProfil(ServerRequest.getProfil(res.getString(UsersBase.BASENAME)));
 			}
-			
+
 			PrintWriter out = response.getWriter();
 			Gson gson = new Gson();
 			out.write(gson.toJson(users));

@@ -62,16 +62,16 @@ public class ServerRequest {
 	}
 
 	public static ResultSet getProfil(String username)throws SQLException{
-		String pointRequest = "SELECT sum(odd) AS score"+
-				"FROM "+BetsBase.BASENAME+" b, "+MatchesBase.BASENAME+" m"+
-				"WHERE b."+BetsBase.ID+" = m."+MatchesBase.MATCH_ID+"+ AND"+
-				"b."+BetsBase.GAMBLER+" ='"+username+"' AND"+
-				"m."+MatchesBase.RESULT+" =='FINISHED' AND"+
-				"b."+BetsBase.BET+" = m."+MatchesBase.RESULT+";";
+		String pointRequest = "SELECT count(*) AS score"+
+				" FROM "+BetsBase.BASENAME+" b, "+MatchesBase.BASENAME+" m"+
+				" WHERE b."+BetsBase.MATCH_ID+" = m."+MatchesBase.MATCH_ID+" AND"+
+				" b."+BetsBase.GAMBLER+" ='"+username+"' AND"+
+				" m."+MatchesBase.STATUS+" ='FINISHED' AND"+
+				" b."+BetsBase.BET+" = m."+MatchesBase.RESULT;
 		String profilRequest = "SELECT "+UsersBase.NAME+", "+UsersBase.BIRTHDAY
-				+", "+UsersBase.REGION+","+pointRequest+"as score"+
-				"FROM "+UsersBase.BASENAME +
-				"WHERE "+UsersBase.NAME+" = '"+username+"';";
+				+", "+UsersBase.REGION+",("+pointRequest+") as score"+
+				" FROM "+UsersBase.BASENAME +
+				" WHERE "+UsersBase.NAME+" = '"+username+"';";
 
 		ResultSet res = makeRequest(profilRequest);
 		return res;
@@ -118,14 +118,14 @@ public class ServerRequest {
 			throws SQLException{
 		if(status==null)status="SCHEDULED";
 		String bet = "SELECT b."+BetsBase.BET+" FROM "+BetsBase.BASENAME+" b"
-				+"WHERE "+"b."+BetsBase.MATCH_ID+" = "+" m."+MatchesBase.MATCH_ID
+				+" WHERE "+"b."+BetsBase.MATCH_ID+" = "+" m."+MatchesBase.MATCH_ID
 				+" AND "+"b."+BetsBase.GAMBLER+" = '"+username+"'";
 		String request =  "SELECT m.*,t1."+TeamsBase.TEAM_NAME+" AS "+"home"+TeamsBase.TEAM_NAME
-				+",t1."+TeamsBase.TEAM_LOGO+" AS "+"home"+TeamsBase.TEAM_LOGO
-				+",t2."+TeamsBase.TEAM_NAME+" AS "+"away"+TeamsBase.TEAM_NAME
-				+",t2."+TeamsBase.TEAM_LOGO+" AS "+"away"+TeamsBase.TEAM_LOGO+" "
+				+" ,t1."+TeamsBase.TEAM_LOGO+" AS "+"home"+TeamsBase.TEAM_LOGO
+				+" ,t2."+TeamsBase.TEAM_NAME+" AS "+"away"+TeamsBase.TEAM_NAME
+				+" ,t2."+TeamsBase.TEAM_LOGO+" AS "+"away"+TeamsBase.TEAM_LOGO+" , "
 				+"( "+bet+" ) as "+BetsBase.BET+
-				"FROM ("+"("+MatchesBase.BASENAME+" m "+" INNER JOIN "+TeamsBase.BASENAME+" t1 "
+				" FROM ("+"("+MatchesBase.BASENAME+" m "+" INNER JOIN "+TeamsBase.BASENAME+" t1 "
 				+" ON t1.id = m.hometeamid )"+" INNER JOIN "+TeamsBase.BASENAME+" t2 "
 				+" ON t2.id = m.awayteamid )"
 				+" WHERE m."+MatchesBase.STATUS+" = '"+status+"'";
@@ -135,10 +135,11 @@ public class ServerRequest {
 			request += " AND m."+MatchesBase.LEAGUE+" = '"+league+"'";
 
 		if(teamName!=null)
-			request += "AND (t1."+TeamsBase.TEAM_NAME+" = '"+teamName+"'"
+			request += " AND (t1."+TeamsBase.TEAM_NAME+" = '"+teamName+"'"
 			+ " OR t2."+TeamsBase.TEAM_NAME+" = '"+teamName+"' )";
 
 		request+=" ;";
+		System.out.println("request : "+request);
 		ResultSet res = makeRequest(request);
 		return res;
 	}
@@ -210,9 +211,9 @@ public class ServerRequest {
 		return (res==1);
 	}
 
-	public static boolean createAccount(String newusername,String password,Date date,int region) throws SQLException{
+	public static boolean createAccount(String newusername,String password,Date date,int region,String mail) throws SQLException{
 		String request = "INSERT INTO "+UsersBase.BASENAME+" values ('"+newusername+
-				","+password+","+date.toString()+region+";";
+				"' , '"+password+"' ,"+date.toString()+region+",'"+mail+"' ;";
 		int res = makeUpdate(request);
 		return (res==1);
 
@@ -221,12 +222,21 @@ public class ServerRequest {
 	public static boolean insertBet(String username,int matchId,String bet) throws SQLException{
 		String request = "INSERT INTO "+BetsBase.BASENAME+" ("
 				+BetsBase.GAMBLER+","+BetsBase.MATCH_ID+","+BetsBase.BET
-				+"VALUES ("+username+","+matchId+","+bet+");";
+				+"VALUES ('"+username+"',"+matchId+","+bet+");";
 		int res = makeUpdate(request);
 		return (res==1);
 
 	}
 
+	public static boolean insertFriend(String username,String friend) throws SQLException{
+		String request = "INSERT INTO "+FollowsBase.BASENAME+" ("
+				+FollowsBase.NAME+","+FollowsBase.FOLLOW
+				+"VALUES ('"+username+"','"+friend+"');";
+		int res = makeUpdate(request);
+		return (res==1);
+
+	}
+	
 	public static ResultSet login(String username,String password) throws SQLException{
 		String loginRequest = "SELECT "+UsersBase.PASSWORD+" FROM "+UsersBase.BASENAME
 				+" WHERE "+UsersBase.NAME+"='"+username+"';";
