@@ -45,12 +45,16 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		if(Logger.logIn(username, password)) 
 			try{
-				
+				System.out.println("good password");
 				session.setAttribute(ATT_USER,Utils.getProfil(ServerRequest.getProfil(username)));
 				System.out.println("Login succeeded");
-			}catch(SQLException e){session.setAttribute(ATT_USER,null); System.out.println("caught exception");}
-		else
+			}catch(SQLException e){
+				System.out.println("error"+e.getMessage());
+				session.setAttribute(ATT_USER,null); System.out.println("caught exception");}
+		else{
+			System.out.println("wrong password");
 			session.setAttribute(ATT_USER,null);
+		}
 
 		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 		//response.sendRedirect("/");
