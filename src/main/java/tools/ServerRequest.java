@@ -139,6 +139,7 @@ public class ServerRequest {
 			+ " OR t2."+TeamsBase.TEAM_NAME+" = '"+teamName+"' )";
 
 		request+=" ;";
+		System.out.println("request : "+request);
 		ResultSet res = makeRequest(request);
 		return res;
 	}
