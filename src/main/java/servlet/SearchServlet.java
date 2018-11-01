@@ -65,12 +65,12 @@ public class SearchServlet extends HttpServlet {
 			listMatches = Utils.getMatches(
 					ServerRequest.getMatches(Integer.parseInt(day), league,
 							teamName, status,user.getName()));
-
+			System.out.println("ok");
 			PrintWriter out = response.getWriter();
 			Gson gson = new Gson();
 			System.out.println("RESULT\n"+gson.toJson(listMatches).toString());
 			out.write(gson.toJson(listMatches));
-		}catch(Exception e){}
+		}catch(Exception e){e.printStackTrace();}
 	}
 
 	public void sendBets(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
