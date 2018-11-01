@@ -64,14 +64,14 @@ public class ServerRequest {
 	public static ResultSet getProfil(String username)throws SQLException{
 		String pointRequest = "SELECT count(*) AS score"+
 				" FROM "+BetsBase.BASENAME+" b, "+MatchesBase.BASENAME+" m"+
-				"WHERE b."+BetsBase.MATCH_ID+" = m."+MatchesBase.MATCH_ID+"+ AND"+
-				"b."+BetsBase.GAMBLER+" ='"+username+"' AND"+
-				"m."+MatchesBase.STATUS+" ='FINISHED' AND"+
-				"b."+BetsBase.BET+" = m."+MatchesBase.RESULT;
+				" WHERE b."+BetsBase.MATCH_ID+" = m."+MatchesBase.MATCH_ID+"+ AND"+
+				" b."+BetsBase.GAMBLER+" ='"+username+"' AND"+
+				" m."+MatchesBase.STATUS+" ='FINISHED' AND"+
+				" b."+BetsBase.BET+" = m."+MatchesBase.RESULT;
 		String profilRequest = "SELECT "+UsersBase.NAME+", "+UsersBase.BIRTHDAY
 				+", "+UsersBase.REGION+",("+pointRequest+") as score"+
-				"FROM "+UsersBase.BASENAME +
-				"WHERE "+UsersBase.NAME+" = '"+username+"';";
+				" FROM "+UsersBase.BASENAME +
+				" WHERE "+UsersBase.NAME+" = '"+username+"';";
 
 		ResultSet res = makeRequest(profilRequest);
 		return res;
