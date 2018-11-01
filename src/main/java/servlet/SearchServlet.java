@@ -49,11 +49,11 @@ public class SearchServlet extends HttpServlet {
 		System.out.println("in /search/sendmatches()");
 		User user = (User)(request.getSession(false).getAttribute(LoginServlet.ATT_USER));
 		String day = request.getParameter("matchday");
-		System.out.println("day: -"+day+"-");
+		System.out.println("day: -"+day+"-"+" teamname -"+request.getParameter("teamname")+"-");
 		if(day.isEmpty())day="0";
 		String league = request.getParameter("league");
 		if(league=="")league=null;
-		String teamName = request.getParameter("temaname");
+		String teamName = request.getParameter("teamname");
 		if(teamName=="")teamName=null;
 		String status = request.getParameter("status");
 		if(status=="")status=null;

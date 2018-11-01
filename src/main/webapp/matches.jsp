@@ -61,8 +61,8 @@ $("#send").click(function(e){
             {
                 matchday: document.getElementById("matchday").value,
                 status: document.getElementById("status").value,
-                teamName: document.getElementById("teamname").value,
-                matchday: document.getElementById("league").value,
+                teamname: document.getElementById("teamname").value,
+                league: document.getElementById("league").value,
             }
             ,function( data ) {
                   $( "body" ).append( data )
