@@ -50,7 +50,7 @@
 </body>
 
 <script type="text/javascript">
-$("#send").click(function(e){ //suggestion de stations
+$("#send").click(function(e){ 
         $.get(
             "/search",
             {
