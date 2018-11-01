@@ -9,7 +9,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"
 	id="bootstrap-css">
 <link href="bootstrap/css/custom.css" rel="stylesheet">
@@ -48,9 +47,10 @@
 	</form>
 	<button id="send">rechercher</button>
 </body>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
 <script type="text/javascript">
-$("send").click(function(e){ 
+$("#send").click(function(e){ 
         console.log("bjr");
 });
 </script>
