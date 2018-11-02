@@ -174,12 +174,14 @@ public class ServerRequest {
 
 	public static boolean updateMatch(int matchId,String status
 			,String winner,int homeTeamg,int awayTeamg)throws SQLException{
-		String request = "UPDATE "+MatchesBase.BASENAME +"WHERE "+
-				"matchsid = "+matchId+" SET "+
-				"status = '"+status+"'"+
-				",hometeamgoal = "+homeTeamg+
-				",awayteamgoal = "+awayTeamg+
-				",result = '"+winner+"';";
+		String request = "UPDATE "+MatchesBase.BASENAME +" WHERE "+
+				" matchsid = "+matchId+" SET "+
+				" status = '"+status+"'"+
+				", hometeamgoal = "+homeTeamg+
+				", awayteamgoal = "+awayTeamg+
+				", result = '"+winner+"';";
+
+		System.out.println("updatematch : "+request);
 		int res = makeUpdate(request);
 		return (res==1);
 	}
@@ -196,10 +198,11 @@ public class ServerRequest {
 	public static boolean updateStanding(int id, String league,int playedGames,int won,int draw,
 			int lost,int points,int goalsFor,int goalsAgainst,int goalDifference,int position)throws SQLException{
 		String request = "UPDATE "+StandingsBase.BASENAME +
-				"WHERE "+"id = "+id+" AND "+" league = "+"'"+league+"'"+" SET "+
-				"playedGames = "+playedGames+",won = "+won+",draw = "+draw+
-				",lost = "+lost+",goalsFor = "+ goalsFor+",goalsAgainst = "+goalsAgainst+
-				",goalDifference = "+goalDifference+", position = "+position+");";
+				" WHERE "+" id = "+id+" AND "+" league = "+"'"+league+"'"+" SET "+
+				" playedGames = "+playedGames+",won = "+won+",draw = "+draw+
+				", lost = "+lost+",goalsFor = "+ goalsFor+", goalsAgainst = "+goalsAgainst+
+				", goalDifference = "+goalDifference+", position = "+position+");";
+		System.out.println("updatestandings: "+request);
 		int res = makeUpdate(request);
 		return (res==1);
 	}
