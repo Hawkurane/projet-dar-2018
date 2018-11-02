@@ -213,7 +213,8 @@ public class ServerRequest {
 
 	public static boolean createAccount(String newusername,String password,Date date,int region,String mail) throws SQLException{
 		String request = "INSERT INTO "+UsersBase.BASENAME+" values ('"+newusername+
-				"' , '"+password+"' ,"+date.toString()+region+",'"+mail+"' ;";
+				"' , '"+password+"' ,"+date.toString()+","+region+",'"+mail+"' ;";
+		System.out.println("request: "+request);
 		int res = makeUpdate(request);
 		return (res==1);
 
@@ -250,6 +251,7 @@ public class ServerRequest {
 	public static boolean existName(String newName) throws SQLException{
 		String request = "SELECT "+UsersBase.NAME+" FROM "+UsersBase.BASENAME
 				+" WHERE "+UsersBase.NAME+" = '"+newName+"';";
+		System.out.println("request : "+request);
 		ResultSet res = makeRequest(request);
 		return (res.getFetchSize()!=0);
 

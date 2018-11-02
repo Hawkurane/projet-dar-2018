@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,10 +19,10 @@ public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static final String VUE  = "/register.jsp";
 
-	public static final String CHAMP_REGISTER_NAME       = "username";
-	public static final String CHAMP_REGISTER_PWD        = "password";
-	public static final String CHAMP_REGISTER_PDW2       = "passwordconfirm";
-	public static final String CHAMP_REGISTER_MAIL       = "mail";
+	public static final String CHAMP_REGISTER_NAME       = "userregister";
+	public static final String CHAMP_REGISTER_PWD        = "pwdregister";
+	public static final String CHAMP_REGISTER_PDW2       = "pwdregisterconfirm";
+	public static final String CHAMP_REGISTER_MAIL       = "mailregister";
 	public static final String CHAMP_REGISTER_BIRTHDAY   = "birthday";
 	public static final String CHAMP_REGISTER_REGION     = "region";
 	/**
@@ -36,25 +37,26 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		String newusername = request.getParameter(CHAMP_REGISTER_NAME);
 		String password = request.getParameter(CHAMP_REGISTER_PWD);
 		String confirmpassword = request.getParameter(CHAMP_REGISTER_PDW2);
 		String mail = request.getParameter(CHAMP_REGISTER_MAIL);
 		Date date;
-		if(request.getParameter("birthdayYear")!=null)
-			date = Date.valueOf(request.getParameter("birthdayYear"));
+		if(request.getParameter(CHAMP_REGISTER_BIRTHDAY)!=null)
+			date = Date.valueOf(request.getParameter(CHAMP_REGISTER_BIRTHDAY));
 		else
 			date = Date.valueOf("1996-01-01");
 
 		int region;
-		if(request.getParameter("region")!=null)
-			region = Integer.parseInt(request.getParameter("region"));
+		if(request.getParameter(CHAMP_REGISTER_REGION)!=null)
+			region = Integer.parseInt(request.getParameter(CHAMP_REGISTER_REGION));
 		else
 			region = 75;
 
 		boolean b = false;
 		try{
-			if(!ServerRequest.existName(newusername) && password.equals(confirmpassword))
+			//if(!ServerRequest.existName(newusername) && password.equals(confirmpassword))
 				if(ServerRequest.createAccount(newusername,password,date,region,mail));
 
 		}catch(Exception e){}
