@@ -56,10 +56,10 @@ public class RegisterServlet extends HttpServlet {
 
 		boolean b = false;
 		try{
-			//if(!ServerRequest.existName(newusername) && password.equals(confirmpassword))
+			if(!ServerRequest.existName(newusername) && password.equals(confirmpassword))
 				if(ServerRequest.createAccount(newusername,password,date,region,mail));
 
-		}catch(Exception e){}
+		}catch(Exception e){e.printStackTrace();}
 		
 		request.setAttribute("register", b);
 
