@@ -149,7 +149,7 @@ public class CloneDataApi extends HttpServlet {
 
 	public static String updateMatchFromApi(String competitionCode,String dateFrom){
 		String dateTo = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-		String sURL = apiUrl+"competitions/"+competitionCode+"/matches?status=FINISHED?dateFrom="+dateFrom+"&dateTo="+dateTo;
+		String sURL = apiUrl+"competitions/"+competitionCode+"/matches?status=FINISHED&dateFrom="+dateFrom+"&dateTo="+dateTo;
 		try{
 			URL url = new URL(sURL);
 			HttpURLConnection con = (HttpURLConnection)url.openConnection();
