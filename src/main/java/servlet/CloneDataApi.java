@@ -38,13 +38,18 @@ public class CloneDataApi extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		response.setContentType("text/html");		
-
+		response.setContentType("text/html");	
+		String res ="";
+		if(request.getParameter("type").equals("cloneall"))
+			res = cloneAllFromApi();
+		else if(request.getParameter("type").equals("update"))
+			res = updateAllFromApi();
+		
 		PrintWriter out = response.getWriter();
 		out.println("<html><body>");
 		out.println("<h3>");
 
-		out.println("request:"+cloneAllFromApi());
+		out.println("request:"+res);
 		out.println("</h3>");
 		out.println("</body></html>");
 	}
@@ -52,9 +57,9 @@ public class CloneDataApi extends HttpServlet {
 	public static String cloneAllFromApi(){
 		String response = "";
 		for(String competitionCode : Utils.leaguesAvailable){
-			/*response=cloneMatchFromApi(competitionCode,dateFrom,dateTo);
+			response=cloneMatchFromApi(competitionCode,dateFrom,dateTo);
 			if(response!="")
-				return response;*/
+				return response;
 			response = cloneStandingsFromApi(competitionCode);
 			if(response!="")
 				return response;
@@ -65,7 +70,20 @@ public class CloneDataApi extends HttpServlet {
 		return "success!!";
 	}
 	
+	public static String updateAllFromApi(){
+		String response = "";
+		for(String competitionCode : Utils.leaguesAvailable){
+			response=updateMatchFromApi(competitionCode,dateFrom);
+			if(response!="")
+				return response;
+			response = updateStandingsFromApi(competitionCode);
+			if(response!="")
+				return response;
 
+		}
+		return "success!!";
+	}
+	
 
 	public static String cloneMatchFromApi(String competitionCode,String dateFrom, String dateTo){
 
@@ -129,7 +147,7 @@ public class CloneDataApi extends HttpServlet {
 		return "";
 	}
 
-	public static boolean updateMatchFromApi(String competitionCode,String dateFrom){
+	public static String updateMatchFromApi(String competitionCode,String dateFrom){
 		String dateTo = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 		String sURL = apiUrl+"competitions/"+competitionCode+"/matches?status=FINISHED?dateFrom="+dateFrom+"&dateTo="+dateTo;
 		try{
@@ -162,10 +180,13 @@ public class CloneDataApi extends HttpServlet {
 			}
 
 		}catch(Exception e){
-			return false;
+			StringWriter sw = new StringWriter();
+			PrintWriter pw = new PrintWriter(sw);
+			e.printStackTrace(pw);
+			return sw.toString();
 
 		}
-		return true;
+		return "";
 	}
 
 	public static String cloneStandingsFromApi(String competitionCode){
@@ -215,7 +236,7 @@ public class CloneDataApi extends HttpServlet {
 		return "";
 	}
 
-	public static boolean updateStandingsFromApi(String competitionCode){
+	public static String updateStandingsFromApi(String competitionCode){
 		String sURL = apiUrl+"competitions/"+competitionCode+"/standings";
 		// Connect to the URL using java's native library
 		try{
@@ -251,10 +272,13 @@ public class CloneDataApi extends HttpServlet {
 			}
 
 		}catch(Exception e){
-			return false;
+			StringWriter sw = new StringWriter();
+			PrintWriter pw = new PrintWriter(sw);
+			e.printStackTrace(pw);
+			return sw.toString();
 
 		}
-		return true;
+		return "";
 	}
 
 	public static String cloneTeamsFromApi(String competitionCode){
