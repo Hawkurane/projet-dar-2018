@@ -213,7 +213,7 @@ public class ServerRequest {
 
 	public static boolean createAccount(String newusername,String password,Date date,int region,String mail) throws SQLException{
 		String request = "INSERT INTO "+UsersBase.BASENAME+" values ('"+newusername+
-				"' , "+date.toString()+" ,"+region+",'"+password+"','"+mail+"' );";
+				"' , '"+date.toString()+"' ,"+region+",'"+password+"','"+mail+"' );";
 		System.out.println("request: "+request);
 		int res = makeUpdate(request);
 		return (res==1);
