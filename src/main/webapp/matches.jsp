@@ -87,30 +87,31 @@
 	
 </body>
 
-<script type="text/javascript">
 
-$("#send").click(function(e){ 
-	   console.log('sending request to /search -'
-			   +document.getElementById("matchday").value+'-'
-			   +document.getElementById("status").value+'- '
-			   +document.getElementById("teamname").value+'-'
-			   +document.getElementById("league").value)+'-';
-        $.get(
-            "/search",
-            {
-                matchday: document.getElementById("matchday").value,
-                status: document.getElementById("status").value,
-                teamname: document.getElementById("teamname").value,
-                league: document.getElementById("league").value,
-            }
-            ,function( data ) {
-                  //$( "body" ).append( data )
-                  console.log(data);
-                }, 'json' );
-        this.focus();
-});
-</script>
-    <script src="bootstrap/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="bootstrap/js/jquery-3.3.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+
+		$("#send").click(function(e){ 
+			console.log('sending request to /search -'
+					+document.getElementById("matchday").value+'-'
+					+document.getElementById("status").value+'- '
+					+document.getElementById("teamname").value+'-'
+					+document.getElementById("league").value)+'-';
+				$.get(
+					"/search",
+					{
+						matchday: document.getElementById("matchday").value,
+						status: document.getElementById("status").value,
+						teamname: document.getElementById("teamname").value,
+						league: document.getElementById("league").value,
+					}
+					,function( data ) {
+						//$( "body" ).append( data )
+						console.log(data);
+						}, 'json' );
+				this.focus();
+		});
+	</script>
 </html>
 
