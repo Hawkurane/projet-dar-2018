@@ -41,7 +41,11 @@
                 <header>
                     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top py-1">
                         <a class="navbar-brand" href="/"> Bookmakers </a>
-
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="matches.jsp">Matches</a>
+                            </li>
+                        </ul>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
                                 <form method="post" action="logout">
