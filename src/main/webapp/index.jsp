@@ -20,19 +20,32 @@
         <c:choose>
             <c:when test="${!empty sessionScope.user}">
 
-                <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <header>
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top py-1">
                     <a class="navbar-brand" href="/"> Bookmakers </a>
-
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="matches.jsp">Matches</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Rankings</a>
+                        </li>
+                        
+                    </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <form method="post" action="logout">
                                 <button type="submit" class="btn btn-dark btn-outline-light btn-sm">
-                                <span class="oi oi-account-logout"></span> Logout
+                                    <span class="oi oi-account-logout"></span> Logout
                                 </button>
                             </form>
                         </li>
                     </ul>
                 </nav>
+            </header>
             
                 
 
