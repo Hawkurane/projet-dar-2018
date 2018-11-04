@@ -25,7 +25,7 @@
                     <a class="navbar-brand" href="/"> Bookmakers </a>
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="matches.jsp">Matches</a>
+                            <a class="nav-link" href="matches">Matches</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#">Profile</a>

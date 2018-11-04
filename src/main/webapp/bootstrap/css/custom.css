@@ -25,8 +25,8 @@ body,input{
   color:#4c4c4c;
 }
 body{
-  background-color:#292931;
-  background:url(https://wallpapercave.com/wp/5DMx8Xb.jpg)  no-repeat center center; 
+  background-color: black;
+
 }
 form{
   margin: 10px 35px;
@@ -114,3 +114,9 @@ input[type=submit]:hover{
 .crtacc{
   text-align: center;
 }
+
+#querycontainer {
+  background-color: white;
+  padding: 30px;
+}
+

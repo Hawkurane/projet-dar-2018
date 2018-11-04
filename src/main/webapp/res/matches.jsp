@@ -49,62 +49,43 @@
 		<div class="row" id="querycontainer">
 			<div class="col-sm-12">
 				<form id="matches-form">
-
-						<div class="form-group row">
-							<label class="col-sm-2 col-form-label" for="matchday">Day n° </label>
-							<div class="col-sm-10">
-								<select class="form-control" id="matchday" name="matchday">
-									<option value=""></option>
-									<c:forEach items="${ form.matchday }" var="matchday">
-									<option value="${matchday}">${matchday}</option>
-									</c:forEach>
-								</select>
-							</div>
-						</div>
-
-						<div class="form-group row">
-							<label class="col-sm-2 col-form-label" for="status">Type of match:</label>
-							<div class="col-sm-10">
-								<select class="form-control" id="status" name="status">
-									<c:forEach items="${ form.status }" var="status">
-										<option value="${status}">${status}</option>
-									</c:forEach>
-								</select>
-							</div>
-						</div>
-
-						<div class="form-group row">
-							<label class="col-sm-2 col-form-label" for="teamName">Team name:</label>
-							<div class="col-sm-10">
-								<select class="form-control" id="teamName" name="teamName">
-								<option value=""></option>
-								<c:forEach items="${ form.teamName }" var="teamName">
-									<option value="${teamName}">${teamName}</option>
-								</c:forEach>
-								</select>
-							</div>
-						</div>
-
-						<div class="form-group row">
-							<label class="col-sm-2 col-form-label" for="league">League:</label>
-							<div class="col-sm-10">
-								<select class="form-control" id="league" name="league">
-									<option value=""></option>
-									<c:forEach items="${ form.league }" var="league">
-										<option value="${league}">${league}</option>
-									</c:forEach>
-								</select>
-							</div>
-						</div>
+					<label for="matchday">Journées Numéro : </label>
+					<select name="matchday" id="matchday">
+						<option value=""></option>
+							<c:forEach items="${ form.matchday }" var="matchday">
+								<option value="${matchday}">${matchday}</option>
+							</c:forEach>
+					</select>
 					
-					<button type="button" class="btn btn-primary" id="send"> Search </button>
+					<label for="status">type de match : </label>
+					<select name="status" id="status">
+					<c:forEach items="${ form.status }" var="status">
+						<option value="${status}">${status}</option>
+					</c:forEach>
+					</select>
+					
+					<label for="teamName">Nom d'equipe : </label>
+					<select name="teamName" id="teamname">
+					<option value=""></option>
+					<c:forEach items="${ form.teamName }" var="teamName">
+						<option value="${teamName}">${teamName}</option>
+					</c:forEach>
+					</select>
+					
+					<label for="league">Ligue : </label>
+					<select name="league" id="league">
+					<option value=""></option>
+					<c:forEach items="${ form.league }" var="league">
+						<option value="${league}">${league}</option>
+					</c:forEach>
+					</select>
 				</form>
-				<!--<button id="send">rechercher</button>-->
+				<button id="send">rechercher</button>
 			</div>
 		</div>
 	</div>
 
-	 <div class="row" id="resultContainer">
+	 <div class="row">
 		
 	 </div>
 	
@@ -130,10 +111,7 @@
 					,function( data ) {
 						//$( "body" ).append( data )
 						console.log(data);
-						$("resultContainer").html(data);
-					}
-					,'json'
-				);
+						}, 'json' );
 				this.focus();
 		});
 	</script>
