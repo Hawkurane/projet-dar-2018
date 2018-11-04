@@ -24,6 +24,7 @@ body,input{
   font-size:18px;
   color:#4c4c4c;
 }
+
 body{
   background-color: black;
 
@@ -118,5 +119,9 @@ input[type=submit]:hover{
 #querycontainer {
   background-color: white;
   padding: 30px;
+}
+
+#resultContainer {
+  background-color: white;
 }
 

@@ -130,7 +130,7 @@
 					,function( data ) {
 						//$( "body" ).append( data )
 						console.log(data);
-						$("#resultContainer").html(data);
+						document.getElementById("resultContainer").innerHTML = myJSON;
 					}
 					,'json'
 				);
