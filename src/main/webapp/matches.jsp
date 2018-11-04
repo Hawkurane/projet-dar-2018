@@ -109,10 +109,10 @@
 	 </div>
 	
 </body>
-
+	<script src="bootstrap/js/jquery-3.3.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 
 	<script type="text/javascript">
-
 		$("#send").click(function(e){ 
 			console.log('sending request to /search -'
 					+document.getElementById("matchday").value+'-'
