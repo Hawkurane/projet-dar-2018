@@ -52,7 +52,7 @@
 				<form id="matches-form">
 
 						<div class="form-group row">
-							<label class="col-sm-2 col-form-label" for="matchday">Day n° </label>
+							<label class="col-sm-2 col-form-label" for="matchday">Day n°: </label>
 							<div class="col-sm-10">
 								<select class="form-control" id="matchday" name="matchday">
 									<option value=""></option>
@@ -104,10 +104,11 @@
 			</div>
 		</div>
 	</div>
-
+	<!--
 	 <div class="row" id="resultContainer">
 		
 	 </div>
+	 -->
 	
 </body>
 	<script src="bootstrap/js/jquery-3.3.1.min.js"></script>
@@ -138,7 +139,8 @@
 
 						data.forEach(function(element){
 							//var html_to_insert = "<div class='row'><div class='col-sm-12'>"+JSON.stringify(element)+"</div></div> <hr>";
-							var html_to_insert = "<hr>\n";
+							var html_to_insert = "<hr class='my-4'>\n";
+							html_to_insert    += "<div class='row'>";
 							html_to_insert    += "<div class='row'>";
 							html_to_insert    += "<div class='col-sm-2'>Match n°"+element.matchId+".</div>";
 							html_to_insert    += "<div class='col-sm-2'>Day n°"+element.matchDay+".</div>";
@@ -149,11 +151,12 @@
 							html_to_insert    += "<div class='col-sm-2'>vs.</div>";
 							html_to_insert    += "<div class='col-sm-5'>"+element.awayTeamName+"</div>";
 							html_to_insert    += "</div>";
+							html_to_insert    += "</div>";
 							
-							document.getElementById("resultContainer").insertAdjacentHTML('beforeend', html_to_insert);
+							document.getElementById("querycontainer").insertAdjacentHTML('beforeend', html_to_insert);
 						});
 
-						
+
 
 					}
 					,'json'
