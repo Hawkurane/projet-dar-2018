@@ -123,5 +123,6 @@ input[type=submit]:hover{
 
 #resultContainer {
   background-color: white;
+  padding: 30px;
 }
 

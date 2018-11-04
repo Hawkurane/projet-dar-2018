@@ -137,7 +137,7 @@
 						*/
 
 						data.forEach(function(element){
-							var html_to_insert = "<div class='row'>"+JSON.stringify(element)+"</div>";
+							var html_to_insert = "<div class='row'><div class='col-sm-12'>"+JSON.stringify(element)+"</div></div>";
 							document.getElementById("resultContainer").insertAdjacentHTML('beforeend', html_to_insert);
 						});
 
