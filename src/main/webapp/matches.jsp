@@ -131,8 +131,16 @@
 					,function( data ) {
 						//$( "body" ).append( data )
 						console.log(data);
+						/*
 						var myJSON = JSON.stringify(data);
 						document.getElementById("resultContainer").innerHTML = myJSON;
+						*/
+
+						data.forEach(function(element){
+							var html_to_insert = "<div class='row'>"+JSON.stringify(element)+"</div>";
+							document.getElementbyId("resultContainer").insertAdjacentHTML('beforeend', html_to_insert);
+						});
+
 					}
 					,'json'
 				);
