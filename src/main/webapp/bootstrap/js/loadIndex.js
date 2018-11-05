@@ -14,13 +14,13 @@ $.get(
             if(element.status!=='FINISHED')
                 color = 'bg-warning';
             else
-                if(element.winner===element.bet)
+                if(element.winner==element.bet)
                     color='bg-success';
                 else
                     color='bg-danger';
             var html_to_insert = `
             <div class="row">
-                <div class="col-sm card text-white ${color} mb-3">
+                <div class="card text-white ${color} mb-3">
                     <div class="card-header">
                         [${element.league}] Match n°${element.matchId}, Day n°${element.matchDay}, ${element.time} (${element.status})
                     </div>
