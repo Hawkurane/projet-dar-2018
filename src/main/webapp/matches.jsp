@@ -20,7 +20,7 @@
 <body>
 	
     <header>
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top py-1">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top py-1">
             <a class="navbar-brand" href="/"> Bookmakers </a>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -46,7 +46,7 @@
           </nav>
      </header>
 
-	<div class="container" style="margin-top:80px">
+	<div class="container" >
 		<div class="row" id="querycontainer">
 			<div class="col-sm-12">
 				<form id="matches-form">

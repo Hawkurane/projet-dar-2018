@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute(ATT_USER,Utils.getProfil(ServerRequest.getProfil(username)));
 				System.out.println("Login succeeded");
 			}catch(SQLException e){
-				System.out.println("ERROE: ");
+				System.out.println("ERROR: ");
 				e.printStackTrace();
 				session.setAttribute(ATT_USER,null); System.out.println("caught exception");}
 		else{
@@ -57,14 +57,9 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute(ATT_USER,null);
 		}
 
-		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
-		//response.sendRedirect("/");
+		//this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+		response.sendRedirect("/");
 	}
 
-
-
-	//TODO
-	//creer un objet user et le retourner via session
-	//puis faire de meme avec getmatchs, classement, etc...
 
 }
