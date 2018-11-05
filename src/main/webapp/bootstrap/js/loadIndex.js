@@ -14,10 +14,10 @@ $.get(
             <div class="row" style="background: white; margin-bot:10px;">
                 <div class="col-sm card">
                     <div class="card-header">
-                        Math n° $element.matchId, Day n° $element.matchDay, $element.time ($element.status)
+                        Math n° ${element.matchId}, Day n° ${element.matchDay}, ${element.time} (${element.status})
                     </div>
                     <div class="card-body">
-                        <p class="card-text">$element.homeTeamName vs $element.awayTeamName</p>
+                        <p class="card-text">${element.homeTeamName} vs ${element.awayTeamName}</p>
                     </div>
                 </div>
             </div>`;
