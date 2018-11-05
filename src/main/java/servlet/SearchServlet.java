@@ -101,7 +101,7 @@ public class SearchServlet extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			Gson gson = new Gson();
 			out.write(gson.toJson(listMatches));
-		}catch(Exception e){}
+		}catch(Exception e){e.printStackTrace();}
 	}
 
 	public void sendUsers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

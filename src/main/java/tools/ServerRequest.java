@@ -108,6 +108,7 @@ public class ServerRequest {
 
 
 		request+=" ;";
+		System.out.println("req: "+request);
 		ResultSet res = makeRequest(request);
 		return res;
 	}
@@ -181,7 +182,7 @@ public class ServerRequest {
 				", result = '"+winner+"'"+
 				" WHERE "+" matchsid = "+matchId+";";
 
-		System.out.println("updatematch : "+request);
+		//System.out.println("updatematch : "+request);
 		int res = makeUpdate(request);
 		return (res==1);
 	}
@@ -202,7 +203,7 @@ public class ServerRequest {
 				", lost = "+lost+",goalsFor = "+ goalsFor+", goalsAgainst = "+goalsAgainst+
 				", goalDifference = "+goalDifference+", position = "+position+
 				" WHERE "+" id = "+id+" AND "+" league = "+"'"+league+"'";
-		System.out.println("updatestandings: "+request);
+		//System.out.println("updatestandings: "+request);
 		int res = makeUpdate(request);
 		return (res==1);
 	}
