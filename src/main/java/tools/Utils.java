@@ -47,7 +47,7 @@ public class Utils {
 		ResultSet res = profilRequest;
 			res.next();
 			return new User(res.getString(UsersBase.NAME),res.getTimestamp(UsersBase.BIRTHDAY).toString()
-					,res.getInt(UsersBase.REGION),res.getInt("score"));
+					,res.getInt(UsersBase.REGION),res.getInt("score"),res.getInt("betlost"),res.getInt("betscheduled"));
 		
 
 	}

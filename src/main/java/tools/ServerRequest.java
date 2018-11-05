@@ -68,11 +68,28 @@ public class ServerRequest {
 				" b."+BetsBase.GAMBLER+" ='"+username+"' AND"+
 				" m."+MatchesBase.STATUS+" ='FINISHED' AND"+
 				" b."+BetsBase.BET+" = m."+MatchesBase.RESULT;
+		
+		String lostBetRequest = "SELECT count(*) AS betlost"+
+				" FROM "+BetsBase.BASENAME+" b, "+MatchesBase.BASENAME+" m"+
+				" WHERE b."+BetsBase.MATCH_ID+" = m."+MatchesBase.MATCH_ID+" AND"+
+				" b."+BetsBase.GAMBLER+" ='"+username+"' AND"+
+				" m."+MatchesBase.STATUS+" ='FINISHED' AND"+
+				" b."+BetsBase.BET+" != m."+MatchesBase.RESULT;
+		
+		String scheduledBetRequest = "SELECT count(*) AS betscheduled"+
+				" FROM "+BetsBase.BASENAME+" b, "+MatchesBase.BASENAME+" m"+
+				" WHERE b."+BetsBase.MATCH_ID+" = m."+MatchesBase.MATCH_ID+" AND"+
+				" b."+BetsBase.GAMBLER+" ='"+username+"' AND"+
+				" m."+MatchesBase.STATUS+" !='FINISHED' ";
+		
+		
 		String profilRequest = "SELECT "+UsersBase.NAME+", "+UsersBase.BIRTHDAY
-				+", "+UsersBase.REGION+",("+pointRequest+") as score"+
+				+", "+UsersBase.REGION+",("+pointRequest+") as score"
+				+" ,( "+lostBetRequest+" ) as betlost"
+				+" ,( "+scheduledBetRequest+" ) as betscheduled"+
 				" FROM "+UsersBase.BASENAME +
 				" WHERE "+UsersBase.NAME+" = '"+username+"';";
-
+		System.out.println("req: "+profilRequest);
 		ResultSet res = makeRequest(profilRequest);
 		return res;
 
@@ -235,7 +252,7 @@ public class ServerRequest {
 
 	public static boolean insertFriend(String username,String friend) throws SQLException{
 		String request = "INSERT INTO "+FollowsBase.BASENAME+" ("
-				+FollowsBase.NAME+","+FollowsBase.FOLLOW
+				+FollowsBase.NAME+","+FollowsBase.FOLLOW+") "
 				+"VALUES ('"+username+"','"+friend+"');";
 		int res = makeUpdate(request);
 		return (res==1);

@@ -6,13 +6,17 @@ public class User {
 	private String birthday;
 	private int region;
 	private int score;
+	private int betLost;
+	private int betScheduled;
 
 	
-	public User(String n,String b, int r, int s){
+	public User(String n,String b, int r, int s,int lose, int scheduled){
 		name = n;
 		birthday= b;
 		region = r; 
 		score = s;
+		betLost = lose;
+		betScheduled = scheduled;
 	}
 	
 	public String getName() {
@@ -32,5 +36,13 @@ public class User {
 
 	public int getScore() {
 		return score;
+	}
+	
+	public int getBetLose() {
+		return betLost;
+	}
+
+	public int getBetScheduled() {
+		return betScheduled;
 	}
 }
