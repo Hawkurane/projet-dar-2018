@@ -22,7 +22,7 @@ $.get(
                 </div>
             </div>`;
 
-            doculent.getElementById("betscontainer").insertAdjacentHTML('beforeend', html_to_insert);
+            document.getElementById("betscontainer").insertAdjacentHTML('beforeend', html_to_insert);
         });
     }
 );
