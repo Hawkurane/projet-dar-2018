@@ -11,6 +11,7 @@ $.get(
     function(data){
         data.forEach(function(element){
             var color;
+            console.log(element);
             if(element.status!=='FINISHED')
                 color = 'bg-warning';
             else
