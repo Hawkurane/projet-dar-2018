@@ -16,7 +16,7 @@ public class Match {
 	private int homeTeamg;
 	private int awayTeamg;
 	private String league;
-	private String bet;
+	private String bet; // WIN DRAW or LOSE
 	
 
 	
