@@ -55,7 +55,7 @@
                                             <div class="card-body">                                    
                                                 <p class="card-text">
                                                     Score: ${sessionScope.user.score} <br>
-                                                    MORE WILL COME HERE BET LOSTS <br>
+                                                    Failures: ${sessionScope.user.betLost} <br>
                                                     On Hold: ${sessionScope.user.betScheduled} <br>
 
                                                 </p>
