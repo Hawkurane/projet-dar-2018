@@ -50,12 +50,15 @@
                                     <div class="col-sm-2">
                                         <div class="card" style="width: 18rem; margin-top: 20px">
                                             <div class="card-header">
-                                                Isiaka SANOU
+                                                ${sessionScope.user.name}
                                             </div>
                                             <div class="card-body">                                    
-                                                Title: Prophet <br>
-                                                Rank: #1 <br>
-                                                Delivery: 809 (96.6%)
+                                                <p class="card-text">
+                                                    Score: ${sessionScope.user.score} <br>
+                                                    Failures: ${sessionScope.user.betLost} <br>
+                                                    On Hold: ${sessionScope.user.betScheduled} <br>
+
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -64,6 +67,12 @@
                             
                             
                         </header>
+
+                        <div class="container">
+                            <div id="betscontainer">
+
+                            </div>
+                        </div>
             
                 
 
