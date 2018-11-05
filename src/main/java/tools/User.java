@@ -38,7 +38,7 @@ public class User {
 		return score;
 	}
 	
-	public int getBetLose() {
+	public int getBetLost() {
 		return betLost;
 	}
 

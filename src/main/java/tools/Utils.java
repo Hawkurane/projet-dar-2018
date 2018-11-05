@@ -46,6 +46,7 @@ public class Utils {
 	public static User getProfil(ResultSet profilRequest) throws SQLException{
 		ResultSet res = profilRequest;
 			res.next();
+			System.out.println("betlost: "+res.getInt("betlost"));
 			return new User(res.getString(UsersBase.NAME),res.getTimestamp(UsersBase.BIRTHDAY).toString()
 					,res.getInt(UsersBase.REGION),res.getInt("score"),res.getInt("betlost"),res.getInt("betscheduled"));
 		
