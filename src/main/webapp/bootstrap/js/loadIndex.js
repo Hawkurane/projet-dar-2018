@@ -5,7 +5,8 @@ $.get(
         status: "",
         teamname: "",
         league: "",
-        searchType: "bets"
+        searchType: "bets",
+        won: ""
     },
     function(data){
         console.log(data);

@@ -87,7 +87,7 @@ public class SearchServlet extends HttpServlet {
 		if(day.isEmpty())day="0";
 		String league = request.getParameter("league");
 		if(league=="")league=null;
-		String teamName = request.getParameter("temaname");
+		String teamName = request.getParameter("teamname");
 		if(teamName=="")teamName=null;
 		String status = request.getParameter("status");
 		if(status=="")status=null;

@@ -18,7 +18,9 @@
 
 </head>
 <body>
-	
+	<c:if test="${empty sessionScope.user}">
+		<c:redirect url="/"/>
+	</c:if>
     <header>
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top py-1">
             <a class="navbar-brand" href="/"> Bookmakers </a>
