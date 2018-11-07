@@ -26,7 +26,14 @@ $.get(
                         [${element.league}] Match n°${element.matchId}, Day n°${element.matchDay}, ${element.time} (${element.status})
                     </div>
                     <div class="card-body">
-                        <p class="card-text">${element.homeTeamName} ${element.homeTeamg} - ${element.awayTeamg} ${element.awayTeamName}</p>
+                        <div class="media">
+                            <img class="mr-3" src="${element.homeTeamLogoUrl}" alt="Home team Logo">
+                            <div class="media-body">
+                                <p class="card-text">${element.homeTeamName} ${element.homeTeamg} - ${element.awayTeamg} ${element.awayTeamName}</p>
+                            </div>
+                            <img class="ml-3" src="${element.awayTeamLogoUrl}" alt="Home team Logo">
+
+                        </div>
                     </div>
                 </div>
             </div>`;
