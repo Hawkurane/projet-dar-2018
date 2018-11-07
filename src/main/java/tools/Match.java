@@ -25,6 +25,8 @@ public class Match {
 			String w,int homeg,int awayg,String l,String b){
 		matchId=id;
 		matchDay=mday;
+		homeTeamLogoUrl= homeUrl;
+		awayTeamLogoUrl=awayUrl;
 		time = t;
 		status = sta;
 		homeTeamName = homeName;
