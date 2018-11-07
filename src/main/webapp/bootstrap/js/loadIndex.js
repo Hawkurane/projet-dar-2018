@@ -27,11 +27,11 @@ $.get(
                     </div>
                     <div class="card-body">
                         <div class="media">
-                            <img class="mr-3" src="${element.homeTeamLogoUrl}" alt="Home team Logo">
+                            <img class="align-self-center mr-3 img-thumbnail rounded-circle" src="${element.homeTeamLogoUrl}" alt="Home team Logo">
                             <div class="media-body">
                                 <p class="card-text">${element.homeTeamName} ${element.homeTeamg} - ${element.awayTeamg} ${element.awayTeamName}</p>
                             </div>
-                            <img class="ml-3" src="${element.awayTeamLogoUrl}" alt="Home team Logo">
+                            <img class="align-self-center ml-3 img-thumbnail rounded-circle" src="${element.awayTeamLogoUrl}" alt="Home team Logo">
 
                         </div>
                     </div>
