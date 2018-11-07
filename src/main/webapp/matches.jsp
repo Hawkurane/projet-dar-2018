@@ -153,8 +153,19 @@
 							html_to_insert    += "<div class='col-sm-5'>"+element.awayTeamName+"</div>";
 							html_to_insert    += "</div>";
 							html_to_insert    += "</div>";
-							
-							document.getElementById("querycontainer").insertAdjacentHTML('beforeend', html_to_insert);
+
+							var html_to_insert = `
+													<div class='row'>
+														<div class="card">
+															<div class="card-header">
+																[${element.league}] Match n°${element.matchId}, Day n°${element.matchDay}, ${element.time} (${element.status})
+															</div>
+															<div class="card-body">
+																<p class="card-text">${element.homeTeamName} ${element.homeTeamg} - ${element.awayTeamg} ${element.awayTeamName}</p>
+															</div>
+														</div>
+													</div>`;
+							document.getElementById("querycontainer").innerHTML(html_to_insert);
 						});
 
 

@@ -21,8 +21,8 @@ $.get(
                     color='bg-danger';
             var html_to_insert = `
             <div class="row">
-                <div class="card text-white ${color} mb-3">
-                    <div class="card-header">
+                <div class="card">
+                    <div class="card-header text-white ${color} mb-3">
                         [${element.league}] Match n°${element.matchId}, Day n°${element.matchDay}, ${element.time} (${element.status})
                     </div>
                     <div class="card-body">
