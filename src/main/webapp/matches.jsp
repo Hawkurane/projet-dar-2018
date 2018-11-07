@@ -165,7 +165,7 @@
 															</div>
 														</div>
 													</div>`;
-							document.getElementById("querycontainer").innerHTML(html_to_insert);
+							document.getElementById("querycontainer").innerHTML = html_to_insert;
 						});
 
 
