@@ -166,8 +166,9 @@
 															</div>
 														</div>
 													</div>`;
-							document.getElementById("querycontainer").insertAdjacentHTML('beforeend', html_to_insert);
 							*/
+							document.getElementById("querycontainer").insertAdjacentHTML('beforeend', html_to_insert);
+
 						});
 
 
