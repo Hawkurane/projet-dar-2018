@@ -177,7 +177,7 @@ public class ServerRequest {
 		String request = "SELECT * "+
 				"FROM ("+"("+StandingsBase.BASENAME+" s "+" INNER JOIN "+TeamsBase.BASENAME+" t "
 				+" ON s."+StandingsBase.TEAM_ID+" = t."+TeamsBase.TEAM_ID+" )"
-				+" WHERE s."+StandingsBase.LEAGUE+" = '"+league+"';";
+				+" WHERE s."+StandingsBase.LEAGUE+" = '"+league+"' ORDER BY points DESC;";
 
 		ResultSet res = makeRequest(request);
 		return res;
@@ -216,7 +216,7 @@ public class ServerRequest {
 	public static boolean insertStanding(int id, String league,int playedGames,int won,int draw,
 			int lost,int points,int goalsFor,int goalsAgainst,int goalDifference,int position)throws SQLException{
 		String request = "INSERT INTO "+StandingsBase.BASENAME +" values ("+id+",'"+league+"',"+
-				playedGames+","+won+","+draw+","+lost+","+
+				playedGames+","+won+","+draw+","+lost+","+","+points+
 				goalsFor+","+goalsAgainst+","+goalDifference+","+position+");";
 		int res = makeUpdate(request);
 		return (res==1);

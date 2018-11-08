@@ -7,6 +7,7 @@ public class StandingsBase {
 	public static final String LEAGUE = "league";
 	public static final String PLAYED_GAMES = "playedgames";
 	public static final String WON = "won";
+	public static final String DRAW = "draw";
 	public static final String LOST = "lost";
 	public static final String POINTS = "points";
 	public static final String GOALS_FOR = "goalsfor";

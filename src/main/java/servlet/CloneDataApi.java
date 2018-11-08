@@ -30,7 +30,6 @@ import tools.Utils;
 		urlPatterns = {"/cloneData"})
 public class CloneDataApi extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final int sleepTime = 500;
 	private static final String apiUrl = "http://api.football-data.org/v2/";
 	private static final String apiKey = "d4ea1cbe81c243299546f1cfbfa9b211";
 	private static final String dateFrom = "2018-10-01";

@@ -53,6 +53,17 @@ public class Utils {
 
 	}
 	
+	public static Standing getStanding(ResultSet standingRequest) throws SQLException{
+		ResultSet res = standingRequest;
+			res.next();
+			return new Standing(res.getString(TeamsBase.TEAM_NAME), res.getString(TeamsBase.TEAM_LOGO),
+					res.getInt(StandingsBase.POINTS), res.getInt(StandingsBase.PLAYED_GAMES), 
+					res.getInt(StandingsBase.WON), res.getInt(StandingsBase.LOST), res.getInt(StandingsBase.DRAW),
+					res.getInt(StandingsBase.GOALS_FOR), res.getInt(StandingsBase.GOALS_AGAINST), res.getString(StandingsBase.LEAGUE),
+					res.getInt(StandingsBase.GOAL_DIFF), res.getInt(StandingsBase.POSIITON));
+
+	}
+	
 
 	public static Match[] getMatches(ResultSet matchesRequest) throws SQLException{
 
