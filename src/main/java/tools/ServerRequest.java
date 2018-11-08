@@ -95,7 +95,7 @@ public class ServerRequest {
 				+", "+UsersBase.REGION+",("+pointRequest+") as score"
 				+" ,( "+lostBetRequest+" ) as betlost"
 				+" ,( "+scheduledBetRequest+" ) as betscheduled"
-				+" ,'( "+rankRequest+" ) as rank"+
+				+" ,( "+rankRequest+" ) as rank"+
 				" FROM "+UsersBase.BASENAME +
 				" WHERE "+UsersBase.NAME+" = '"+username+"';";
 		System.out.println("req: "+profilRequest);
