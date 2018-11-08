@@ -8,15 +8,17 @@ public class User {
 	private int score;
 	private int betLost;
 	private int betScheduled;
+	private int rank;
 
 	
-	public User(String n,String b, int r, int s,int lose, int scheduled){
+	public User(String n,String b, int r, int s,int lose, int scheduled,int rank){
 		name = n;
 		birthday= b;
 		region = r; 
 		score = s;
 		betLost = lose;
 		betScheduled = scheduled;
+		this.rank = rank;
 	}
 	
 	public String getName() {
@@ -44,5 +46,9 @@ public class User {
 
 	public int getBetScheduled() {
 		return betScheduled;
+	}
+	
+	public int getRank() {
+		return rank;
 	}
 }

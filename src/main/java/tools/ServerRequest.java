@@ -62,6 +62,14 @@ public class ServerRequest {
 	}
 
 	public static ResultSet getProfil(String username)throws SQLException{
+		String rankRequest = "SELECT * FROM "
+				+"(SELECT *,RANK() OVER(ORDER BY score DESC) FROM "
+				+"(SELECT u."+UsersBase.NAME+", (SELECT COUNT(*) "
+						+ "FROM "+BetsBase.BASENAME+" b , "+MatchesBase.BASENAME+" m WHERE "
+						+"b."+BetsBase.MATCH_ID+"=m."+MatchesBase.MATCH_ID
+						+" and m."+MatchesBase.STATUS+"='FINISHED' and b."+BetsBase.GAMBLER+" = u."+UsersBase.NAME
+						+" and b."+BetsBase.BET+" = m."+MatchesBase.RESULT+") as score FROM"
+								+" "+UsersBase.BASENAME+" u) as scores) as ranking WHERE name = '"+username+"';";
 		String pointRequest = "SELECT count(*) AS score"+
 				" FROM "+BetsBase.BASENAME+" b, "+MatchesBase.BASENAME+" m"+
 				" WHERE b."+BetsBase.MATCH_ID+" = m."+MatchesBase.MATCH_ID+" AND"+
@@ -86,7 +94,8 @@ public class ServerRequest {
 		String profilRequest = "SELECT "+UsersBase.NAME+", "+UsersBase.BIRTHDAY
 				+", "+UsersBase.REGION+",("+pointRequest+") as score"
 				+" ,( "+lostBetRequest+" ) as betlost"
-				+" ,( "+scheduledBetRequest+" ) as betscheduled"+
+				+" ,( "+scheduledBetRequest+" ) as betscheduled"
+				+" ,'"+rankRequest+" ) as rank"+
 				" FROM "+UsersBase.BASENAME +
 				" WHERE "+UsersBase.NAME+" = '"+username+"';";
 		System.out.println("req: "+profilRequest);
