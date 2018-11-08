@@ -227,7 +227,7 @@ public class ServerRequest {
 		String request = "UPDATE "+StandingsBase.BASENAME +
 				" SET "+" playedGames = "+playedGames+",won = "+won+",draw = "+draw+
 				", lost = "+lost+",goalsFor = "+ goalsFor+", goalsAgainst = "+goalsAgainst+
-				", goalDifference = "+goalDifference+", position = "+position+
+				", goalDifference = "+goalDifference+", position = "+position+" points = "+points+
 				" WHERE "+" id = "+id+" AND "+" league = "+"'"+league+"'";
 		//System.out.println("updatestandings: "+request);
 		int res = makeUpdate(request);
