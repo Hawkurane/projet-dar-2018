@@ -141,7 +141,8 @@
 
 						data.forEach(function(element){
 							//var html_to_insert = "<div class='row'><div class='col-sm-12'>"+JSON.stringify(element)+"</div></div> <hr>";
-							var html_to_insert = "<div class='row'>";
+							
+							/*var html_to_insert = "<div class='row'>";
 							html_to_insert    += "<div class='row col-sm-12'>";
 							html_to_insert    += "<div class='col-sm-2'>Match n°"+element.matchId+".</div>";
 							html_to_insert    += "<div class='col-sm-2'>Day n°"+element.matchDay+".</div>";
@@ -152,9 +153,9 @@
 							html_to_insert    += "<div class='col-sm-2'>vs.</div>";
 							html_to_insert    += "<div class='col-sm-5'>"+element.awayTeamName+"</div>";
 							html_to_insert    += "</div>";
-							html_to_insert    += "</div>";
+							html_to_insert    += "</div>";*/
 							
-							/*
+							
 							var html_to_insert = `
 													<div class='row'>
 														<div class="card">
@@ -166,7 +167,7 @@
 															</div>
 														</div>
 													</div>`;
-							*/
+							
 							document.getElementById("querycontainer").insertAdjacentHTML('beforeend', html_to_insert);
 
 						});
