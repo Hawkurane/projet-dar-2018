@@ -143,7 +143,7 @@
 							//var html_to_insert = "<div class='row'><div class='col-sm-12'>"+JSON.stringify(element)+"</div></div> <hr>";
 							console.log(element);
 
-							var color = 'bg-success';
+							
 							/*var html_to_insert = "<div class='row'>";
 							html_to_insert    += "<div class='row col-sm-12'>";
 							html_to_insert    += "<div class='col-sm-2'>Match n°"+element.matchId+".</div>";
@@ -161,7 +161,7 @@
 							var html_to_insert = `
 													<div class='row'>
 														<div class="card">
-															<div class="card-header text-white ${color} mb-3">
+															<div class="card-header">
 																[${element.league}] Match n°${element.matchId}, Day n°${element.matchDay}, ${element.time} (${element.status})
 															</div>
 															<div class="card-body">
@@ -170,7 +170,8 @@
 														</div>
 													</div>`;
 							
-							document.getElementById("querycontainer").insertAdjacentHTML('beforeend', html_to_insert);
+							$("#querycontainer").insertAdjacentHTML('beforeend',html_to_insert);
+							//document.getElementById("querycontainer").insertAdjacentHTML('beforeend', html_to_insert);
 
 						});
 
