@@ -253,7 +253,7 @@ public class ServerRequest {
 	public static boolean insertBet(String username,int matchId,String bet) throws SQLException{
 		String request = "INSERT INTO "+BetsBase.BASENAME+" ("
 				+BetsBase.GAMBLER+","+BetsBase.MATCH_ID+","+BetsBase.BET+")"
-				+" VALUES ('"+username+"', "+matchId+", "+bet+");";
+				+" VALUES ('"+username+"', "+matchId+", '"+bet+"');";
 		int res = makeUpdate(request);
 		return (res==1);
 
