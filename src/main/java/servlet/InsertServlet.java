@@ -45,6 +45,7 @@ public class InsertServlet extends HttpServlet{
 			json.addProperty("insert", b);
 			out.write(json.toString());
 		}catch(SQLException e){
+			System.out.println("sqlException: "+e.getMessage());
 			json.addProperty("insert", false);
 			out.write(json.toString());
 		}
