@@ -155,9 +155,20 @@
 							html_to_insert    += "				<img class='align-self-center mr-3 img-thumbnail rounded-circle scale-down' src="+element.homeTeamLogoUrl+" alt='Home team Logo' style='width:64px;height=64px'>";
 							html_to_insert	  += "				<div class='media-body'>";
 							html_to_insert    += "					<p class='card-text'>"+element.homeTeamName+" "+element.homeTeamg+" - "+element.awayTeamg+" "+element.awayTeamName+"</p>";
-							html_to_insert	  += "				</div>"
-							html_to_insert    += "				<img class='align-self-center ml-3 img-thumbnail rounded-circle scale-down' src="+element.awayTeamLogoUrl+" alt='Away team Logo' style='width:64px;height=64px'>"
-							html_to_insert    += "			</div>"
+							html_to_insert	  += "				</div>";
+							html_to_insert    += "				<img class='align-self-center ml-3 img-thumbnail rounded-circle scale-down' src="+element.awayTeamLogoUrl+" alt='Away team Logo' style='width:64px;height=64px'>";
+							html_to_insert    += "			</div>";
+							html_to_insert    += "			<div class='row'>";
+							html_to_insert    += "				<div class='col-sm-4'>";
+							html_to_insert    += "					<button type='button' class='btn btn-primary' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet=\"win\"}, function(data){console.log(data)},'json')'> Win </button>";
+							html_to_insert    += "				</div>";
+							html_to_insert    += "				<div class='col-sm-4'>";
+							html_to_insert    += "					<button type='button' class='btn btn-primary' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet=\"draw\"}, function(data){console.log(data)},'json')'> Draw </button>";
+							html_to_insert    += "				</div>";
+							html_to_insert    += "				<div class='col-sm-4'>";
+							html_to_insert    += "					<button type='button' class='btn btn-primary' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet=\"lost\"}, function(data){console.log(data)},'json')'> Loss </button>";
+							html_to_insert    += "				</div>";
+							html_to_insert    += "			</div>";
 							html_to_insert    += "		</div>";
 							html_to_insert    += "	</div>";
 							html_to_insert    += "</div>";
