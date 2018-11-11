@@ -130,8 +130,8 @@
 						status: document.getElementById("status").value,
 						teamname: document.getElementById("teamname").value,
 						league: document.getElementById("league").value,
-					}
-					,function( data ) {
+					},
+					function( data ) {
 						//$( "body" ).append( data )
 						console.log(data);
 						/*
@@ -150,9 +150,9 @@
 							html_to_insert    += "		<div class='card-header'>"
 							html_to_insert    += "			["+element.league+"] Match n°"+element.matchId+", Day n°"+element.matchDay+", "+element.time+" ("+element.status+")";
 							html_to_insert    += "		</div>"
-							html_to_insert    += `		<div class='card-body'>
-															<p class='card-text'>${element.homeTeamName} ${element.homeTeamg} - ${element.awayTeamg} ${element.awayTeamName}</p>
-														</div>`;
+							html_to_insert    += "		<div class='card-body'>";
+							html_to_insert    += "			<p class='card-text'>"+element.homeTeamName+" "+element.homeTeamg+" - "+element.awayTeamg+" "+element.awwayTeamName+"</p>";
+							html_to_insert    += "		</div>";
 							html_to_insert    += "	</div>";
 							html_to_insert    += "</div>";
 
