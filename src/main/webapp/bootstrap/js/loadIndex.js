@@ -31,7 +31,7 @@ $.get(
                             <div class="media-body">
                                 <p class="card-text">${element.homeTeamName} ${element.homeTeamg} - ${element.awayTeamg} ${element.awayTeamName}</p>
                             </div>
-                            <img class="align-self-center ml-3 img-thumbnail rounded-circle scale-down" src="${element.awayTeamLogoUrl}" alt="Home team Logo" style="width:64px;height=64px">
+                            <img class="align-self-center ml-3 img-thumbnail rounded-circle scale-down" src="${element.awayTeamLogoUrl}" alt="Away team Logo" style="width:64px;height=64px">
 
                         </div>
                     </div>
