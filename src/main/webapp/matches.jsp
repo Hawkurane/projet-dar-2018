@@ -144,20 +144,18 @@
 							console.log(element);
 
 							
-							/*var html_to_insert = "<div class='row'>";
-							html_to_insert    += "<div class='row col-sm-12'>";
-							html_to_insert    += "<div class='col-sm-2'>Match n°"+element.matchId+".</div>";
-							html_to_insert    += "<div class='col-sm-2'>Day n°"+element.matchDay+".</div>";
-							html_to_insert    += "<div class='col-sm-8'>Time: "+element.time+". ("+element.status+")</div>";
+							var html_to_insert = "<div class='row'>";
+							html_to_insert    += "	<div class='card'>;"
+							html_to_insert    += "		<div class='card-header'>"
+							html_to_insert    += "			["+element.league+"] Match n°"+element.matchId+", Day n°"+element.matchDay+", "+element.time+" ("+element.status+")";
+							html_to_insert    += "		</div>"
+							html_to_insert    += `		<div class='card-body'>
+															<p class='card-text'>${element.homeTeamName} ${element.homeTeamg} - ${element.awayTeamg} ${element.awayTeamName}</p>
+														</div>`;
+							html_to_insert    += "	</div>";
 							html_to_insert    += "</div>";
-							html_to_insert    += "<div class='row col-sm-12'>";
-							html_to_insert    += "<div class='col-sm-5'>"+element.homeTeamName+"</div>";
-							html_to_insert    += "<div class='col-sm-2'>vs.</div>";
-							html_to_insert    += "<div class='col-sm-5'>"+element.awayTeamName+"</div>";
-							html_to_insert    += "</div>";
-							html_to_insert    += "</div>";*/
 							
-							
+							/*
 							var html_to_insert = `
 													<div class='row'>
 														<div class="card">
@@ -169,9 +167,8 @@
 															</div>
 														</div>
 													</div>`;
-							
-							$("#querycontainer").insertAdjacentHTML('beforeend',html_to_insert);
-							//document.getElementById("querycontainer").insertAdjacentHTML('beforeend', html_to_insert);
+							*/
+							document.getElementById("querycontainer").insertAdjacentHTML('beforeend', html_to_insert);
 
 						});
 
