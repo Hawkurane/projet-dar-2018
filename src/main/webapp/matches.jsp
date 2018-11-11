@@ -160,10 +160,10 @@
 							html_to_insert    += "			</div>";
 							html_to_insert    += "			<div class='row'>";
 							html_to_insert    += "				<div class='col-sm-4'>";
-							html_to_insert    += "					<button type='button' class='btn btn-primary' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"win\"}, function(data){console.log(data)},'json')'> Win </button>";
+							html_to_insert    += "					<button type='button' class='btn btn-primary' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"win\"}, function(data){console.log(data)},\"json\")'> Win </button>";
 							html_to_insert    += "				</div>";
 							html_to_insert    += "				<div class='col-sm-4'>";
-							html_to_insert    += "					<button type='button' class='btn btn-primary' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"draw\"}, function(data){console.log(data)},'json')'> Draw </button>";
+							html_to_insert    += "					<button type='button' class='btn btn-primary' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"draw\"}, function(data){console.log(data)},\"json\")'> Draw </button>";
 							html_to_insert    += "				</div>";
 							html_to_insert    += "				<div class='col-sm-4'>";
 							html_to_insert    += "					<button type='button' class='btn btn-primary' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"lost\"}, function(data){console.log(data)},\"json\")'> Loss </button>";
