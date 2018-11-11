@@ -141,7 +141,7 @@
 
 						data.forEach(function(element){
 							//var html_to_insert = "<div class='row'><div class='col-sm-12'>"+JSON.stringify(element)+"</div></div> <hr>";
-							console.log(element);
+							console.log(element.matchId+`vs ${element.matchId}`);
 
 							
 							var html_to_insert = "<div class='row'>";
@@ -154,6 +154,8 @@
 														</div>`;
 							html_to_insert    += "	</div>";
 							html_to_insert    += "</div>";
+
+
 							
 							/*
 							var html_to_insert = `
