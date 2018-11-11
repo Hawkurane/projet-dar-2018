@@ -152,7 +152,7 @@
 							html_to_insert    += "		</div>"
 							html_to_insert    += "		<div class='card-body'>";
 							html_to_insert    += "			<div class='media'>";
-							html_to_insert    += "				<img class='align-self-center mr-3 img-thumbnail rounded-circle scale-down' src="+element.homeTeamLogoUrl+" alt='Home team Logo' style='width:64px;height=64px'>":
+							html_to_insert    += "				<img class='align-self-center mr-3 img-thumbnail rounded-circle scale-down' src="+element.homeTeamLogoUrl+" alt='Home team Logo' style='width:64px;height=64px'>";
 							html_to_insert	  += "				<div class='media-body'>";
 							html_to_insert    += "					<p class='card-text'>"+element.homeTeamName+" "+element.homeTeamg+" - "+element.awayTeamg+" "+element.awayTeamName+"</p>";
 							html_to_insert	  += "				</div>"
