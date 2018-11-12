@@ -45,32 +45,32 @@
                                     </li>
                                 </ul>
                             </nav>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <div class="card" style="width: 18rem; margin-top: 20px">
-                                            <div class="card-header">
-                                                ${sessionScope.user.name}
-                                            </div>
-                                            <div class="card-body">                                    
-                                                <p class="card-text">
-                                                    Score: ${sessionScope.user.score} <br>
-                                                    Failures: ${sessionScope.user.betLost} <br>
-                                                    On Hold: ${sessionScope.user.betScheduled} <br>
-
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             
                             
                         </header>
 
-                        <div class="container">
-                            <div id="betscontainer">
+                        <div class="container" style="margin-top: 20px">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="card" style="width: 18rem;">
+                                        <div class="card-header">
+                                            ${sessionScope.user.name}
+                                        </div>
+                                        <div class="card-body">                                    
+                                            <p class="card-text">
+                                                Score: ${sessionScope.user.score} <br>
+                                                Failures: ${sessionScope.user.betLost} <br>
+                                                On Hold: ${sessionScope.user.betScheduled} <br>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div id="betscontainer">
 
+                                    </div>
+                                </div>
                             </div>
                         </div>
             
