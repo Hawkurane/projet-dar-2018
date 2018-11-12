@@ -142,8 +142,8 @@
 							//var html_to_insert = "<div class='row'><div class='col-sm-12'>"+JSON.stringify(element)+"</div></div> <hr>";
 							
 							if(element.bet==null){
-								var html_to_insert = "<div class='row matchContainer' style='width: 100%'>";
-								html_to_insert    += "	<div class='card' style='width: 100%'>";
+								var html_to_insert = "<div class='row'>";
+								html_to_insert    += "	<div class='card w-100'>";
 								html_to_insert    += "		<div class='card-header'>";
 								html_to_insert    += "			["+element.league+"] Match n°"+element.matchId+", Day n°"+element.matchDay+", "+element.time+" ("+element.status+")";
 								html_to_insert    += "		</div>";
