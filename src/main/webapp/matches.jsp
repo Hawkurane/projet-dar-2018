@@ -103,20 +103,13 @@
 						
 						<button type="button" class="btn btn-primary" id="send"> Search </button>
 					</form>
-					
-
+					<hr>
+					<div class="row" id="resultContainer">
+		
+					</div>
 				</div>
 			</div>
-			<hr>
-			<div class="row" id="resultContainer">
-
-			</div>
 		</div>
-		<!--
-		<div class="row" id="resultContainer">
-			
-		</div>
-		-->
 	</div>
 </body>
 	<script src="bootstrap/js/jquery-3.3.1.min.js"></script>
