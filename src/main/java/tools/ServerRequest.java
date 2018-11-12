@@ -175,7 +175,7 @@ public class ServerRequest {
 	public static ResultSet getStandings(String league)
 			throws SQLException{
 		String request = "SELECT * "+
-				"FROM ("+"("+StandingsBase.BASENAME+" s "+" INNER JOIN "+TeamsBase.BASENAME+" t "
+				"FROM ("+StandingsBase.BASENAME+" s "+" INNER JOIN "+TeamsBase.BASENAME+" t "
 				+" ON s."+StandingsBase.TEAM_ID+" = t."+TeamsBase.TEAM_ID+" )"
 				+" WHERE s."+StandingsBase.LEAGUE+" = '"+league+"' ORDER BY points DESC;";
 		System.out.println("req: "+request);
