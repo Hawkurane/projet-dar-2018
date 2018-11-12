@@ -150,7 +150,7 @@
 							
 
 							
-							var html_to_insert = "<div class='row container-fluid'>";
+							var html_to_insert = "<div class='row'>";
 							html_to_insert    += "	<div class='card'>";
 							html_to_insert    += "		<div class='card-header'>";
 							html_to_insert    += "			["+element.league+"] Match n°"+element.matchId+", Day n°"+element.matchDay+", "+element.time+" ("+element.status+")";
