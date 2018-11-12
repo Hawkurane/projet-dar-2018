@@ -150,11 +150,11 @@
 							
 
 							
-							var html_to_insert = "<div class='row'>";
-							html_to_insert    += "	<div class='card'>;"
-							html_to_insert    += "		<div class='card-header'>"
+							var html_to_insert = "<div class='row container-fluid'>";
+							html_to_insert    += "	<div class='card'>";
+							html_to_insert    += "		<div class='card-header'>";
 							html_to_insert    += "			["+element.league+"] Match n°"+element.matchId+", Day n°"+element.matchDay+", "+element.time+" ("+element.status+")";
-							html_to_insert    += "		</div>"
+							html_to_insert    += "		</div>";
 							html_to_insert    += "		<div class='card-body'>";
 							html_to_insert    += "			<div class='media'>";
 							html_to_insert    += "				<img class='align-self-center mr-3 img-thumbnail rounded-circle scale-down' src="+element.homeTeamLogoUrl+" alt='Home team Logo' style='width:64px;height=64px'>";
