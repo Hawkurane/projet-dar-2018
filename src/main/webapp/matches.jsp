@@ -148,7 +148,7 @@
 						data.forEach(function(element){
 							//var html_to_insert = "<div class='row'><div class='col-sm-12'>"+JSON.stringify(element)+"</div></div> <hr>";
 							
-							if(element.bet!=null){
+							if(element.bet==null){
 								var html_to_insert = "<div class='row'>";
 								html_to_insert    += "	<div class='card'>";
 								html_to_insert    += "		<div class='card-header'>";
