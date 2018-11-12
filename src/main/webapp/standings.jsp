@@ -34,9 +34,9 @@
 	
 	<ul>
         stanging
-        <c:forEach items="${ standing }" var="ligue">
+        <c:forEach items="${ standing }" var="s">
         <li>
-              ${}
+              ${s.teamName}
         </li>
         </c:forEach>
 
