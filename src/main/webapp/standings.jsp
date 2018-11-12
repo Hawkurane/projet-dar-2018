@@ -22,15 +22,18 @@
 
 </head>
 <body>
-	<ul>
+	
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top py-1">
+	<ul class="navbar-nav mr-auto">
         ligue
 		<c:forEach items="${ form }" var="ligue">
-		<li>
-		      ${ligue}
+		<li class="nav-item active">
+		      <a class="nav-link" href= ${"/standings/".concat(ligue.replaceAll(" ","%20"))}>${ligue}</a>
 		</li>
 		</c:forEach>
 
 	</ul>
+	</nav>
 	
 	<ul>
         <c:forEach items="${ standing}" var="s">
