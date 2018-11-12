@@ -17,86 +17,88 @@
 
     </head>
     <body>
-        <c:choose>
-            <c:when test="${!empty sessionScope.user}">
+        <div id="img-background">
+            <c:choose>
+                <c:when test="${!empty sessionScope.user}">
 
-                    <header class="sticky-top" style="max-width:100%">
-                            <nav class="navbar navbar-expand-sm bg-dark navbar-dark py-1">
-                                <a class="navbar-brand" href="/"> Bookmakers </a>
-                                <ul class="navbar-nav mr-auto">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="matches">Matches</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link disabled" href="#">Profile</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link disabled" href="#">Rankings</a>
-                                    </li>
-                                    
-                                </ul>
-                                <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item">
-                                        <form method="post" action="logout">
-                                            <button type="submit" class="btn btn-dark btn-outline-light btn-sm">
-                                                <span class="oi oi-account-logout"></span> Logout
-                                            </button>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </nav>
-                            
-                            
-                            
-                        </header>
+                        <header class="sticky-top" style="max-width:100%">
+                                <nav class="navbar navbar-expand-sm bg-dark navbar-dark py-1">
+                                    <a class="navbar-brand" href="/"> Bookmakers </a>
+                                    <ul class="navbar-nav mr-auto">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="matches">Matches</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link disabled" href="#">Profile</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link disabled" href="#">Rankings</a>
+                                        </li>
+                                        
+                                    </ul>
+                                    <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item">
+                                            <form method="post" action="logout">
+                                                <button type="submit" class="btn btn-dark btn-outline-light btn-sm">
+                                                    <span class="oi oi-account-logout"></span> Logout
+                                                </button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                
+                                
+                                
+                            </header>
 
-                        <div class="container" style="margin-top: 20px">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="card" style="width: 18rem;">
-                                        <div class="card-header">
-                                            ${sessionScope.user.name}
-                                        </div>
-                                        <div class="card-body">                                    
-                                            <p class="card-text">
-                                                Score: ${sessionScope.user.score} <br>
-                                                Failures: ${sessionScope.user.betLost} <br>
-                                                On Hold: ${sessionScope.user.betScheduled} <br>
-                                            </p>
+                            <div class="container" style="margin-top: 20px">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="card" style="width: 18rem;">
+                                            <div class="card-header">
+                                                ${sessionScope.user.name}
+                                            </div>
+                                            <div class="card-body">                                    
+                                                <p class="card-text">
+                                                    Score: ${sessionScope.user.score} <br>
+                                                    Failures: ${sessionScope.user.betLost} <br>
+                                                    On Hold: ${sessionScope.user.betScheduled} <br>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <div id="betscontainer">
+                                    <div class="col-sm-8">
+                                        <div id="betscontainer">
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-            
                 
+                    
 
-            </c:when>
-            <c:otherwise>
+                </c:when>
+                <c:otherwise>
 
-                <div class="wrapper animated bounce">
-                    <h1>Bookmakers</h1>
-                    <hr>
-                    <form method="post" action="login">
-                        <label id="icon" for="username"><i class="fa fa-user"></i></label>
-                        <input type="text" placeholder="Username" id="username" name="userlogin">
-                        <label id="icon" for="password"><i class="fa fa-key"></i></label>
-                        <input type="password" placeholder="Password" id="password" name="pwdlogin">
-                        <input type="submit" value="Sign In">
+                    <div class="wrapper animated bounce">
+                        <h1>Bookmakers</h1>
                         <hr>
-                        <div class="crtacc"><a href="register.jsp">Create Account</a></div>
-                    </form>
-                </div>
-                
-                
+                        <form method="post" action="login">
+                            <label id="icon" for="username"><i class="fa fa-user"></i></label>
+                            <input type="text" placeholder="Username" id="username" name="userlogin">
+                            <label id="icon" for="password"><i class="fa fa-key"></i></label>
+                            <input type="password" placeholder="Password" id="password" name="pwdlogin">
+                            <input type="submit" value="Sign In">
+                            <hr>
+                            <div class="crtacc"><a href="register.jsp">Create Account</a></div>
+                        </form>
+                    </div>
+                    
+                    
 
-            </c:otherwise>
-        </c:choose>
+                </c:otherwise>
+            </c:choose>
+        </div>
     </body>
     <script src="bootstrap/js/jquery-3.3.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
