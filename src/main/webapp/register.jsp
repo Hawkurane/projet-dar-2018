@@ -17,7 +17,7 @@
         <div class="wrapper animated bounce">
             <h1>Bookmakers</h1>
             <hr>
-            <form method="post" action="register" oninput='pwdregisterconfirm.setCustomValidity(pwdregisterconfirm.value != pwdregister ? "Passwords do not match." : "")'>
+            <form method="post" action="register" oninput='pwdregisterconfirm.setCustomValidity(pwdregisterconfirm.value != pwdregister.value ? "Passwords do not match." : "")'>
                 <label id="icon" for="username"><i class="fa fa-user"></i></label>
                 <input type="text" placeholder="Username" id="username" name="userregister">
 

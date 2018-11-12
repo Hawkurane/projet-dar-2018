@@ -102,8 +102,13 @@
 					
 					<button type="button" class="btn btn-primary" id="send"> Search </button>
 				</form>
-				<!--<button id="send">rechercher</button>-->
+				
+
 			</div>
+		</div>
+		<hr>
+		<div class="row" id="resultContainer">
+
 		</div>
 	</div>
 	<!--
@@ -142,7 +147,6 @@
 						data.forEach(function(element){
 							//var html_to_insert = "<div class='row'><div class='col-sm-12'>"+JSON.stringify(element)+"</div></div> <hr>";
 							
-							console.log(${element.matchId});
 
 							
 							var html_to_insert = "<div class='row'>";
@@ -173,7 +177,7 @@
 							html_to_insert    += "	</div>";
 							html_to_insert    += "</div>";
 
-							document.getElementById("querycontainer").insertAdjacentHTML('beforeend', html_to_insert);
+							document.getElementById("resultContainer").insertAdjacentHTML('beforeend', html_to_insert);
 
 						});
 
