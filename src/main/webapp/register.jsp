@@ -14,26 +14,28 @@
     </head>
 
     <body>
-        <div class="wrapper animated bounce">
-            <h1>Bookmakers</h1>
-            <hr>
-            <form method="post" action="register" oninput='pwdregisterconfirm.setCustomValidity(pwdregisterconfirm.value != pwdregister ? "Passwords do not match." : "")'>
-                <label id="icon" for="username"><i class="fa fa-user"></i></label>
-                <input type="text" placeholder="Username" id="username" name="userregister">
-
-                <label id="icon" for="mail"><i class="fa fa-envelope-o"></i></label>
-                <input type="text" placeholder="Mail" id="mail" name="mailregister">
-
-                <label id="icon" for="password"><i class="fa fa-key"></i></label>
-                <input type="password" placeholder="Password" id="password" name="pwdregister">
-
-                <label id="icon" for="passwordconfirm"><i class="fa fa-key"></i></label>
-                <input type="password" placeholder="Confirm password" id="passwordconfirm" name="pwdregisterconfirm">
-
-                <input type="submit" value="Register">
+        <div id="img-background">
+            <div class="wrapper animated bounce">
+                <h1>Bookmakers</h1>
                 <hr>
-                <div class="crtacc"><a href="/">Login</a></div>
-            </form>
+                <form method="post" action="register" oninput='pwdregisterconfirm.setCustomValidity(pwdregisterconfirm.value != pwdregister.value ? "Passwords do not match." : "")'>
+                    <label id="icon" for="username"><i class="fa fa-user"></i></label>
+                    <input type="text" placeholder="Username" id="username" name="userregister">
+
+                    <label id="icon" for="mail"><i class="fa fa-envelope-o"></i></label>
+                    <input type="text" placeholder="Mail" id="mail" name="mailregister">
+
+                    <label id="icon" for="password"><i class="fa fa-key"></i></label>
+                    <input type="password" placeholder="Password" id="password" name="pwdregister">
+
+                    <label id="icon" for="passwordconfirm"><i class="fa fa-key"></i></label>
+                    <input type="password" placeholder="Confirm password" id="passwordconfirm" name="pwdregisterconfirm">
+
+                    <input type="submit" value="Register">
+                    <hr>
+                    <div class="crtacc"><a href="/">Login</a></div>
+                </form>
+            </div>
         </div>
     </body>
 

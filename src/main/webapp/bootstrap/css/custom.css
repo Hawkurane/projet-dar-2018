@@ -121,4 +121,8 @@ input[type=submit]:hover{
   padding: 30px;
 }
 
+#img-background {
+  background-image: url('../../res/164198452-dark-grey-wallpapers.jpg');
+  background-repeat: no-repeat;
+}
 

@@ -17,6 +17,7 @@
 
     </head>
     <body>
+        <div id="img-background">
         <c:choose>
             <c:when test="${!empty sessionScope.user}">
 
@@ -94,6 +95,7 @@
             
             </c:otherwise>
         </c:choose>
+        </div>
     </body>
     <script src="bootstrap/js/jquery-3.3.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
