@@ -33,8 +33,7 @@
 	</ul>
 	
 	<ul>
-        stanging
-        <c:forEach items="${ standing }" var="s">
+        <c:forEach items="${ standing}" var="s">
         <li>
               ${s.teamName}
         </li>
