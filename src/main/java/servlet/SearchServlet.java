@@ -101,7 +101,6 @@ public class SearchServlet extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			Gson gson = new Gson();
 			out.write(gson.toJson(listMatches));
-			System.out.println("bet: "+listMatches[0].getBet());
 		}catch(Exception e){e.printStackTrace();}
 	}
 
