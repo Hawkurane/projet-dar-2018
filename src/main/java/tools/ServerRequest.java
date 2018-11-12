@@ -178,7 +178,7 @@ public class ServerRequest {
 				"FROM ("+"("+StandingsBase.BASENAME+" s "+" INNER JOIN "+TeamsBase.BASENAME+" t "
 				+" ON s."+StandingsBase.TEAM_ID+" = t."+TeamsBase.TEAM_ID+" )"
 				+" WHERE s."+StandingsBase.LEAGUE+" = '"+league+"' ORDER BY points DESC;";
-
+		System.out.println("req: "+request);
 		ResultSet res = makeRequest(request);
 		return res;
 	}
