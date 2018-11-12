@@ -27,8 +27,8 @@ public class StandingsServlet extends HttpServlet {
 		
 		request.setAttribute("form", Utils.getLeaguesNames() );
 		try{
-			System.out.println(request.getContentType().substring(1));
-			String leagueId = Utils.getLeagueIdFromName(request.getContentType().substring(1));
+			System.out.println(request.getPathInfo().substring(1));
+			String leagueId = Utils.getLeagueIdFromName(request.getPathInfo().substring(1));
 			System.out.println("lId: "+leagueId);
 			Standing[] standing = Utils.getStanding(ServerRequest.getStandings(leagueId));
 			request.setAttribute("standing", standing);
