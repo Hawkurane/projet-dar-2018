@@ -18,7 +18,6 @@ public class Utils {
 		Map<String,String> m = new HashMap<String,String>();
 		m.put("FL1", "Ligue 1");
 		m.put("PL", "Premier League");
-		m.put("SA", "Serie A");
 		m.put("PD", "La Liga");
 		return Collections.unmodifiableMap(m);
 	}
