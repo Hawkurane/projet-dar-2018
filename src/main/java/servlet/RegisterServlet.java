@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import tools.Logger;
 import tools.ServerRequest;
 
 @WebServlet(
@@ -56,8 +57,10 @@ public class RegisterServlet extends HttpServlet {
 
 		boolean b = false;
 		try{
-			if(!ServerRequest.existName(newusername) && password.equals(confirmpassword))
-				if(ServerRequest.createAccount(newusername,password,date,region,mail));
+			if(!ServerRequest.existName(newusername) && password.equals(confirmpassword)){
+				
+				if(ServerRequest.createAccount(newusername,Logger.encrypt(password),date,region,mail));
+			}
 
 		}catch(Exception e){e.printStackTrace();}
 		
