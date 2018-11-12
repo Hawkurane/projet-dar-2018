@@ -12,7 +12,7 @@ public class Logger {
 
 	public static boolean logIn(String username, String password) {
 		try{
-			//password = encrypt(password);
+			password = encrypt(password);
 			ResultSet res = ServerRequest.login(username, password);
 			res.next();
 			return (res.getString("password").equals(password));
