@@ -20,36 +20,36 @@
         <div id="img-background">
             <c:choose>
                 <c:when test="${!empty sessionScope.user}">
-
-                        <header class="sticky-top" style="max-width:100%">
-                                <nav class="navbar navbar-expand-sm bg-dark navbar-dark py-1">
-                                    <a class="navbar-brand" href="/"> Bookmakers </a>
-                                    <ul class="navbar-nav mr-auto">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="matches">Matches</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link disabled" href="#">Profile</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link disabled" href="#">Rankings</a>
-                                        </li>
-                                        
-                                    </ul>
-                                    <ul class="navbar-nav ml-auto">
-                                        <li class="nav-item">
-                                            <form method="post" action="logout">
-                                                <button type="submit" class="btn btn-dark btn-outline-light btn-sm">
-                                                    <span class="oi oi-account-logout"></span> Logout
-                                                </button>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </nav>
-                                
-                                
-                                
-                            </header>
+                                    <header class="sticky-top" style="max-width:100%">
+                                        <nav class="navbar navbar-expand-sm bg-dark navbar-dark py-1">
+                                            <a class="navbar-brand" href="/"> Bookmakers </a>
+                                            <ul class="navbar-nav mr-auto">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="matches">Matches</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="standings">Standings</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link disabled" href="#">Profile</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link disabled" href="#">Rankings</a>
+                                                </li>
+                                                
+                                            </ul>
+                                            <ul class="navbar-nav ml-auto">
+                                                <li class="nav-item">
+                                                    <form method="post" action="logout">
+                                                        <button type="submit" class="btn btn-dark btn-outline-light btn-sm">
+                                                            <span class="oi oi-account-logout"></span> Logout
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </header>
+                
 
                             <div class="container" style="margin-top: 20px">
                                 <div class="row">

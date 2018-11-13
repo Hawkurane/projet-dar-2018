@@ -47,6 +47,9 @@
                                 <a class="nav-link" href="matches">Matches</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="standings">Standings</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link disabled" href="#">Profile</a>
                             </li>
                             <li class="nav-item">
@@ -64,9 +67,8 @@
                             </li>
                         </ul>
                     </nav>
-                    
-                    
                 </header>
+                
                 <div class="container" style="margin-top: 20px;">
                     <div class="row">
                         <div class="col-sm-4">
