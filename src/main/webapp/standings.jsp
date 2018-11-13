@@ -76,21 +76,23 @@
                         <thead>
                             <th scope="col">#</th>
                             <th scope="col">Team Name</th>
-                            <th scope="col">Position</th>
+                            <th scope="col">Points</th>
+                            <th scope="col">Wins</th>
+                            <th scope="col">Losses</th>
+                            <th scope="col">Draws</th>
+                            <th scope="col">Goals (For/Against)</th>
                         </thead>
                         <tbody>
-                            <%
-                                Collections.sort(standing, new Comparator<Standing>(){
-                                    public int compare(Standing s1, Standing s2){
-                                        return s1.position.compare(s2.position);
-                                    }
-                                });
-                            %>
                             <c:forEach items="${standing}" var="s" varStatus="loop">
                                 <tr>
-                                    <th scope="row">${loop.index + 1}</th>
+                                    <th scope="row">${s.position}</th>
                                     <td> ${s.teamName} </td>
-                                    <td> ${s.position} </td>
+                                    <td> ${s.points} </td>
+                                    <td> ${s.won} </td>
+                                    <td> ${s.lost} </td>
+                                    <td> ${s.draw} </td>
+                                    <td> ${s.goalsFor} / ${s.goalsAgainst}
+                                    
                                 </tr>
                             </c:forEach>
                         </tbody>
