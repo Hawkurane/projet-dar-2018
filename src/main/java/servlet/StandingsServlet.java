@@ -33,7 +33,7 @@ public class StandingsServlet extends HttpServlet {
 			System.out.println("lId: "+leagueId);
 			Standing[] standing = Utils.getStanding(ServerRequest.getStandings(leagueId));
 			request.setAttribute("standing", standing);
-			request.setAttribute("currentligue", l);
+			request.setAttribute("currentleague", l);
 		}catch(Exception e){e.printStackTrace();}
 		//retourne formulaire
 		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
