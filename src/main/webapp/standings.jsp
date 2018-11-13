@@ -23,6 +23,9 @@
 </head>
 <body>
 	<div id="img-background">
+        <c:if test="${empty sessionScope.user}">
+			<c:redirect url="/"/>
+		</c:if>
 	            <header class="sticky-top" style="max-width:100%">
                     <nav class="navbar navbar-expand-sm bg-dark navbar-dark py-1">
                         <a class="navbar-brand" href="/"> Bookmakers </a>
