@@ -58,8 +58,14 @@
                 <ul class="navbar-nav">
                     <c:forEach items="${ form }" var="ligue">
                     <li class="nav-items">
-                        <c:if test ="${currentleague} == ligue">
-                        <a href=${"/standings/".concat(ligue.replaceAll(" ","%20"))} class="nav-link"> ${ligue} </a>
+                        <c:choose>
+                            <c:when test="${currentleague} != ${ligue}">
+                                <a href=${"/standings/".concat(ligue.replaceAll(" ","%20"))} class="nav-link"> ${ligue} </a>
+                            </c:when>
+                            <c:otherwise>
+                                <a href=${"/standings/".concat(ligue.replaceAll(" ","%20"))} class="nav-link active"> ${ligue} </a>
+                            </c:otherwise>
+                        </c:choose>
                     </li>
                 </c:forEach>
                 </ul>

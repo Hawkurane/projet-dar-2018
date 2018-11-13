@@ -22,7 +22,7 @@ $.get(
                 color='bg-light text-dark'
 
             html_to_insert += `
-            <div class="row">
+            <div class="row" style="margin-bot: 10px; text-align: center">
                 <div class="card text-white bg-dark mb3" style="width: 100%">
                     <div class="card-header ${color} mb-3">
                         [${element.league}] Match n°${element.matchId}, Day n°${element.matchDay}, ${element.time} (${element.status})
