@@ -141,12 +141,12 @@
 						var myJSON = JSON.stringify(data);
 						document.getElementById("resultContainer").innerHTML = myJSON;
 						*/
-
+						var html_to_insert = '';
 						data.forEach(function(element){
 							//var html_to_insert = "<div class='row'><div class='col-sm-12'>"+JSON.stringify(element)+"</div></div> <hr>";
 							
 							if(element.bet==null){
-								var html_to_insert = "<div class='row'>";
+								html_to_insert = "<div class='row'>";
 								html_to_insert    += "	<div class='card w-100'>";
 								html_to_insert    += "		<div class='card-header'>";
 								html_to_insert    += "			["+element.league+"] Match n°"+element.matchId+", Day n°"+element.matchDay+", "+element.time+" ("+element.status+")";
@@ -174,14 +174,14 @@
 								html_to_insert    += "	</div>";
 								html_to_insert    += "</div>";
 
-								document.getElementById("resultContainer").insertAdjacentHTML('beforeend', html_to_insert);
+								
 
 							}
 							
 							
 						});
 
-
+						document.getElementById("resultContainer").innerHTML = html_to_insert;
 
 					}
 					,'json'

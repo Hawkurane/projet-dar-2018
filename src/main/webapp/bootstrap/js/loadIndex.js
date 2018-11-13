@@ -8,18 +8,20 @@ $.get(
         searchType: "bets",
         won: ""
     },
+    
     function(data){
+        var html_to_insert = '';
         data.forEach(function(element){
-            var color;
+            var color='';
             console.log(element);
+
             if(element.status!=='FINISHED')
                 color = 'bg-warning';
             else
                 if(element.winner==element.bet)
                     color='bg-success';
-                else
-                    color='bg-danger';
-            var html_to_insert = `
+
+            html_to_insert += `
             <div class="row">
                 <div class="card" style="width: 100%">
                     <div class="card-header text-white ${color} mb-3">
@@ -37,8 +39,8 @@ $.get(
                     </div>
                 </div>
             </div>`;
-
-            document.getElementById("betscontainer").insertAdjacentHTML('beforeend', html_to_insert);
         });
+        
+        document.getElementById("betscontainer").innerHTML = html_to_insert;
     }
 );
