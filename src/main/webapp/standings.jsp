@@ -79,6 +79,13 @@
                             <th scope="col">Position</th>
                         </thead>
                         <tbody>
+                            <%
+                                Collections.sort(standing, new Comparator<Standing>(){
+                                    public int compare(Standing s1, Standing s2){
+                                        return s1.position.compare(s2.position);
+                                    }
+                                });
+                            %>
                             <c:forEach items="${standing}" var="s" varStatus="loop">
                                 <tr>
                                     <th scope="row">${loop.index + 1}</th>
