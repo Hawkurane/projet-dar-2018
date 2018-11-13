@@ -31,7 +31,7 @@
                                 <a class="nav-link" href="/matches">Matches</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="/standings">Standings</a>
+                                <a class="nav-link active" href="/standings/La Liga">Standings</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link disabled" href="#">Profile</a>

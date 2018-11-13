@@ -27,10 +27,10 @@
                         <a class="navbar-brand" href="/"> Bookmakers </a>
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" href="matches">Matches</a>
+                                <a class="nav-link active" href="/matches">Matches</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="standings">Standings</a>
+                                <a class="nav-link" href="/standings/La Liga">Standings</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link disabled" href="#">Profile</a>

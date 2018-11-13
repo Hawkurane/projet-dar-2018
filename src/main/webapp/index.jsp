@@ -25,10 +25,10 @@
                                             <a class="navbar-brand" href="/"> Bookmakers </a>
                                             <ul class="navbar-nav mr-auto">
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="matches">Matches</a>
+                                                    <a class="nav-link" href="/matches">Matches</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="standings">Standings</a>
+                                                    <a class="nav-link" href="/standings/La Liga">Standings</a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link disabled" href="#">Profile</a>
@@ -54,7 +54,7 @@
                             <div class="container" style="margin-top: 20px">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <div class="card" style="width: 18rem;">
+                                        <div class="card text-white bg-dark mb-3" style="width: 18rem;">
                                             <div class="card-header">
                                                 ${sessionScope.user.name}
                                             </div>
