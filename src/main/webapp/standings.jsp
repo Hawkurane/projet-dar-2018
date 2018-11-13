@@ -59,11 +59,11 @@
                     <c:forEach items="${ form }" var="ligue">
                     <li class="nav-items">
                         <c:choose>
-                            <c:when test="${currentleague} != ${ligue}">
-                                <a href=${"/standings/".concat(ligue.replaceAll(" ","%20"))} class="nav-link"> ${ligue} </a>
+                            <c:when test="${currentleague == ligue}">
+                                <a href=${"/standings/".concat(ligue.replaceAll(" ","%20"))} class="nav-link active"> ${ligue} </a>
                             </c:when>
                             <c:otherwise>
-                                <a href=${"/standings/".concat(ligue.replaceAll(" ","%20"))} class="nav-link active"> ${ligue} </a>
+                                <a href=${"/standings/".concat(ligue.replaceAll(" ","%20"))} class="nav-link"> ${ligue} </a>
                             </c:otherwise>
                         </c:choose>
                     </li>
