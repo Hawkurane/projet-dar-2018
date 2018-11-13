@@ -71,103 +71,21 @@
                 </ul>
             </nav>
             <div class="tab-content">
-                    ${currentleague}
                     
                     <table class="table table-dark">
                         <thead>
                             <th scope="col">#</th>
                             <th scope="col">Team Name</th>
+                            <th scope="col">Position</th>
                         </thead>
                         <tbody>
                             <c:forEach items="${standing}" var="s" varStatus="loop">
                                 <tr>
                                     <th scope="row">${loop.index + 1}</th>
-                                    <td> ${s.teamName}
+                                    <td> ${s.teamName} </td>
+                                    <td> ${s.position} </td>
                                 </tr>
                             </c:forEach>
-                            <!--
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>FC Barcelona</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Club Atlético de Madrid</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Deportivo Alavés</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">4</th>
-                                <td>Sevilla FC</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">5</th>
-                                <td>RCD Espanyol de Barcelona</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">6</th>
-                                <td>Real Madrid CF</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">7</th>
-                                <td>Levante UD</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">8</th>
-                                <td>Real Valladolid CF</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">9</th>
-                                <td>Girona FC</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">10</th>
-                                <td>Real Betis Balompié</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">11</th>
-                                <td>Real Sociedad de Fútbol</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">12</th>
-                                <td>Getafe CF</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">13</th>
-                                <td>SD Eibar</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">14</th>
-                                <td>RC Celta de Vigo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">15</th>
-                                <td>Valencia CF</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">16</th>
-                                <td>Villarreal CF</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">17</th>
-                                <td>Athletic Club</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">18</th>
-                                <td>CD Leganés</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">19</th>
-                                <td>Rayo Vallecano de Madrid</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">20</th>
-                                <td>SD Huesca</td>
-                            </tr>
-                            -->
-
                         </tbody>
                     </table>
 
