@@ -41,8 +41,8 @@ public class SearchServlet extends HttpServlet {
 			sendMatches(request,response);
 		else if(request.getParameter(searchType).equals(searchBets))
 			sendBets(request,response);
-		else if(request.getParameter(searchType).equals(searchBets))
-			sendMatches(request,response);
+		else if(request.getParameter(searchType).equals(searchUsers))
+			sendUsers(request,response);
 	}
 
 	public void sendMatches(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

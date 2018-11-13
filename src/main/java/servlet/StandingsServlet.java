@@ -27,11 +27,13 @@ public class StandingsServlet extends HttpServlet {
 		
 		request.setAttribute("form", Utils.getLeaguesNames() );
 		try{
-			System.out.println(request.getPathInfo().substring(1));
+			String l = request.getPathInfo().substring(1);
+			System.out.println(l);
 			String leagueId = Utils.getLeagueIdFromName(request.getPathInfo().substring(1));
 			System.out.println("lId: "+leagueId);
 			Standing[] standing = Utils.getStanding(ServerRequest.getStandings(leagueId));
 			request.setAttribute("standing", standing);
+			request.setAttribute("currentligue", l);
 		}catch(Exception e){e.printStackTrace();}
 		//retourne formulaire
 		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );

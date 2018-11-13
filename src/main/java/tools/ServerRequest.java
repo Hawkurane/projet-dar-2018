@@ -10,11 +10,6 @@ import java.util.Date;
 
 
 public class ServerRequest {
-	/*public static final String USERS_BASE = "users";
-	public static final String MATCHS_BASE = "matches";
-	public static final String BETS_BASE = "bets";
-	public static final String STANDINGS_BASE = "standings";
-	public static final String TEAMS_BASE = "teams";*/
 	
 
 	private static Connection getConnection()throws SQLException{
@@ -52,7 +47,7 @@ public class ServerRequest {
 			if(research!=null)
 				request+=" AND f."+FollowsBase.FOLLOW+" LIKE '"+research+"'";
 			request+=";";
-		//sinon on recher dans toute la liste des users
+		//sinon on rechercher dans toute la liste des users
 		}else{
 			request+="SELECT "+UsersBase.NAME+" FROM "+UsersBase.BASENAME+"WHERE "
 					+UsersBase.NAME+" LIKE '"+research+"';";

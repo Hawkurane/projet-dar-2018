@@ -5,10 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Logger {
-	
-	final static String alphabet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	final static int N = alphabet.length();
-	final static int KEY_LENGTH = 64;
 
 	public static boolean logIn(String username, String password) {
 		try{
