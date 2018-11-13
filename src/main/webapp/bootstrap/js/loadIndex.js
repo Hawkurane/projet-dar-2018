@@ -13,10 +13,11 @@ $.get(
         data.forEach(function(element){
             var color;
             console.log(element);
-            if(element.winner==element.bet)
-                color='bg-success';
-            else
-                color='bg-danger';
+            if(element.status=='FINISHED')
+                if(element.winner==element.bet)
+                    color='bg-success';
+                else
+                    color='bg-danger';
 
             html_to_insert += `
             <div class="row">
@@ -37,8 +38,8 @@ $.get(
                 </div>
             </div>`;
 
-            
         });
         document.getElementById("betscontainer").insertAdjacentHTML('beforeend', html_to_insert);
+
     }
 );
