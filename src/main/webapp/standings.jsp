@@ -76,7 +76,7 @@
 
 
             <div class="tab-content">
-                    ${currentligue}
+                    ${currentleague}
                     
                     <table class="table table-dark">
                         <thead>
