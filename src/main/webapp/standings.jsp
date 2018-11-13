@@ -63,18 +63,6 @@
                 </c:forEach>
                 </ul>
             </nav>
-
-            
-                    <ul>
-                        <c:forEach items="${standing}" var="s">
-                        <li>
-                            ${s.teamName}
-                        </li>
-                        </c:forEach>
-                      
-                    </ul>
-
-
             <div class="tab-content">
                     ${currentleague}
                     
@@ -86,7 +74,7 @@
                         <tbody>
                             <c:forEach items="${standing}" var="s" varStatus="loop">
                                 <tr>
-                                    <th scope="row">${loop.index}</th>
+                                    <th scope="row">${loop.index + 1}</th>
                                     <td> ${s.teamName}
                                 </tr>
                             </c:forEach>
