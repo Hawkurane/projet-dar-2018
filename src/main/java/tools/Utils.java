@@ -13,7 +13,7 @@ public class Utils {
 	public static final String[] status = {"SCHEDULED","FINISHED","IN_LIVE"};
 	//current league available
 	public static final String[] leaguesAvailable = {"FL1","PL","PD"};
-	
+
 	private static Map<String,String> createMapLeagues(){
 		Map<String,String> m = new HashMap<String,String>();
 		m.put("FL1", "Ligue 1");
@@ -52,6 +52,19 @@ public class Utils {
 
 
 	}
+
+	public static User[] getRanking(ResultSet rankingRequest) throws SQLException{
+		ResultSet res = rankingRequest;
+		res.last();
+		User[] users = new User[res.getRow()];
+		res.beforeFirst();
+		while(res.next()){
+			users[res.getRow()] = new User(res.getString(UsersBase.NAME),res.getInt("score"),res.getInt("rank"));
+
+		}
+		return users;
+	}
+
 
 	public static Standing[] getStanding(ResultSet standingRequest) throws SQLException{
 		ResultSet res = standingRequest;

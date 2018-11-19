@@ -36,6 +36,20 @@ public class ServerRequest {
 		return i;
 	}
 	
+	public static ResultSet getRanking(int size) throws SQLException{
+		String rankRequest = "SELECT *,RANK() OVER(ORDER BY score DESC) FROM "
+				+"(SELECT u."+UsersBase.NAME+", (SELECT COUNT(*) "
+						+ "FROM "+BetsBase.BASENAME+" b , "+MatchesBase.BASENAME+" m WHERE "
+						+"b."+BetsBase.MATCH_ID+"=m."+MatchesBase.MATCH_ID
+						+" and m."+MatchesBase.STATUS+"='FINISHED' and b."+BetsBase.GAMBLER+" = u."+UsersBase.NAME
+						+" and b."+BetsBase.BET+" = m."+MatchesBase.RESULT+") as score FROM"
+								+" "+UsersBase.BASENAME+" u) as scores"
+						+" LIMIT "+size+" ;";
+		System.out.println("req: "+rankRequest);
+		ResultSet res = makeRequest(rankRequest);
+		return res;
+	}
+	
 	public static ResultSet getUsers(String username, String research) throws SQLException {
 		String request ="" ;
 		//si username!= null on reserche dans la liste d'ami de username

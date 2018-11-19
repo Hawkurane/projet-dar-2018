@@ -21,6 +21,12 @@ public class User {
 		this.rank = rank;
 	}
 	
+	public User(String n,int rank, int score){
+		this.name = n;
+		this.rank = rank;
+		this.score = score;
+	}
+	
 	public String getName() {
 		return name;
 	}
