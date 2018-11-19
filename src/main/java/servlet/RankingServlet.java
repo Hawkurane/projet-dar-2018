@@ -13,21 +13,24 @@ import tools.Utils;
 
 @WebServlet(
 		name = "RankingsServlet",
-		urlPatterns = {"/ranking/"})
+		urlPatterns = {"/ranking"})
 public class RankingServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	public static final String RANKING_LENGTH = "length";
 	public static final String VUE  = "/ranking.jsp";
 
-	
+
 
 
 	//redirige vers le .jsp avec le formulaire et sans classement
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setAttribute("form", Utils.getLeaguesNames() );
+
 		try{
-			int size = Integer.parseInt(request.getParameter("matchday"));
+			String s = request.getParameter(RANKING_LENGTH);
+			int size = 0;
+			if(s!=null) size = Integer.parseInt(s);
+			
 			request.setAttribute("ranking", Utils.getRanking(ServerRequest.getRanking(size)));
 		}catch(Exception e){e.printStackTrace();}
 		//retourne formulaire

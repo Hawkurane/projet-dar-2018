@@ -43,8 +43,11 @@ public class ServerRequest {
 						+"b."+BetsBase.MATCH_ID+"=m."+MatchesBase.MATCH_ID
 						+" and m."+MatchesBase.STATUS+"='FINISHED' and b."+BetsBase.GAMBLER+" = u."+UsersBase.NAME
 						+" and b."+BetsBase.BET+" = m."+MatchesBase.RESULT+") as score FROM"
-								+" "+UsersBase.BASENAME+" u) as scores"
-						+" LIMIT "+size+" ;";
+								+" "+UsersBase.BASENAME+" u) as scores";
+		if(size!=0)
+			rankRequest+=" LIMIT "+size;
+		rankRequest+=" ;";
+		
 		System.out.println("req: "+rankRequest);
 		ResultSet res = makeRequest(rankRequest);
 		return res;

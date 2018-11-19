@@ -59,7 +59,7 @@ public class Utils {
 		User[] users = new User[res.getRow()];
 		res.beforeFirst();
 		while(res.next()){
-			users[res.getRow()] = new User(res.getString(UsersBase.NAME),res.getInt("score"),res.getInt("rank"));
+			users[res.getRow()-1] = new User(res.getString(UsersBase.NAME),res.getInt("score"),res.getInt("rank"));
 
 		}
 		return users;
