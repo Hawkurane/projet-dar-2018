@@ -31,7 +31,7 @@
 				<th scope="col">score</th>
 			</thead>
 			<tbody>
-				<c:forEach items="${rank}" var="r" varStatus="loop">
+				<c:forEach items="${ranking}" var="r" varStatus="loop">
 					<tr>
 						<th scope="row">${r.name}</th>
 						<td>${r.rank}</td>
