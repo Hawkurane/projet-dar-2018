@@ -147,7 +147,7 @@
 									html_to_insert 	  += "<div class='row' style='margin-bottom:10px; text-align: center'>";
 									html_to_insert    += "	<div class='card w-100'>";
 									html_to_insert    += "		<div class='card-header'>";
-									html_to_insert    += "			["+element.league+"] Day n°"+element.matchDay+", "+element.time.substring(1,6)+" ("+element.status+")";
+									html_to_insert    += "			["+element.league+"] Day n°"+element.matchDay+", "+element.time.substring(0, element.time.length-3)+" ("+element.status+")";
 									html_to_insert    += "		</div>";
 									html_to_insert    += "		<div class='card-body'>";
 									html_to_insert    += "			<div class='media'>";
@@ -175,7 +175,7 @@
 									html_to_insert 	  += "<div class='row' style='margin-bottom:10px; text-align: center'>";
 									html_to_insert    += "	<div class='card w-100'>";
 									html_to_insert    += "		<div class='card-header'>";
-									html_to_insert    += "			["+element.league+"] Day n°"+element.matchDay+", "+element.time.substring(1,6)+" ("+element.status+")";
+									html_to_insert    += "			["+element.league+"] Day n°"+element.matchDay+", "+element.time.substring(0, element.time.length-3)+" ("+element.status+")";
 									html_to_insert    += "		</div>";
 									html_to_insert    += "		<div class='card-body'>";
 									html_to_insert    += "			<div class='media'>";
