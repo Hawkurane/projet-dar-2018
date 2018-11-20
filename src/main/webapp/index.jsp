@@ -57,7 +57,7 @@
                                             </div>
                                             <div class="card-body">                                    
                                                 <p class="card-text">
-                                                    Rank: ${sessionScope.user.rank}
+                                                    Rank: ${sessionScope.user.rank} <br>
                                                     Score: ${sessionScope.user.score} <br>
                                                     Failures: ${sessionScope.user.betLost} <br>
                                                     On Hold: ${sessionScope.user.betScheduled} <br>
