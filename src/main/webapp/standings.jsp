@@ -18,7 +18,7 @@
 <link href="/open-iconic-master/font/css/open-iconic-bootstrap.css"
 	rel="stylesheet">
 
-<title>Pronostiqueurs</title>
+<title>Bookmakers</title>
 
 </head>
 <body>
