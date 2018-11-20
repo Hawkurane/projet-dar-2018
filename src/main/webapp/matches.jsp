@@ -14,7 +14,7 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="open-iconic-master/font/css/open-iconic-bootstrap.css" rel="stylesheet">
 
-<title>Pronostiqueurs</title>
+<title>Bookmakers</title>
 
 </head>
 <body>
@@ -159,13 +159,13 @@
 									html_to_insert    += "			</div>";
 									html_to_insert    += "			<div class='row'>";
 									html_to_insert    += "				<div class='col-sm-4'>";
-									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"WIN\"}, function(data){console.log(data);$(this).button('toggle')},\"json\")'> Win </button>";
+									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"WIN\"}, function(data){$(this).toggleClass('btn  btn-success')},\"json\")'> Win </button>";
 									html_to_insert    += "				</div>";
 									html_to_insert    += "				<div class='col-sm-4'>";
-									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"DRAW\"}, function(data){console.log(data);$(this).button('toggle')},\"json\")'> Draw </button>";
+									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"DRAW\"}, function(data){$(this).toggleClass('btn  btn-success')},\"json\")'> Draw </button>";
 									html_to_insert    += "				</div>";
 									html_to_insert    += "				<div class='col-sm-4'>";
-									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"LOSE\"}, function(data){console.log(data);$(this).button('toggle')},\"json\")'> Loss </button>";
+									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"LOSE\"}, function(data){$(this).toggleClass('btn  btn-success')},\"json\")'> Loss </button>";
 									html_to_insert    += "				</div>";
 									html_to_insert    += "			</div>";
 									html_to_insert    += "		</div>";
@@ -187,13 +187,13 @@
 									html_to_insert    += "			</div>";
 									html_to_insert    += "			<div class='row'>";
 									html_to_insert    += "				<div class='col-sm-4'>";
-									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"WIN\"}, function(data){console.log(data);$(this).button('toggle')},\"json\")'> Win </button>";
+									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"WIN\"}, function(data){$(this).toggleClass('btn  btn-success')},\"json\")'> Win </button>";
 									html_to_insert    += "				</div>";
 									html_to_insert    += "				<div class='col-sm-4'>";
-									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"DRAW\"}, function(data){console.log(data);$(this).button('toggle')},\"json\")'> Draw </button>";
+									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"DRAW\"}, function(data){$(this).toggleClass('btn  btn-success')},\"json\")'> Draw </button>";
 									html_to_insert    += "				</div>";
 									html_to_insert    += "				<div class='col-sm-4'>";
-									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"LOSE\"}, function(data){console.log(data);$(this).button('toggle')},\"json\")'> Loss </button>";
+									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"LOSE\"}, function(data){$(this).toggleClass('btn  btn-success')},\"json\")'> Loss </button>";
 									html_to_insert    += "				</div>";
 									html_to_insert    += "			</div>";
 									html_to_insert    += "		</div>";
