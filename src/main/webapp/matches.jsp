@@ -143,33 +143,64 @@
 							//var html_to_insert = "<div class='row'><div class='col-sm-12'>"+JSON.stringify(element)+"</div></div> <hr>";
 							
 							if(element.bet==null){
-								html_to_insert 	  += "<div class='row' style='margin-bottom:10px; text-align: center'>";
-								html_to_insert    += "	<div class='card w-100'>";
-								html_to_insert    += "		<div class='card-header'>";
-								html_to_insert    += "			["+element.league+"] Match n°"+element.matchId+", Day n°"+element.matchDay+", "+element.time+" ("+element.status+")";
-								html_to_insert    += "		</div>";
-								html_to_insert    += "		<div class='card-body'>";
-								html_to_insert    += "			<div class='media'>";
-								html_to_insert    += "				<img class='align-self-center mr-3 img-thumbnail rounded-circle scale-down' src="+element.homeTeamLogoUrl+" alt='Home team Logo' style='width:64px;height=64px'>";
-								html_to_insert	  += "				<div class='media-body'>";
-								html_to_insert    += "					<p class='card-text'>"+element.homeTeamName+" "+element.homeTeamg+" - "+element.awayTeamg+" "+element.awayTeamName+"</p>";
-								html_to_insert	  += "				</div>";
-								html_to_insert    += "				<img class='align-self-center ml-3 img-thumbnail rounded-circle scale-down' src="+element.awayTeamLogoUrl+" alt='Away team Logo' style='width:64px;height=64px'>";
-								html_to_insert    += "			</div>";
-								html_to_insert    += "			<div class='row'>";
-								html_to_insert    += "				<div class='col-sm-4'>";
-								html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"WIN\"}, function(data){console.log(data)},\"json\")'> Win </button>";
-								html_to_insert    += "				</div>";
-								html_to_insert    += "				<div class='col-sm-4'>";
-								html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"DRAW\"}, function(data){console.log(data)},\"json\")'> Draw </button>";
-								html_to_insert    += "				</div>";
-								html_to_insert    += "				<div class='col-sm-4'>";
-								html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"LOSE\"}, function(data){console.log(data)},\"json\")'> Loss </button>";
-								html_to_insert    += "				</div>";
-								html_to_insert    += "			</div>";
-								html_to_insert    += "		</div>";
-								html_to_insert    += "	</div>";
-								html_to_insert    += "</div>";
+								if(element.status!="SCHEDULED"){
+									html_to_insert 	  += "<div class='row' style='margin-bottom:10px; text-align: center'>";
+									html_to_insert    += "	<div class='card w-100'>";
+									html_to_insert    += "		<div class='card-header'>";
+									html_to_insert    += "			["+element.league+"] Day n°"+element.matchDay+", "+element.time+" ("+element.status+")";
+									html_to_insert    += "		</div>";
+									html_to_insert    += "		<div class='card-body'>";
+									html_to_insert    += "			<div class='media'>";
+									html_to_insert    += "				<img class='align-self-center mr-3 img-thumbnail rounded-circle scale-down' src="+element.homeTeamLogoUrl+" alt='Home team Logo' style='width:64px;height=64px'>";
+									html_to_insert	  += "				<div class='media-body'>";
+									html_to_insert    += "					<p class='card-text'>"+element.homeTeamName+" "+element.homeTeamg+" - "+element.awayTeamg+" "+element.awayTeamName+"</p>";
+									html_to_insert	  += "				</div>";
+									html_to_insert    += "				<img class='align-self-center ml-3 img-thumbnail rounded-circle scale-down' src="+element.awayTeamLogoUrl+" alt='Away team Logo' style='width:64px;height=64px'>";
+									html_to_insert    += "			</div>";
+									html_to_insert    += "			<div class='row'>";
+									html_to_insert    += "				<div class='col-sm-4'>";
+									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"WIN\"}, function(data){console.log(data)},\"json\")'> Win </button>";
+									html_to_insert    += "				</div>";
+									html_to_insert    += "				<div class='col-sm-4'>";
+									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"DRAW\"}, function(data){console.log(data)},\"json\")'> Draw </button>";
+									html_to_insert    += "				</div>";
+									html_to_insert    += "				<div class='col-sm-4'>";
+									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"LOSE\"}, function(data){console.log(data)},\"json\")'> Loss </button>";
+									html_to_insert    += "				</div>";
+									html_to_insert    += "			</div>";
+									html_to_insert    += "		</div>";
+									html_to_insert    += "	</div>";
+									html_to_insert    += "</div>";
+								} else {
+									html_to_insert 	  += "<div class='row' style='margin-bottom:10px; text-align: center'>";
+									html_to_insert    += "	<div class='card w-100'>";
+									html_to_insert    += "		<div class='card-header'>";
+									html_to_insert    += "			["+element.league+"] Day n°"+element.matchDay+", "+element.time+" ("+element.status+")";
+									html_to_insert    += "		</div>";
+									html_to_insert    += "		<div class='card-body'>";
+									html_to_insert    += "			<div class='media'>";
+									html_to_insert    += "				<img class='align-self-center mr-3 img-thumbnail rounded-circle scale-down' src="+element.homeTeamLogoUrl+" alt='Home team Logo' style='width:64px;height=64px'>";
+									html_to_insert	  += "				<div class='media-body'>";
+									html_to_insert    += "					<p class='card-text'>"+element.homeTeamName+" vs. "+element.awayTeamName+"</p>";
+									html_to_insert	  += "				</div>";
+									html_to_insert    += "				<img class='align-self-center ml-3 img-thumbnail rounded-circle scale-down' src="+element.awayTeamLogoUrl+" alt='Away team Logo' style='width:64px;height=64px'>";
+									html_to_insert    += "			</div>";
+									html_to_insert    += "			<div class='row'>";
+									html_to_insert    += "				<div class='col-sm-4'>";
+									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"WIN\"}, function(data){console.log(data)},\"json\")'> Win </button>";
+									html_to_insert    += "				</div>";
+									html_to_insert    += "				<div class='col-sm-4'>";
+									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"DRAW\"}, function(data){console.log(data)},\"json\")'> Draw </button>";
+									html_to_insert    += "				</div>";
+									html_to_insert    += "				<div class='col-sm-4'>";
+									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"LOSE\"}, function(data){console.log(data)},\"json\")'> Loss </button>";
+									html_to_insert    += "				</div>";
+									html_to_insert    += "			</div>";
+									html_to_insert    += "		</div>";
+									html_to_insert    += "	</div>";
+									html_to_insert    += "</div>";
+								}
+								
 
 								
 
