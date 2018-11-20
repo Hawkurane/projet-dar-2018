@@ -31,10 +31,7 @@
                                                     <a class="nav-link" href="/standings/La Liga">Standings</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link disabled" href="#">Profile</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link disabled" href="#">Rankings</a>
+                                                    <a class="nav-link" href="/ranking">Rankings</a>
                                                 </li>
                                                 
                                             </ul>
@@ -56,7 +53,7 @@
                                     <div class="col-sm-4">
                                         <div class="card text-white bg-dark mb-3" style="width: 18rem;">
                                             <div class="card-header">
-                                                ${sessionScope.user.name}
+                                                ${sessionScope.user.name} #${sessionScope.user.rank}
                                             </div>
                                             <div class="card-body">                                    
                                                 <p class="card-text">

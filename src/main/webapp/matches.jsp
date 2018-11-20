@@ -33,10 +33,7 @@
                                 <a class="nav-link" href="/standings/La Liga">Standings</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link disabled" href="#">Profile</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled" href="#">Rankings</a>
+                                <a class="nav-link" href="/ranking">Rankings</a>
                             </li>
                             
                         </ul>

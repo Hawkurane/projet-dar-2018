@@ -59,20 +59,21 @@
 									<th scope="col">#</th>
 									<th scope="col">name</th>
 									<th scope="col">score</th>
+									
 							</thead>
 							<tbody>
 								
 				<c:forEach items="${ranking}" var="r" varStatus="loop">
 						<tr>
-							<th scope="row">${r.name}</th>
-							<td>${r.rank}</td>
-							<td>${r.score}
+							<th scope="row">${r.score}</th>
+							<td>${r.name}</td>
+							<td>${r.rank}
 						</tr>
 					</c:forEach>
 							</tbody>
 					</table>
 				</div>
-			</div>
+			</div>	
 	</div>
 </body>
 </html>
