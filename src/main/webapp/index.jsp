@@ -52,11 +52,12 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="card text-white bg-dark mb-3" style="width: 18rem;">
-                                            <div class="card-header">
-                                                ${sessionScope.user.name} #${sessionScope.user.rank}
+                                            <div class="card-header" style="text-align: center">
+                                                ${sessionScope.user.name}
                                             </div>
                                             <div class="card-body">                                    
                                                 <p class="card-text">
+                                                    Rank: ${sessionScope.user.rank}
                                                     Score: ${sessionScope.user.score} <br>
                                                     Failures: ${sessionScope.user.betLost} <br>
                                                     On Hold: ${sessionScope.user.betScheduled} <br>
