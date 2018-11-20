@@ -59,14 +59,23 @@
 									<th scope="col">#</th>
 									<th scope="col">name</th>
 									<th scope="col">score</th>
-									
+
 							</thead>
 							<tbody>
 								
 				<c:forEach items="${ranking}" var="r" varStatus="loop">
 						<tr>
 							<th scope="row">${r.score}</th>
-							<td>${r.name}</td>
+							
+								<c:choose>
+										<c:when test="${sessionScope.user.name == r.name}">
+											<td><p>${r.name}</p></td>
+										</c:when>
+										<c:otherwise>
+											<td><p class="text-white-50">${r.name}</p></td>
+										</c:otherwise>
+								</c:choose>
+							
 							<td>${r.rank}
 						</tr>
 					</c:forEach>
