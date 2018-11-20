@@ -25,7 +25,7 @@ $.get(
                 <div class="row" style="margin-bottom: 10px; text-align: center">
                     <div class="card text-white bg-dark mb3" style="width: 100%">
                         <div class="card-header ${color} mb-3">
-                            [${element.league}] Day n°${element.matchDay}, ${element.time.substring(1,6)} (${element.status})
+                            [${element.league}] Day n°${element.matchDay}, ${(element.time).sustring(1,6)} (${element.status})
                         </div>
                         <div class="card-body">
                             <div class="media">
@@ -41,10 +41,10 @@ $.get(
                 </div>`;
             } else {
                 html_to_insert += `
-                <div class="row" style="margin-bottom: 10px; text-align: center">
+                <div class="row" style="margin-bottom: 10px; text-align: center">   
                     <div class="card text-white bg-dark mb3" style="width: 100%">
                         <div class="card-header ${color} mb-3">
-                            [${element.league}] Day n°${element.matchDay}, ${element.time.substring(1,6)} (${element.status})
+                            [${element.league}] Day n°${element.matchDay}, ${(element.time).substring(1,6)} (${element.status})
                         </div>
                         <div class="card-body">
                             <div class="media">
