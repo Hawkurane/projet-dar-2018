@@ -22,7 +22,6 @@
 
 </head>
 <body>
-	<div id="img-background">
 		<c:if test="${empty sessionScope.user}">
 			<c:redirect url="/"/>
 		</c:if>
@@ -83,6 +82,5 @@
 					</table>
 				</div>
 			</div>	
-	</div>
 </body>
 </html>

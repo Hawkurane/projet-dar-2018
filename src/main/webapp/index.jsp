@@ -17,7 +17,6 @@
 
     </head>
     <body>
-        <div id="img-background">
             <c:choose>
                 <c:when test="${!empty sessionScope.user}">
                                     <header class="sticky-top" style="max-width:100%">
@@ -96,7 +95,6 @@
 
                 </c:otherwise>
             </c:choose>
-        </div>
     </body>
     <script src="bootstrap/js/jquery-3.3.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>

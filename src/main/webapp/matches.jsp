@@ -18,7 +18,6 @@
 
 </head>
 <body>
-	<div id="img-background">
 		<c:if test="${empty sessionScope.user}">
 			<c:redirect url="/"/>
 		</c:if>
@@ -111,7 +110,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 </body>
 	<script src="bootstrap/js/jquery-3.3.1.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
