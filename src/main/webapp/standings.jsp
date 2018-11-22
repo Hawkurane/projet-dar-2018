@@ -18,11 +18,10 @@
 <link href="/open-iconic-master/font/css/open-iconic-bootstrap.css"
 	rel="stylesheet">
 
-<title>Pronostiqueurs</title>
+<title>Bookmakers</title>
 
 </head>
 <body>
-	<div id="img-background">
         <c:if test="${empty sessionScope.user}">
 			<c:redirect url="/"/>
 		</c:if>
@@ -37,10 +36,7 @@
                                 <a class="nav-link active" href="/standings/La Liga">Standings</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link disabled" href="#">Profile</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled" href="#">Rankings</a>
+                                <a class="nav-link" href="/ranking">Rankings</a>
                             </li>
                             
                         </ul>
@@ -106,6 +102,5 @@
         </div>
                 
 
-	</div>
 </body>
 </html>

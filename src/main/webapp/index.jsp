@@ -17,7 +17,6 @@
 
     </head>
     <body>
-        <div id="img-background">
             <c:choose>
                 <c:when test="${!empty sessionScope.user}">
                                     <header class="sticky-top" style="max-width:100%">
@@ -31,10 +30,7 @@
                                                     <a class="nav-link" href="/standings/La Liga">Standings</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link disabled" href="#">Profile</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link disabled" href="#">Rankings</a>
+                                                    <a class="nav-link" href="/ranking">Rankings</a>
                                                 </li>
                                                 
                                             </ul>
@@ -55,11 +51,12 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="card text-white bg-dark mb-3" style="width: 18rem;">
-                                            <div class="card-header">
+                                            <div class="card-header" style="text-align: center">
                                                 ${sessionScope.user.name}
                                             </div>
                                             <div class="card-body">                                    
                                                 <p class="card-text">
+                                                    Rank: ${sessionScope.user.rank} <br>
                                                     Score: ${sessionScope.user.score} <br>
                                                     Failures: ${sessionScope.user.betLost} <br>
                                                     On Hold: ${sessionScope.user.betScheduled} <br>
@@ -98,7 +95,6 @@
 
                 </c:otherwise>
             </c:choose>
-        </div>
     </body>
     <script src="bootstrap/js/jquery-3.3.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>

@@ -18,29 +18,69 @@
 <link href="/open-iconic-master/font/css/open-iconic-bootstrap.css"
 	rel="stylesheet">
 
-<title>Pronostiqueurs</title>
+<title>Bookmakers</title>
 
 </head>
 <body>
-	<div class="tab-content">
+		<c:if test="${empty sessionScope.user}">
+			<c:redirect url="/"/>
+		</c:if>
+		<header class="sticky-top" style="max-width:100%">
+				<nav class="navbar navbar-expand-sm bg-dark navbar-dark py-1">
+					<a class="navbar-brand" href="/"> Bookmakers </a>
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="/matches">Matches</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/standings/La Liga">Standings</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="/ranking">Rankings</a>
+						</li>
+						
+					</ul>
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<form method="post" action="logout">
+								<button type="submit" class="btn btn-dark btn-outline-light btn-sm">
+									<span class="oi oi-account-logout"></span> Logout
+								</button>
+							</form>
+						</li>
+					</ul>
+				</nav>
+			</header>
+			<div class="container" style="margin-top: 20px">
+				<div class="tab-content">
+					<table class="table table-dark">
+							<thead>
+									<th scope="col">#</th>
+									<th scope="col">name</th>
+									<th scope="col">score</th>
 
-		<table class="table table-dark">
-			<thead>
-				<th scope="col">#</th>
-				<th scope="col">name</th>
-				<th scope="col">score</th>
-			</thead>
-			<tbody>
+							</thead>
+							<tbody>
+								
 				<c:forEach items="${ranking}" var="r" varStatus="loop">
-					<tr>
-						<th scope="row">${r.name}</th>
-						<td>${r.rank}</td>
-						<td>${r.score}
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-
-	</div>
+						<tr>
+							<th scope="row">${r.score}</th>
+							
+								<c:choose>
+										<c:when test="${sessionScope.user.name == r.name}">
+											<td><p>${r.name}</p></td>
+										</c:when>
+										<c:otherwise>
+											<td><p class="text-white-50">${r.name}</p></td>
+										</c:otherwise>
+								</c:choose>
+							
+							<td>${r.rank}
+						</tr>
+					</c:forEach>
+							</tbody>
+					</table>
+				</div>
+			</div>	
 </body>
 </html>

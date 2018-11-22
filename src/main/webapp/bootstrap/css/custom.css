@@ -2,6 +2,18 @@
 @import 'https://fonts.googleapis.com/css?family=Open+Sans';
 @import 'https://fonts.googleapis.com/css?family=Galada';
 
+html {
+  margin: 0;
+  padding: 0;
+  background: url('../../res/164198452-dark-grey-wallpapers.jpg') no-repeat center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+}
+
+body {
+  background-color: transparent;
+}
+
 ::selection {
   background: #ffb7b7; /* WebKit/Blink Browsers */
 }
@@ -25,10 +37,6 @@ body,input{
   color:#4c4c4c;
 }
 
-body{
-  background-color: black;
-
-}
 form{
   margin: 10px 35px;
 }
@@ -121,10 +129,6 @@ input[type=submit]:hover{
   padding: 30px;
 }
 
-#img-background {
-  background-image: url('../../res/164198452-dark-grey-wallpapers.jpg');
-  background-repeat: no-repeat;
-}
 
 .matchContainer {
   margin-left: 35px;
@@ -158,5 +162,4 @@ input[type=submit]:hover{
 
 ::-webkit-scrollbar-track-piece {
   background-color: rgba(0,0,0,1); 
-  
 }

@@ -14,7 +14,6 @@
     </head>
 
     <body>
-        <div id="img-background">
             <div class="wrapper animated bounce">
                 <h1>Bookmakers</h1>
                 <hr>
@@ -36,7 +35,6 @@
                     <div class="crtacc"><a href="/">Login</a></div>
                 </form>
             </div>
-        </div>
     </body>
 
     <script src="bootstrap/js/jquery-3.3.1.slim.min.js"></script>
