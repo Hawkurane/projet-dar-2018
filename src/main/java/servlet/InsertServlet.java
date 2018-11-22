@@ -56,6 +56,8 @@ public class InsertServlet extends HttpServlet{
 	public boolean insertBet(HttpServletRequest request, HttpServletResponse response) throws SQLException{
 		User user = (User)(request.getSession(false).getAttribute(LoginServlet.ATT_USER));
 		int matchId = Integer.parseInt(request.getParameter("matchId"));
+		if(!request.getParameter("status").equals("SCHEDULED"))
+			return false;
 		String bet = request.getParameter("bet");
 		return ServerRequest.insertBet(user.getName(), matchId, bet);
 	}

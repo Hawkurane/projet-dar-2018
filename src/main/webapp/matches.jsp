@@ -14,13 +14,15 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="open-iconic-master/font/css/open-iconic-bootstrap.css" rel="stylesheet">
 
-<title>Bookmakers</title>
+<title>Pronostiqueurs</title>
 
 </head>
 <body>
+	<div id="img-background">
 		<c:if test="${empty sessionScope.user}">
 			<c:redirect url="/"/>
 		</c:if>
+<<<<<<< HEAD
 		<header class="sticky-top" style="max-width:100%">
 			<nav class="navbar navbar-expand-sm bg-dark navbar-dark py-1">
 				<a class="navbar-brand" href="/"> Bookmakers </a>
@@ -47,6 +49,37 @@
 				</ul>
 			</nav>
 		</header>
+=======
+            <header class="sticky-top" style="max-width:100%">
+                    <nav class="navbar navbar-expand-sm bg-dark navbar-dark py-1">
+                        <a class="navbar-brand" href="/"> Bookmakers </a>
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/matches">Matches</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/standings/La Liga">Standings</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Rankings</a>
+                            </li>
+                            
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <form method="post" action="logout">
+                                    <button type="submit" class="btn btn-dark btn-outline-light btn-sm">
+                                        <span class="oi oi-account-logout"></span> Logout
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+>>>>>>> branch 'master' of https://github.com/Hawkurane/projet-dar-2018
                 
 
 		<div class="container" >
@@ -110,10 +143,11 @@
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 	<script src="bootstrap/js/jquery-3.3.1.min.js"></script>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
-	
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
 	<script type="text/javascript">
 		$("#send").click(function(e){ 
 			console.log('sending request to /search -'
@@ -141,6 +175,7 @@
 							//var html_to_insert = "<div class='row'><div class='col-sm-12'>"+JSON.stringify(element)+"</div></div> <hr>";
 							
 							if(element.bet==null){
+<<<<<<< HEAD
 								if(element.status!="SCHEDULED"){
 									html_to_insert 	  += "<div class='row' style='margin-bottom:10px; text-align: center'>";
 									html_to_insert    += "	<div class='card w-100'>";
@@ -188,6 +223,35 @@
 									html_to_insert    += "</div>";
 								}
 								
+=======
+								html_to_insert 	  += "<div class='row' style='margin-bottom:10px; text-align: center'>";
+								html_to_insert    += "	<div class='card w-100'>";
+								html_to_insert    += "		<div class='card-header'>";
+								html_to_insert    += "			["+element.league+"] Match n°"+element.matchId+", Day n°"+element.matchDay+", "+element.time+" ("+element.status+")";
+								html_to_insert    += "		</div>";
+								html_to_insert    += "		<div class='card-body'>";
+								html_to_insert    += "			<div class='media'>";
+								html_to_insert    += "				<img class='align-self-center mr-3 img-thumbnail rounded-circle scale-down' src="+element.homeTeamLogoUrl+" alt='Home team Logo' style='width:64px;height=64px'>";
+								html_to_insert	  += "				<div class='media-body'>";
+								html_to_insert    += "					<p class='card-text'>"+element.homeTeamName+" "+element.homeTeamg+" - "+element.awayTeamg+" "+element.awayTeamName+"</p>";
+								html_to_insert	  += "				</div>";
+								html_to_insert    += "				<img class='align-self-center ml-3 img-thumbnail rounded-circle scale-down' src="+element.awayTeamLogoUrl+" alt='Away team Logo' style='width:64px;height=64px'>";
+								html_to_insert    += "			</div>";
+								html_to_insert    += "			<div class='row'>";
+								html_to_insert    += "				<div class='col-sm-4'>";
+								html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"WIN\",status: "+element.status+"}, function(data){console.log(data)},\"json\")'> Win </button>";
+								html_to_insert    += "				</div>";
+								html_to_insert    += "				<div class='col-sm-4'>";
+								html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"DRAW\",status: "+element.status+"}, function(data){console.log(data)},\"json\")'> Draw </button>";
+								html_to_insert    += "				</div>";
+								html_to_insert    += "				<div class='col-sm-4'>";
+								html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"LOSE\",status: "+element.status+"}, function(data){console.log(data)},\"json\")'> Loss </button>";
+								html_to_insert    += "				</div>";
+								html_to_insert    += "			</div>";
+								html_to_insert    += "		</div>";
+								html_to_insert    += "	</div>";
+								html_to_insert    += "</div>";
+>>>>>>> branch 'master' of https://github.com/Hawkurane/projet-dar-2018
 
 								
 
