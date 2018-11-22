@@ -21,32 +21,32 @@
 		<c:if test="${empty sessionScope.user}">
 			<c:redirect url="/"/>
 		</c:if>
-            <header class="sticky-top" style="max-width:100%">
-                    <nav class="navbar navbar-expand-sm bg-dark navbar-dark py-1">
-                        <a class="navbar-brand" href="/"> Bookmakers </a>
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="/matches">Matches</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/standings/La Liga">Standings</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/ranking">Rankings</a>
-                            </li>
-                            
-                        </ul>
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <form method="post" action="logout">
-                                    <button type="submit" class="btn btn-dark btn-outline-light btn-sm">
-                                        <span class="oi oi-account-logout"></span> Logout
-                                    </button>
-                                </form>
-                            </li>
-                        </ul>
-                    </nav>
-                </header>
+		<header class="sticky-top" style="max-width:100%">
+			<nav class="navbar navbar-expand-sm bg-dark navbar-dark py-1">
+				<a class="navbar-brand" href="/"> Bookmakers </a>
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link active" href="/matches">Matches</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/standings/La Liga">Standings</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/ranking">Rankings</a>
+					</li>
+					
+				</ul>
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<form method="post" action="logout">
+							<button type="submit" class="btn btn-dark btn-outline-light btn-sm">
+								<span class="oi oi-account-logout"></span> Logout
+							</button>
+						</form>
+					</li>
+				</ul>
+			</nav>
+		</header>
                 
 
 		<div class="container" >
@@ -154,17 +154,6 @@
 									html_to_insert    += "					<p class='card-text'>"+element.homeTeamName+" "+element.homeTeamg+" - "+element.awayTeamg+" "+element.awayTeamName+"</p>";
 									html_to_insert	  += "				</div>";
 									html_to_insert    += "				<img class='align-self-center ml-3 img-thumbnail rounded-circle scale-down' src="+element.awayTeamLogoUrl+" alt='Away team Logo' style='width:64px;height=64px'>";
-									html_to_insert    += "			</div>";
-									html_to_insert    += "			<div class='row'>";
-									html_to_insert    += "				<div class='col-sm-4'>";
-									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"WIN\"}, function(data){alert(\"Pari effectué avec succès !\")},\"json\")'> Win </button>";
-									html_to_insert    += "				</div>";
-									html_to_insert    += "				<div class='col-sm-4'>";
-									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"DRAW\"}, function(data){alert(\"Pari effectué avec succès !\")},\"json\")'> Draw </button>";
-									html_to_insert    += "				</div>";
-									html_to_insert    += "				<div class='col-sm-4'>";
-									html_to_insert    += "					<button type='button' class='btn btn-primary text-center' onClick='$.post(\"/insert\", {insertType: \"bet\", matchId: "+element.matchId+", bet:\"LOSE\"}, function(data){alert(\"Pari effectué avec succès !\")},\"json\")'> Loss </button>";
-									html_to_insert    += "				</div>";
 									html_to_insert    += "			</div>";
 									html_to_insert    += "		</div>";
 									html_to_insert    += "	</div>";
