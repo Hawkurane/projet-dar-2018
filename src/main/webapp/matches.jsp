@@ -161,28 +161,12 @@
 									html_to_insert    += "	</div>";
 									html_to_insert    += "</div>";
 								} else {
-									html_to_insert 	  += "<div class='row' style='margin-bottom:10px; text-align: center'>";
-									html_to_insert    += "	<div class='card w-100'>";
-									html_to_insert    += "		<div class='card-header'>";
-									html_to_insert    += "			["+element.league+"] Day n°"+element.matchDay+", "+element.time.substring(0, element.time.length-3)+" ("+element.status+")";
-									html_to_insert    += "		</div>";
-									html_to_insert    += "		<div class='card-body'>";
-									html_to_insert    += "			<div class='media'>";
-									html_to_insert    += "				<img class='align-self-center mr-3 img-thumbnail rounded-circle scale-down' src="+element.homeTeamLogoUrl+" alt='Home team Logo' style='width:64px;height=64px'>";
-									html_to_insert	  += "				<div class='media-body'>";
-									html_to_insert    += "					<p class='card-text'>"+element.homeTeamName+" vs. "+element.awayTeamName+"</p>";
-									html_to_insert	  += "				</div>";
-									html_to_insert    += "				<img class='align-self-center ml-3 img-thumbnail rounded-circle scale-down' src="+element.awayTeamLogoUrl+" alt='Away team Logo' style='width:64px;height=64px'>";
-									html_to_insert    += "			</div>";
-									html_to_insert    += "		</div>";
-									html_to_insert    += "	</div>";
-									html_to_insert    += "</div>";
-								}
+									
 								
 								html_to_insert 	  += "<div class='row' style='margin-bottom:10px; text-align: center'>";
 								html_to_insert    += "	<div class='card w-100'>";
 								html_to_insert    += "		<div class='card-header'>";
-								html_to_insert    += "			["+element.league+"] Match n°"+element.matchId+", Day n°"+element.matchDay+", "+element.time+" ("+element.status+")";
+								html_to_insert    += "			["+element.league+"] Day n°"+element.matchDay+", "+element.time.substring(0, element.time.length-3)+" ("+element.status+")";
 								html_to_insert    += "		</div>";
 								html_to_insert    += "		<div class='card-body'>";
 								html_to_insert    += "			<div class='media'>";
@@ -209,6 +193,7 @@
 
 								
 
+								}
 							}
 							
 							
